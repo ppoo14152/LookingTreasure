@@ -50,6 +50,7 @@ public class Arbok extends Enemy
     public void act()
     {
         moveEnemy();
+        //super.act();
     }
     
     public void moveEnemy()

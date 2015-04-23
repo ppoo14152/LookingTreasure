@@ -97,27 +97,27 @@ public class Cyndaquil extends Player
              switch(super.getNumImagenI())
              {
                 case 0:
-                        super.cambiaImagenI(this.imagenCi1,1);
+                        super.cambiaImagenI(this.imagenCd1,1);
                 break;
                 
                 case 1:
-                        super.cambiaImagenI(this.imagenCi2,2);
+                        super.cambiaImagenI(this.imagenCd2,2);
                 break;
                 
                 case 2:   
-                        super.cambiaImagenI(this.imagenCi3,3);
+                        super.cambiaImagenI(this.imagenCd3,3);
                 break;
                 
                 case 3:
-                        super.cambiaImagenI(this.imagenCi4,0);
+                        super.cambiaImagenI(this.imagenCd4,0);
                 break;
                 
                 case 4:
-                        super.cambiaImagenI(this.imagenCi4,0);
+                        super.cambiaImagenI(this.imagenCd4,0);
                 break;
                 
                 case 5:
-                        super.cambiaImagenI(this.imagenCi4,0);
+                        super.cambiaImagenI(this.imagenCd4,0);
                 break;
              }
         

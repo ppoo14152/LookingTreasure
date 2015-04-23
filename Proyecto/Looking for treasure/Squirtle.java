@@ -50,11 +50,9 @@ public class Squirtle extends Player
     
     public void movePlayer()
     {    
-        if(Greenfoot.isKeyDown("x"))
-        {
+        if(Greenfoot.isKeyDown("x")) {
             setLocation(getX()+velocidad,getY());
-            switch(super.getNumImagenD())
-            {
+            switch(super.getNumImagenD()) {
                 case 0:
                         super.cambiaImagenD(this.imagenSd1,1);
                 break;
@@ -74,30 +72,31 @@ public class Squirtle extends Player
         
         }
         
-        if(Greenfoot.isKeyDown("z"))
-        {    
+        if(Greenfoot.isKeyDown("z")) { 
+            
             setLocation(getX()-velocidad,getY());
-            switch(super.getNumImagenI())
-            {
+            
+            switch(super.getNumImagenI()) {
                 case 0: 
-                        super.cambiaImagenI(this.imagenSi1,1); 
+                        super.cambiaImagenI(this.imagenSd1,1); 
                 break;
                 case 1:
-                        super.cambiaImagenI(this.imagenSi2,2);
+                        super.cambiaImagenI(this.imagenSd2,2);
                 break;
                 case 2: 
-                        super.cambiaImagenI(this.imagenSi3,3);
+                        super.cambiaImagenI(this.imagenSd3,3);
                 break;
                 case 3:
-                        super.cambiaImagenI(this.imagenSi4,0);
+                        super.cambiaImagenI(this.imagenSd4,0);
                 break;
              }
         
         }
         
-        if(Greenfoot.isKeyDown("q"))
-        {
+        if(Greenfoot.isKeyDown("q")) {
            saltar();
         }
     }
+    
+    
 }

@@ -16,6 +16,7 @@ abstract public class Enemy extends Actor
         this.setNumD(0);
         this.setNumI(0);
     }
+    
     public void act() 
     {
         this.setLocation(this.getX()-2,this.getY());

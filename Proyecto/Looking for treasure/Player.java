@@ -79,12 +79,14 @@ abstract public class Player extends Actor
       
     public void checkFall()
     {
-        if(onGround())
+        if(onGround()){
             this.velocidadSalto = 0;
-        else
+        }
+        else{
             fall();
+        }   
     }
-      
+            
     public void fall()
     {
         setLocation(getX(),getY()+velocidadSalto);
@@ -100,14 +102,14 @@ abstract public class Player extends Actor
     
     public void cambiaImagenI(GreenfootImage unaImagen,int numI)
     {
+        unaImagen.mirrorHorizontally();
         this.setImage(unaImagen);
         this.setNumImagenI(numI);
     }
     
     public void act() 
     {
-        if(isTouching(Treasure.class))
-        {
+        if(isTouching(Treasure.class)){
             removeTouching(Treasure.class);
         }
     }    
