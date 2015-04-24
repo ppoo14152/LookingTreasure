@@ -21,4 +21,9 @@ public class Clase1 extends Actor
     {
         //Diana Yaratzed
     }
+    
+    public void metodo1()
+    {
+        //yahir terrones
+    }
 }
