@@ -40,12 +40,21 @@ public class Cyndaquil extends Player
         imagenCi5 = new GreenfootImage("Cd5.png");
         imagenCi6 = new GreenfootImage("Cd6.png");
         //izquierda------------------------------
-        imagenCi1 = new GreenfootImage("Ci1.png");
-        imagenCi2 = new GreenfootImage("Ci2.png");
-        imagenCi3 = new GreenfootImage("Ci3.png");
-        imagenCi4 = new GreenfootImage("Ci4.png");
-        imagenCi5 = new GreenfootImage("Ci5.png");
-        imagenCi6 = new GreenfootImage("Ci6.png");
+        imagenCi1 = new GreenfootImage("Cd1.png");
+        imagenCi2 = new GreenfootImage("Cd2.png");
+        imagenCi3 = new GreenfootImage("Cd3.png");
+        imagenCi4 = new GreenfootImage("Cd4.png");
+        imagenCi5 = new GreenfootImage("Cd5.png");
+        imagenCi6 = new GreenfootImage("Cd6.png");
+        
+        imagenCi1.mirrorHorizontally();
+        imagenCi2.mirrorHorizontally();
+        imagenCi3.mirrorHorizontally();
+        imagenCi4.mirrorHorizontally();
+        imagenCi5.mirrorHorizontally();
+        imagenCi6.mirrorHorizontally();
+        
+        //--------------------------
         
         velocidad = 3;
         setImage(imagenCd1);
@@ -62,30 +71,30 @@ public class Cyndaquil extends Player
         if(Greenfoot.isKeyDown("right"))
         {
             setLocation(getX()+velocidad,getY());
-             switch(super.getNumImagenD())
+             switch(super.getNumImagen())
              {
                 case 0:
-                        super.cambiaImagenD(this.imagenCd1,1);
+                        super.cambiaImagen(this.imagenCd1,1);
                 break;
                 
                 case 1:
-                        super.cambiaImagenD(this.imagenCd2,2);
+                        super.cambiaImagen(this.imagenCd2,2);
                 break;
                 
                 case 2:
-                        super.cambiaImagenD(this.imagenCd3,3);
+                        super.cambiaImagen(this.imagenCd3,3);
                 break;
                 
                 case 3:
-                        super.cambiaImagenD(this.imagenCd4,0);
+                        super.cambiaImagen(this.imagenCd4,0);
                 break;
                 
                 case 4:
-                        super.cambiaImagenD(this.imagenCd5,0);
+                        super.cambiaImagen(this.imagenCd5,0);
                 break;
                 
                 case 5:
-                        super.cambiaImagenD(this.imagenCd6,0);
+                        super.cambiaImagen(this.imagenCd6,0);
                 break;
              }
         
@@ -94,30 +103,30 @@ public class Cyndaquil extends Player
         if(Greenfoot.isKeyDown("left"))
         {
             setLocation(getX()-velocidad,getY());
-             switch(super.getNumImagenI())
+             switch(super.getNumImagen())
              {
                 case 0:
-                        super.cambiaImagenI(this.imagenCd1,1);
+                        super.cambiaImagen(this.imagenCi1,1);
                 break;
                 
                 case 1:
-                        super.cambiaImagenI(this.imagenCd2,2);
+                        super.cambiaImagen(this.imagenCi2,2);
                 break;
                 
                 case 2:   
-                        super.cambiaImagenI(this.imagenCd3,3);
+                        super.cambiaImagen(this.imagenCi3,3);
                 break;
                 
                 case 3:
-                        super.cambiaImagenI(this.imagenCd4,0);
+                        super.cambiaImagen(this.imagenCi4,4);
                 break;
                 
                 case 4:
-                        super.cambiaImagenI(this.imagenCd4,0);
+                        super.cambiaImagen(this.imagenCi5,5);
                 break;
                 
                 case 5:
-                        super.cambiaImagenI(this.imagenCd4,0);
+                        super.cambiaImagen(this.imagenCi6,0);
                 break;
              }
         

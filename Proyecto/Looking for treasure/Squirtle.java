@@ -18,7 +18,7 @@ public class Squirtle extends Player
     GreenfootImage imagenSd3;
     GreenfootImage imagenSd4;
     //izquierda-------------
-    GreenfootImage imagenSi1;
+    GreenfootImage imagenSi1 ;
     GreenfootImage imagenSi2;
     GreenfootImage imagenSi3;
     GreenfootImage imagenSi4;
@@ -33,11 +33,18 @@ public class Squirtle extends Player
         imagenSd3 = new GreenfootImage("Sd3.png");
         imagenSd4 = new GreenfootImage("Sd4.png");
         //izquierda------------------------------
-        imagenSi1 = new GreenfootImage("Si1.png");
-        imagenSi2 = new GreenfootImage("Si2.png");
-        imagenSi3 = new GreenfootImage("Si3.png");
-        imagenSi4 = new GreenfootImage("Si4.png");
+        imagenSi1 = new GreenfootImage("Sd1.png");
+        imagenSi2 = new GreenfootImage("Sd2.png");
+        imagenSi3 = new GreenfootImage("Sd3.png");
+        imagenSi4 = new GreenfootImage("Sd4.png");
+        
+        imagenSi1.mirrorHorizontally();
+        imagenSi2.mirrorHorizontally();
+        imagenSi3.mirrorHorizontally();
+        imagenSi4.mirrorHorizontally();
         //---------------------------------------
+     
+        
         velocidad = 3;
         setImage(imagenSd1);
     }
@@ -52,21 +59,21 @@ public class Squirtle extends Player
     {    
         if(Greenfoot.isKeyDown("x")) {
             setLocation(getX()+velocidad,getY());
-            switch(super.getNumImagenD()) {
+            switch(super.getNumImagen()) {
                 case 0:
-                        super.cambiaImagenD(this.imagenSd1,1);
+                        super.cambiaImagen(this.imagenSd1,1);
                 break;
                 
                 case 1: 
-                        super.cambiaImagenD(this.imagenSd2,2);
+                        super.cambiaImagen(this.imagenSd2,2);
                 break;
                 
                 case 2:     
-                        super.cambiaImagenD(this.imagenSd3,3);
+                        super.cambiaImagen(this.imagenSd3,3);
                 break;
                 
                 case 3: 
-                        super.cambiaImagenD(this.imagenSd4,0);
+                        super.cambiaImagen(this.imagenSd4,0);
                 break;
             }
         
@@ -76,18 +83,18 @@ public class Squirtle extends Player
             
             setLocation(getX()-velocidad,getY());
             
-            switch(super.getNumImagenI()) {
+            switch(super.getNumImagen()) {
                 case 0: 
-                        super.cambiaImagenI(this.imagenSd1,1); 
+                        super.cambiaImagen(this.imagenSi1,1); 
                 break;
                 case 1:
-                        super.cambiaImagenI(this.imagenSd2,2);
+                        super.cambiaImagen(this.imagenSi2,2);
                 break;
                 case 2: 
-                        super.cambiaImagenI(this.imagenSd3,3);
+                        super.cambiaImagen(this.imagenSi3,3);
                 break;
                 case 3:
-                        super.cambiaImagenI(this.imagenSd4,0);
+                        super.cambiaImagen(this.imagenSi4,0);
                 break;
              }
         

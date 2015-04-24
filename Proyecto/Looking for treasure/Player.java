@@ -8,8 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 abstract public class Player extends Actor
 {
-    private int numImagenD;
-    private int numImagenI;
+    private int numImagen;
     //Salto------------------
     private int velocidad;
     private int velocidadSalto;
@@ -21,8 +20,8 @@ abstract public class Player extends Actor
 
     public Player()
     {
-        this.setNumImagenD(0);
-        this.setNumImagenI(0);
+        
+        this.setNumImagen(0);
         //Salto---------------------------------
         this.velocidad = 7;
         this.velocidadSalto = 0;
@@ -33,7 +32,7 @@ abstract public class Player extends Actor
         this.estaSaltando=true;
     }
     
-    public void setNumImagenD(int unNum)
+    /*public void setNumImagenD(int unNum)
     {
         this.numImagenD=unNum;
     }
@@ -41,16 +40,16 @@ abstract public class Player extends Actor
     public int getNumImagenD()
     {
         return this.numImagenD;
+    }*/
+    
+    public void setNumImagen(int unNum)
+    {
+        this.numImagen=unNum;
     }
     
-    public void setNumImagenI(int unNum)
+    public int getNumImagen()
     {
-        this.numImagenI=unNum;
-    }
-    
-    public int getNumImagenI()
-    {
-        return this.numImagenI;
+        return this.numImagen;
     }
     
     abstract public void movePlayer();
@@ -94,18 +93,21 @@ abstract public class Player extends Actor
         this.estaSaltando=false;
     }  
     
-    public void cambiaImagenD(GreenfootImage unaImagen,int numD)
+    public void cambiaImagen(GreenfootImage unaImagen,int numI)
     {
-        this.setImage(unaImagen);
-        this.setNumImagenD(numD);
+        
+        
+         this.setImage(unaImagen);
+         this.setNumImagen(numI);
+       
+       
     }
     
-    public void cambiaImagenI(GreenfootImage unaImagen,int numI)
+   /* public void cambiaImagenI(GreenfootImage unaImagen,int numI)
     {
-        unaImagen.mirrorHorizontally();
         this.setImage(unaImagen);
         this.setNumImagenI(numI);
-    }
+    }*/
     
     public void act() 
     {
