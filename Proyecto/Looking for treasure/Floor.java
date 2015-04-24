@@ -23,14 +23,5 @@ public class Floor extends FondoImagenes
         if(Greenfoot.isKeyDown("right")) {
           setLocation(getX()-2,getY());
         }
-        
-        if(Greenfoot.isKeyDown("left")) {
-          setLocation(getX()+2,getY());
-        }
-        
-        if(this.getX() <= -30) {
-            getWorld().removeObject(this);
-        }
     }
-
 }

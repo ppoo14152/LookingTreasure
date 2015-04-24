@@ -17,6 +17,8 @@ public class WorldTreasure extends World
     //medidas del mundo---------------
     public static final int TAM_X=1000;
     public static final int TAM_Y=600;
+    public static final int TAM_YFLOOR=508;
+    public static final int TAM_XFLOOR=216;
 
     private boolean estaJugando;
     private SimpleTimer time;
@@ -27,7 +29,7 @@ public class WorldTreasure extends World
     private Counter msjPoints;
     private GreenfootSound sonido;
 
-    private LinkedList<FloorTwo> listaF;
+    private LinkedList<Floor> listaF;
 
     private int level;
     private boolean LevelCero;
@@ -40,7 +42,7 @@ public class WorldTreasure extends World
     {    
         super(TAM_X,TAM_Y, 1,false);
         setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class);
-
+        this.listaF=new LinkedList<Floor>();
         this.estaJugando=false;
         this.level=1;
         this.LevelCero=false;
@@ -50,7 +52,7 @@ public class WorldTreasure extends World
 
         this.time=new SimpleTimer();
         this.msjClock=new Counter("Tiempo:  ");
-        this.msjClock.setValue(100);
+        this.msjClock.setValue(0);
 
         this.livesT=new SimpleTimer();
         this.msjLives=new Counter("Vidas:  ");
@@ -75,9 +77,12 @@ public class WorldTreasure extends World
     }
 
     public void act()
-    {
+    { 
         this.numObjeto = Greenfoot.getRandomNumber(8);
         this.sonido.playLoop(); 
+        Floor inicial=listaF.getFirst();
+        Floor fin=listaF.getLast();
+        Floor pisito;
 
         if(this.level == 1 && this.LevelUno == false)
         {
@@ -88,13 +93,6 @@ public class WorldTreasure extends World
             
             addObject(new Yanmega(),getWidth(),200);
             addObject(new Yanmega(),getWidth(),90);
-            
-            FloorTwo piso1 = new FloorTwo(); 
-            addObject(piso1,getWidth()/2,getHeight()-20);
-             
-            addObject(new Floor(),217,508); 
-            addObject(new Floor(),609,508); 
-            addObject(new Floor(),856,508);
             //---------------------------------------------------------
             addObject(msjLives,100,30);
             addObject(msjClock,220,30);
@@ -103,15 +101,41 @@ public class WorldTreasure extends World
             this.LevelUno = true;
         }
 
+        if(inicial.getX()+(inicial.getImage().getWidth()/2) <= 0) {
+            removeObject(inicial);
+            listaF.removeFirst();
+        }
+        
+        if(fin.getX()+(fin.getImage().getWidth()/2) <= this.getWidth())
+        {
+            pisito=new Floor();
+            addObject(pisito,this.getWidth()+(pisito.getImage().getWidth()/2),508);
+            listaF.add(pisito);
+        }
+        
         if(time.millisElapsed()>=1000)
         {
             this.time.mark();
-            this.msjClock.add(-1);
+            this.msjClock.add(+1);
+        }
+        if(this.msjClock.getValue() == 10)
+        {
+            addObject(new Key(),200,300);
         }
     }
 
     private void prepare()
     {
-      
+        Floor pisito;
+        FloorTwo piso1=new FloorTwo();
+       
+        addObject(piso1,getWidth()/2,getHeight()-20);
+        addObject(new Treasure(),100,300);
+        for(int i=0,xPos=TAM_XFLOOR-10; i < 4; i++, xPos += TAM_XFLOOR)
+        {
+            pisito=new Floor();
+            listaF.add(pisito);
+            addObject(pisito, xPos, TAM_YFLOOR);
+        }
     }
 }

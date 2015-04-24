@@ -17,6 +17,7 @@ abstract public class Player extends Actor
     private int jump;
     private int tiempo;
     private boolean estaSaltando;
+    private int velJugador;
 
     public Player()
     {
@@ -30,17 +31,18 @@ abstract public class Player extends Actor
         this.jump = 10;
         this.tiempo = 0;
         this.estaSaltando=true;
+        this.setVelJugador(3);
     }
     
-    /*public void setNumImagenD(int unNum)
+    public int getVelJugador()
     {
-        this.numImagenD=unNum;
+        return this.velJugador;
     }
     
-    public int getNumImagenD()
+    public void setVelJugador(int unNum)
     {
-        return this.numImagenD;
-    }*/
+        this.velJugador=unNum;
+    }
     
     public void setNumImagen(int unNum)
     {
@@ -60,11 +62,11 @@ abstract public class Player extends Actor
         {
             this.estaSaltando=true;    
             this.velocidadSalto = -this.jump;
-            fall();
+            this.caer();
         }
     }
       
-    public boolean onGround()
+    public boolean estaEnPiso()
     {
         boolean avisa;
         
@@ -76,17 +78,17 @@ abstract public class Player extends Actor
         return avisa;
     }
       
-    public void checkFall()
+    public void caida()
     {
-        if(onGround()){
+        if(this.estaEnPiso()){
             this.velocidadSalto = 0;
         }
         else{
-            fall();
+            this.caer();
         }   
     }
             
-    public void fall()
+    public void caer()
     {
         setLocation(getX(),getY()+velocidadSalto);
         velocidadSalto = velocidadSalto + aceleracion;
@@ -95,20 +97,10 @@ abstract public class Player extends Actor
     
     public void cambiaImagen(GreenfootImage unaImagen,int numI)
     {
-        
-        
          this.setImage(unaImagen);
          this.setNumImagen(numI);
-       
-       
     }
-    
-   /* public void cambiaImagenI(GreenfootImage unaImagen,int numI)
-    {
-        this.setImage(unaImagen);
-        this.setNumImagenI(numI);
-    }*/
-    
+
     public void act() 
     {
         if(isTouching(Treasure.class)){
