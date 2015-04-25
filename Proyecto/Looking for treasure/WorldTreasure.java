@@ -44,14 +44,14 @@ public class WorldTreasure extends World
         super(TAM_X,TAM_Y, 1,false);
         setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class);
         
-        arrBotones=new Button[4];
+        /*arrBotones=new Button[4];
         for (int i = 0; i < 4; i++)
         {
             arrBotones[i]=new Button(i);
-        }
+        }*/
         this.listaF=new LinkedList<Floor>();
         this.estaJugando=false;
-        this.level=0;
+        this.level=1;
         this.LevelCero=false;
         this.LevelUno=false;
         this.LevelDos=false;

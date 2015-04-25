@@ -26,7 +26,7 @@ public class Button extends Actor
     
     public void act() 
     {
-        this.cualBoton();
+        //this.cualBoton();
     }    
     
     public void cualBoton()
