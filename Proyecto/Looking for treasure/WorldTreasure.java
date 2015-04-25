@@ -20,7 +20,6 @@ public class WorldTreasure extends World
     public static final int TAM_YFLOOR=508;
     public static final int TAM_XFLOOR=216;
 
-    private Button[] arrButton;
     private boolean estaJugando;
     private SimpleTimer time;
     private SimpleTimer livesT;
@@ -31,6 +30,7 @@ public class WorldTreasure extends World
     private GreenfootSound sonido;
 
     private LinkedList<Floor> listaF;
+    private Button[] arrBotones;
 
     private int level;
     private boolean LevelCero;
@@ -44,15 +44,14 @@ public class WorldTreasure extends World
         super(TAM_X,TAM_Y, 1,false);
         setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class);
         
-        this.arrButton=new Button[4];
-        /*for(int i = 0; i < this.arrButton.length; i++)
+        arrBotones=new Button[4];
+        for (int i = 0; i < 4; i++)
         {
-            this.arrButton[i]=new Button();
-        }*/
-                
+            arrBotones[i]=new Button(i);
+        }
         this.listaF=new LinkedList<Floor>();
         this.estaJugando=false;
-        this.level=1;
+        this.level=0;
         this.LevelCero=false;
         this.LevelUno=false;
         this.LevelDos=false;
@@ -70,8 +69,9 @@ public class WorldTreasure extends World
         this.msjPoints=new Counter("Puntos:  ");
         this.msjPoints.setValue(0);
         this.sonido = new GreenfootSound("The Rival.mp3");
-
-        prepare();
+        
+        prepararMundo();
+        //prepararMenu();
     }
 
     public Counter getPoints()
@@ -132,11 +132,22 @@ public class WorldTreasure extends World
         }
     }
 
-    private void prepare()
+   /* public void prepararMenu()
+    {
+        this.setBackground("sand.jpg");
+
+        for (int i = 0,x=this.getWidth()/2,y=25; i < 4; i++,y+=50)
+        {
+            //this.addObject(arrBotones.get(i), x, y);
+            this.addObject(arrBotones[i],x,y);
+        }
+    }*/
+       
+    public void prepararMundo()
     {
         Floor pisito;
         FloorTwo piso1=new FloorTwo();
-       
+            
         addObject(piso1,getWidth()/2,getHeight()-20);
         addObject(new Treasure(),100,300);
         for(int i=0,xPos=TAM_XFLOOR-10; i < 4; i++, xPos += TAM_XFLOOR)
@@ -144,6 +155,25 @@ public class WorldTreasure extends World
             pisito=new Floor();
             listaF.add(pisito);
             addObject(pisito, xPos, TAM_YFLOOR);
+        }
+    }
+
+    public void menu(int unBoton)
+    {
+        switch(unBoton)
+        {
+            case 0: 
+                    this.estaJugando=true;
+            break;
+            case 1: 
+                    this.setBackground("");    
+            break;              
+            case 2: 
+                    this.setBackground("");    
+            break;              
+            case 3: 
+                    this.setBackground(""); 
+            break; 
         }
     }
 }
