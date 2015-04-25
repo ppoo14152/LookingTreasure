@@ -20,6 +20,7 @@ public class WorldTreasure extends World
     public static final int TAM_YFLOOR=508;
     public static final int TAM_XFLOOR=216;
 
+    private Button[] arrButton;
     private boolean estaJugando;
     private SimpleTimer time;
     private SimpleTimer livesT;
@@ -42,6 +43,13 @@ public class WorldTreasure extends World
     {    
         super(TAM_X,TAM_Y, 1,false);
         setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class);
+        
+        this.arrButton=new Button[4];
+        /*for(int i = 0; i < this.arrButton.length; i++)
+        {
+            this.arrButton[i]=new Button();
+        }*/
+                
         this.listaF=new LinkedList<Floor>();
         this.estaJugando=false;
         this.level=1;
