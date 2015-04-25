@@ -8,13 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 abstract public class Enemy extends Actor
 {
-    private int numeroImagenD;
-    private int numeroImagenI;
+    private int numeroImagen;
     
     public Enemy()
     {
-        this.setNumD(0);
-        this.setNumI(0);
+        this.setNum(0);
     }
     
     public void act() 
@@ -22,32 +20,26 @@ abstract public class Enemy extends Actor
         this.setLocation(this.getX()-2,this.getY());
     }
     
-    public void setNumD(int unNum)
+    public void setNum(int unNum)
     {
-        this.numeroImagenD=unNum;
+        this.numeroImagen=unNum;
     }
     
-    public int getNumD()
+    public int getNum()
     {
-        return this.numeroImagenD;
+        return this.numeroImagen;
     }
     
-    public void setNumI(int unNum)
-    {
-        this.numeroImagenI=unNum;
-    }
-    
-    public int getNumI()
-    {
-        return this.numeroImagenI;
-    }
-    
-    public void cambiaImagen(GreenfootImage unaImagen,int numD)
+    public void cambiaImagen(GreenfootImage unaImagen,int num)
     {
         this.setImage(unaImagen);
-        this.setNumD(numD);
+        this.setNum(num);
     }
     
     abstract public void moveEnemy();
 }    
 
+
+
+
+   

@@ -93,4 +93,9 @@ public class Cyndaquil extends Player
                 saltar();
             }
     }
+    
+    public int getPosX()
+    {
+        return this.getX();
+    }
 }

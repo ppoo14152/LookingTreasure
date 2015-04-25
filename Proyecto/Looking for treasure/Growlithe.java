@@ -12,32 +12,24 @@ public class Growlithe extends Enemy
      * Act - do whatever the Growlithe wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-     //derecha---------------
-    GreenfootImage imagenGd1;
-    GreenfootImage imagenGd2;
-    GreenfootImage imagenGd3;
-    GreenfootImage imagenGd4;
-    //izquierda-------------
-    GreenfootImage imagenGi1;
-    GreenfootImage imagenGi2;
-    GreenfootImage imagenGi3;
-    GreenfootImage imagenGi4;
-    //----------------------
+    private GreenfootImage[] arrGro;
+    private Cyndaquil cindaquil;
+    private Squirtle squirtle; 
     
-    public Growlithe()
+    public Growlithe(Cyndaquil c, Squirtle s)
     {
-        //derecha--------------------------------
-        imagenGd1 = new GreenfootImage("Gd1.png");
-        imagenGd2 = new GreenfootImage("Gd2.png");
-        imagenGd3 = new GreenfootImage("Gd3.png");
-        imagenGd4 = new GreenfootImage("Gd4.png");
-        //izquierda------------------------------
-        imagenGi1 = new GreenfootImage("Gi1.png");
-        imagenGi2 = new GreenfootImage("Gi2.png");
-        imagenGi3 = new GreenfootImage("Gi3.png");
-        imagenGi4 = new GreenfootImage("Gi4.png");
-        //----------------------------------------
-        setImage(imagenGd1);
+        super();
+        arrGro = new GreenfootImage[8];
+        cindaquil=c;
+        squirtle=s;
+        
+        for(int i = 0; i < arrGro.length/2; i++)
+        {
+            arrGro[i]=new GreenfootImage("Gd"+(i+1)+".png");
+            arrGro[i+4]=new GreenfootImage("Gd"+(i+1)+".png");
+            arrGro[i+4].mirrorHorizontally();
+        }
+        this.setImage(arrGro[0]);
     }
     
     public void act()
@@ -45,55 +37,55 @@ public class Growlithe extends Enemy
         this.moveEnemy();
     }
     
-    public void moveEnemy()
+   public void moveEnemy()
     {    
-        if(Greenfoot.isKeyDown("left"))
-        {
+        if(cindaquil.getPosX() > this.getX()){
             this.setLocation(this.getX()+3,this.getY());
-             switch(super.getNumD())
+             switch(super.getNum())
              {
                 case 0:
-                        this.setImage(this.imagenGd1);
-                        super.setNumD(1);
+                        this.setImage(this.arrGro[0]);
+                        super.setNum(1);
                 break;
                 case 1:
-                        this.setImage(this.imagenGd2);
-                        super.setNumD(2);
+                        this.setImage(this.arrGro[1]);
+                        super.setNum(2);
                 break;
                 case 2:
-                        this.setImage(this.imagenGd3);
-                        super.setNumD(3);
+                        this.setImage(this.arrGro[2]);
+                        super.setNum(3);
                 break;
                 case 3:
-                        this.setImage(this.imagenGd4);
-                        super.setNumD(0);
+                        this.setImage(arrGro[3]);
+                        super.setNum(0);
                 break;
              }
         
         }
         
-        if(Greenfoot.isKeyDown("right"))
-        {
+        if(cindaquil.getPosX() < this.getX()){
             this.setLocation(this.getX()-3,this.getY());
-            switch(super.getNumI())
-            {
+             switch(super.getNum())
+             {
                 case 0:
-                        this.setImage(this.imagenGi1);
-                        super.setNumI(1);
+                        this.setImage(this.arrGro[4]);
+                        super.setNum(1);
                 break;
                 case 1:
-                        this.setImage(this.imagenGi2);
-                        super.setNumI(2);
+                        this.setImage(this.arrGro[5]);
+                        super.setNum(2);
                 break;
                 case 2:
-                        this.setImage(this.imagenGi3);
-                        super.setNumI(3);
+                        this.setImage(this.arrGro[6]);
+                        super.setNum(3);
                 break;
                 case 3:
-                        this.setImage(this.imagenGi4);
-                        super.setNumI(0);
+                        this.setImage(arrGro[7]);
+                        super.setNum(0);
                 break;
              }
+        
         }
+    
     } 
 }

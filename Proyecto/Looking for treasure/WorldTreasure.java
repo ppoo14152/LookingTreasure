@@ -94,11 +94,14 @@ public class WorldTreasure extends World
 
         if(this.level == 1 && this.LevelUno == false)
         {
-            addObject(new Cyndaquil(), 25, 200);
-            addObject(new Squirtle(), 116, 200);
-            addObject(new Arbok(), getWidth()/2,getHeight()-50); 
-            addObject(new Growlithe(), getWidth(),getHeight()-50); 
+            Cyndaquil cyndaquil = new Cyndaquil();
+            Squirtle squirtle = new Squirtle();
             
+            addObject(cyndaquil, 25, 200);
+            addObject(squirtle, 116, 200);
+            addObject(new Arbok(cyndaquil,squirtle),getWidth()/2,getHeight()-50); 
+            addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
+          
             addObject(new Yanmega(),getWidth(),200);
             addObject(new Yanmega(),getWidth(),90);
             //---------------------------------------------------------
