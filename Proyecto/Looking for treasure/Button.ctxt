@@ -1,8 +1,6 @@
 #BlueJ class context
-comment0.params=unNumBot
+comment0.params=unTipo
 comment0.target=Button(int)
 comment1.params=
 comment1.target=void\ act()
-comment2.params=
-comment2.target=void\ cualBoton()
-numComments=3
+numComments=2

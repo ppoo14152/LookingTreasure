@@ -15,12 +15,11 @@ public class WorldTreasure extends World
      * 
      */
     //medidas del mundo---------------
-    public static final int TAM_X=1000;
+    public static final int TAM_X=800;
     public static final int TAM_Y=600;
     public static final int TAM_YFLOOR=508;
     public static final int TAM_XFLOOR=216;
 
-    private boolean estaJugando;
     private SimpleTimer time;
     private SimpleTimer livesT;
     private SimpleTimer pointsT;
@@ -38,20 +37,33 @@ public class WorldTreasure extends World
     private boolean LevelDos;
     private boolean LevelTres;
     private int numObjeto;
+    
+    private boolean estaJuego;
+    private boolean estaAyuda;
+    private boolean estaCreditos;
+    private boolean perdio;
+    private boolean estaRecords;
+    private Button inicio;
+    private Button help;
+    private Button credits;
+    private Button records;
+    private Button atras;
+    private int opcionmenu;
+    private GreenfootImage fondo;
+    private GreenfootImage imaInicio;
+    private GreenfootImage imaAyuda;
+    private GreenfootImage imaCreditos;
+    private GreenfootImage imaRecords;
+    private GreenfootImage imaAtras;
+    private GreenfootSound intro;
 
     public WorldTreasure()
     {    
         super(TAM_X,TAM_Y, 1,false);
         setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class);
         
-        /*arrBotones=new Button[4];
-        for (int i = 0; i < 4; i++)
-        {
-            arrBotones[i]=new Button(i);
-        }*/
         this.listaF=new LinkedList<Floor>();
-        this.estaJugando=false;
-        this.level=1;
+        this.level=0;
         this.LevelCero=false;
         this.LevelUno=false;
         this.LevelDos=false;
@@ -70,7 +82,38 @@ public class WorldTreasure extends World
         this.msjPoints.setValue(0);
         this.sonido = new GreenfootSound("The Rival.mp3");
         
-        prepararMundo();
+        this.estaJuego=false;
+        this.estaAyuda=false;
+        this.estaCreditos=false;
+        this.perdio=false;
+        this.estaRecords=false;
+        this.fondo=new GreenfootImage("portada.png");
+        this.setBackground(fondo); 
+        
+        inicio = new Button(1);
+        this.help = new Button(2); 
+        this.credits = new Button(3);
+        this.atras = new Button(4);
+        this.records = new Button(5);
+        imaInicio = new GreenfootImage("boton0.png");
+        imaAtras = new GreenfootImage("back.png");
+        imaAyuda = new GreenfootImage("boton1.png");
+        imaRecords = new GreenfootImage("boton2.png");
+        imaCreditos = new GreenfootImage("boton3.png");
+         this.intro=new GreenfootSound("intro.mp3");
+         
+        imaInicio.scale(imaInicio.getWidth()/3,imaInicio.getHeight()/3);
+        this.inicio.setImage(imaInicio);
+        imaAtras.scale(imaAtras.getWidth()/5,imaAtras.getHeight()/5);
+        this.atras.setImage(imaAtras);
+        imaAyuda.scale(imaAyuda.getWidth()/3,imaAyuda.getHeight()/3);
+        this.help.setImage(imaAyuda);;
+        imaRecords.scale(imaRecords.getWidth()/3,imaRecords.getHeight()/3);
+        this.records.setImage(imaRecords);
+        imaCreditos.scale(imaCreditos.getWidth()/3,imaCreditos.getHeight()/3);
+        this.credits.setImage(imaCreditos);
+        this.opcionmenu=0;
+        //prepararMundo();
         //prepararMenu();
     }
 
@@ -86,17 +129,59 @@ public class WorldTreasure extends World
 
     public void act()
     { 
+        if(!estaJuego)
+        {  
+            if(!estaAyuda)
+                if(!estaCreditos)
+                    if(!estaRecords)
+                        this.menu();
+        }  
+        else
+        {   
+            if(this.estaJuego)
+            {
+                this.prepararMundo();
+            }
+            
+            if(time.millisElapsed()>=1000)
+            {
+                this.time.mark();
+                this.msjClock.add(+1);
+            }
+        
+            if(this.msjClock.getValue() == 10)
+            {
+                addObject(new Key(),200,300);
+            }
+        }
+    }
+ 
+    public void prepararMundo()
+    {
+        this.intro.stop();
+        Floor pisito;
+        FloorTwo piso1=new FloorTwo();
+        this.estaJuego=true;
+         
+        addObject(piso1,getWidth()/2,getHeight()-20);
+        addObject(new Treasure(),100,300);
+        for(int i=0,xPos=TAM_XFLOOR-10; i < 3; i++, xPos += TAM_XFLOOR)
+        {
+            pisito=new Floor();
+            listaF.add(pisito);
+            addObject(pisito, xPos, TAM_YFLOOR);
+        }
+        
         this.numObjeto = Greenfoot.getRandomNumber(8);
         this.sonido.playLoop(); 
         Floor inicial=listaF.getFirst();
         Floor fin=listaF.getLast();
-        Floor pisito;
-
-        if(this.level == 1 && this.LevelUno == false)
+        Floor piso;
+            
+        if(this.getLevel()== 1 && this.LevelUno == false)
         {
             Cyndaquil cyndaquil = new Cyndaquil();
             Squirtle squirtle = new Squirtle();
-            
             addObject(cyndaquil, 25, 200);
             addObject(squirtle, 116, 200);
             addObject(new Arbok(cyndaquil,squirtle),getWidth()/2,getHeight()-50); 
@@ -104,79 +189,74 @@ public class WorldTreasure extends World
           
             addObject(new Yanmega(),getWidth(),200);
             addObject(new Yanmega(),getWidth(),90);
-            //---------------------------------------------------------
+            
             addObject(msjLives,100,30);
             addObject(msjClock,220,30);
             addObject(msjPoints,340,30); 
-            //----------------------------------------------------------
             this.LevelUno = true;
         }
 
-        if(inicial.getX()+(inicial.getImage().getWidth()/2) <= 0) {
+        if(inicial.getX()+(inicial.getImage().getWidth()/2) <= 0) 
+        {
             removeObject(inicial);
             listaF.removeFirst();
         }
         
         if(fin.getX()+(fin.getImage().getWidth()/2) <= this.getWidth())
         {
-            pisito=new Floor();
-            addObject(pisito,this.getWidth()+(pisito.getImage().getWidth()/2),508);
-            listaF.add(pisito);
-        }
-        
-        if(time.millisElapsed()>=1000)
-        {
-            this.time.mark();
-            this.msjClock.add(+1);
-        }
-        if(this.msjClock.getValue() == 10)
-        {
-            addObject(new Key(),200,300);
+            piso=new Floor();
+            addObject(piso,this.getWidth()+(piso.getImage().getWidth()/2),508);
+            listaF.add(piso);
         }
     }
-
-   /* public void prepararMenu()
+    
+    public void ayudaP()
     {
-        this.setBackground("sand.jpg");
-
-        for (int i = 0,x=this.getWidth()/2,y=25; i < 4; i++,y+=50)
-        {
-            //this.addObject(arrBotones.get(i), x, y);
-            this.addObject(arrBotones[i],x,y);
-        }
-    }*/
-       
-    public void prepararMundo()
+        this.estaAyuda=true;
+        this.setBackground("ayuda.png");
+        super.addObject(this.atras,60,500);
+    }
+    
+    public void creditosP()
     {
-        Floor pisito;
-        FloorTwo piso1=new FloorTwo();
-            
-        addObject(piso1,getWidth()/2,getHeight()-20);
-        addObject(new Treasure(),100,300);
-        for(int i=0,xPos=TAM_XFLOOR-10; i < 4; i++, xPos += TAM_XFLOOR)
-        {
-            pisito=new Floor();
-            listaF.add(pisito);
-            addObject(pisito, xPos, TAM_YFLOOR);
-        }
+        this.estaCreditos=true;
+        super.setBackground("creditos.png");
+        super.addObject(this.atras,60,400);
+    }
+    
+    public void recordsP()
+    {
+        this.estaRecords=true;
+        super.setBackground("records.png");
+        super.addObject(this.atras,700,500);
+    }
+    
+    public void eliminaBotones()
+    {
+        this.removeObject(inicio);
+        this.removeObject(help);
+        this.removeObject(records);
+        this.removeObject(credits);
+        this.removeObject(atras);
+    }
+    
+    public void menu()
+    {
+        setBackground(fondo);
+        this.intro.playLoop();
+        super.addObject(inicio,this.getWidth()/2,100);
+        super.addObject(help,this.getWidth()/2,200);
+        super.addObject(records,this.getWidth()/2,300);
+        super.addObject(credits,this.getWidth()/2,400);     
+    }
+    
+    public int getLevel()
+    {
+        return this.level;
     }
 
-    public void menu(int unBoton)
+    public void setLevel(int unLevel)
     {
-        switch(unBoton)
-        {
-            case 0: 
-                    this.estaJugando=true;
-            break;
-            case 1: 
-                    this.setBackground("");    
-            break;              
-            case 2: 
-                    this.setBackground("");    
-            break;              
-            case 3: 
-                    this.setBackground(""); 
-            break; 
-        }
+        this.level = unLevel;
     }
 }
