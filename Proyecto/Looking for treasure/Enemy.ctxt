@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Enemy()
+comment0.params=numImagenes
+comment0.target=Enemy(int)
 comment1.params=
 comment1.target=void\ act()
 comment2.params=unNum
@@ -10,5 +10,5 @@ comment3.target=int\ getNum()
 comment4.params=unaImagen\ num
 comment4.target=void\ cambiaImagen(greenfoot.GreenfootImage,\ int)
 comment5.params=
-comment5.target=void\ moveEnemy()
+comment5.target=void\ movimiento()
 numComments=6

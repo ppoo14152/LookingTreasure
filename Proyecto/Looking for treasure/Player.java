@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-abstract public class Player extends Actor
+abstract public class Player extends Animal
 {
     private int numImagen;
     //Salto------------------
@@ -18,10 +18,11 @@ abstract public class Player extends Actor
     private int tiempo;
     private boolean estaSaltando;
     private int velJugador;
+    private GreenfootImage[] arrTesoro;
 
-    public Player()
+    public Player(int numImagenes)
     {
-        
+        super(numImagenes);
         this.setNumImagen(0);
         //Salto---------------------------------
         this.velocidad = 7;
@@ -54,7 +55,7 @@ abstract public class Player extends Actor
         return this.numImagen;
     }
     
-    abstract public void movePlayer();
+    abstract public void movimiento();
     
     public void saltar()
     {
@@ -101,7 +102,7 @@ abstract public class Player extends Actor
          this.setNumImagen(numI);
     }
 
-    public void act() 
+    public void act()
     {
         if(isTouching(Treasure.class)){
             removeTouching(Treasure.class);

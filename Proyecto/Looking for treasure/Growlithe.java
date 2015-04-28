@@ -8,84 +8,40 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Growlithe extends Enemy
 {
-    /**
-     * Act - do whatever the Growlithe wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    private GreenfootImage[] arrGro;
     private Cyndaquil cindaquil;
     private Squirtle squirtle; 
     
     public Growlithe(Cyndaquil c, Squirtle s)
     {
-        super();
-        arrGro = new GreenfootImage[8];
+        super(4);
         cindaquil=c;
         squirtle=s;
-        
-        for(int i = 0; i < arrGro.length/2; i++)
+        for(int i = 0; i < super.getNumIma();i++)
         {
-            arrGro[i]=new GreenfootImage("Gd"+(i+1)+".png");
-            arrGro[i+4]=new GreenfootImage("Gd"+(i+1)+".png");
-            arrGro[i+4].mirrorHorizontally();
+            super.insertaIma(i,"Gd");
         }
-        this.setImage(arrGro[0]);
+        super.animar();
     }
     
     public void act()
     {
-        this.moveEnemy();
+        this.movimiento();
     }
     
-   public void moveEnemy()
+    public void movimiento()
     {    
-        if(cindaquil.getPosX() > this.getX()){
+        if(cindaquil.getPosXc() > this.getX() || squirtle.getPosXs() > this.getX())
+        {
+            super.setIzq(false);
             this.setLocation(this.getX()+3,this.getY());
-             switch(super.getNum())
-             {
-                case 0:
-                        this.setImage(this.arrGro[0]);
-                        super.setNum(1);
-                break;
-                case 1:
-                        this.setImage(this.arrGro[1]);
-                        super.setNum(2);
-                break;
-                case 2:
-                        this.setImage(this.arrGro[2]);
-                        super.setNum(3);
-                break;
-                case 3:
-                        this.setImage(arrGro[3]);
-                        super.setNum(0);
-                break;
-             }
-        
+            super.animar();
         }
         
-        if(cindaquil.getPosX() < this.getX()){
+        if(cindaquil.getPosXc() < this.getX() || squirtle.getPosXs() > this.getX())
+        {
+            super.setIzq(true);
             this.setLocation(this.getX()-3,this.getY());
-             switch(super.getNum())
-             {
-                case 0:
-                        this.setImage(this.arrGro[4]);
-                        super.setNum(1);
-                break;
-                case 1:
-                        this.setImage(this.arrGro[5]);
-                        super.setNum(2);
-                break;
-                case 2:
-                        this.setImage(this.arrGro[6]);
-                        super.setNum(3);
-                break;
-                case 3:
-                        this.setImage(arrGro[7]);
-                        super.setNum(0);
-                break;
-             }
-        
+            super.animar();
         }
-    
     } 
 }

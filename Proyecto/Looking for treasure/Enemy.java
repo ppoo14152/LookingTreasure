@@ -6,12 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-abstract public class Enemy extends Actor
+abstract public class Enemy extends Animal
 {
     private int numeroImagen;
     
-    public Enemy()
+    public Enemy(int numImagenes)
     {
+        super(numImagenes);
         this.setNum(0);
     }
     
@@ -36,7 +37,7 @@ abstract public class Enemy extends Actor
         this.setNum(num);
     }
     
-    abstract public void moveEnemy();
+    abstract public void movimiento();
 }    
 
 

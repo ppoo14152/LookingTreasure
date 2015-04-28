@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=unTam
+comment0.target=Animal(int)
+comment1.params=unaDir
+comment1.target=void\ setIzq(boolean)
+comment10.params=
+comment10.target=void\ animar()
+comment2.params=
+comment2.target=boolean\ getIzq()
+comment3.params=unaActual
+comment3.target=void\ setActual(int)
+comment4.params=
+comment4.target=int\ getActual()
+comment5.params=unNum
+comment5.target=void\ setNumIma(int)
+comment6.params=
+comment6.target=int\ getNumIma()
+comment7.params=unTam
+comment7.target=void\ creaArregloIma(int)
+comment8.params=unaI\ unaCad
+comment8.target=void\ insertaIma(int,\ java.lang.String)
+comment9.params=
+comment9.target=void\ movimiento()
+numComments=11
