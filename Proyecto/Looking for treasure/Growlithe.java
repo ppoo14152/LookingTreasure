@@ -13,7 +13,7 @@ public class Growlithe extends Enemy
     
     public Growlithe(Cyndaquil c, Squirtle s)
     {
-        super(4);
+        super(4,0);
         cindaquil=c;
         squirtle=s;
         for(int i = 0; i < super.getNumIma();i++)
@@ -37,7 +37,7 @@ public class Growlithe extends Enemy
             super.animar();
         }
         
-        if(cindaquil.getPosXc() < this.getX() || squirtle.getPosXs() > this.getX())
+        if(cindaquil.getPosXc() < this.getX() || squirtle.getPosXs() < this.getX())
         {
             super.setIzq(true);
             this.setLocation(this.getX()-3,this.getY());

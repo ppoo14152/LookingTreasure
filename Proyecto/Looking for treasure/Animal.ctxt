@@ -1,10 +1,14 @@
 #BlueJ class context
-comment0.params=unTam
-comment0.target=Animal(int)
+comment0.params=unTam\ numImaAtack
+comment0.target=Animal(int,\ int)
 comment1.params=unaDir
 comment1.target=void\ setIzq(boolean)
 comment10.params=
 comment10.target=void\ animar()
+comment11.params=
+comment11.target=void\ animarDisparo()
+comment12.params=unaImagen\ unaPosicion\ x\ y
+comment12.target=void\ dispara(greenfoot.GreenfootImage,\ int,\ int,\ int)
 comment2.params=
 comment2.target=boolean\ getIzq()
 comment3.params=unaActual
@@ -21,4 +25,4 @@ comment8.params=unaI\ unaCad
 comment8.target=void\ insertaIma(int,\ java.lang.String)
 comment9.params=
 comment9.target=void\ movimiento()
-numComments=11
+numComments=13

@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=numImagenes
-comment0.target=Player(int)
+comment0.params=numImagenes\ numImaAtack
+comment0.target=Player(int,\ int)
 comment1.params=
 comment1.target=int\ getVelJugador()
 comment10.params=unaImagen\ numI

@@ -45,7 +45,7 @@ public class WorldTreasure extends World
     public WorldTreasure()
     {    
         super(TAM_X,TAM_Y, 1,false);
-        setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class);
+        setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class,Arbok.class,Disparo.class);
         
         this.listaF=new LinkedList<Floor>();
         this.level=0;
@@ -68,6 +68,10 @@ public class WorldTreasure extends World
         this.perdio=false;
         this.creaMenu();
     }
+    /**
+     * regresa la cantidad de puntos
+     * 
+     */
 
     public Counter getPoints()
     {

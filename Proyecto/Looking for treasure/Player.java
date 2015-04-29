@@ -20,9 +20,9 @@ abstract public class Player extends Animal
     private int velJugador;
     private GreenfootImage[] arrTesoro;
 
-    public Player(int numImagenes)
+    public Player(int numImagenes,int numImaAtack)
     {
-        super(numImagenes);
+        super(numImagenes,numImaAtack);
         this.setNumImagen(0);
         //Salto---------------------------------
         this.velocidad = 7;

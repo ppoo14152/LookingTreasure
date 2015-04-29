@@ -10,7 +10,7 @@ public class Yanmega extends Enemy
 {  
    public Yanmega()
    {
-      super(14);
+      super(14,0);
       for(int i = 0; i < super.getNumIma();i++)
       {
           super.insertaIma(i,"Yi");

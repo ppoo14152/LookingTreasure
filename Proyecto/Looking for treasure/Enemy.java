@@ -10,9 +10,9 @@ abstract public class Enemy extends Animal
 {
     private int numeroImagen;
     
-    public Enemy(int numImagenes)
+    public Enemy(int numImagenes,int numImaAtack)
     {
-        super(numImagenes);
+        super(numImagenes,numImaAtack);
         this.setNum(0);
     }
     
