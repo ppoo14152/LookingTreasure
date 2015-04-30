@@ -12,6 +12,7 @@ public class Cyndaquil extends Player
     private boolean ataque;
     private int posicion ;
     private GreenfootImage cindaquil; 
+    private int cont;
     
     public Cyndaquil()
     {
@@ -19,6 +20,7 @@ public class Cyndaquil extends Player
         cindaAtack = new GreenfootImage[2];
         ataque = false;
         cindaquil=new GreenfootImage("Ct1.png");
+        cont=0;
         for(int i = 0; i < super.getNumIma();i++)
         {
             super.insertaIma(i,"Cd");
@@ -69,14 +71,21 @@ public class Cyndaquil extends Player
         }
         
         if(Greenfoot.isKeyDown("m") ){
-            
-            if(posicion == 0)
-              super.disparaPlayer(this.cindaAtack[0],0,this.getX(),this.getY());
-            
-            if(posicion == 1){
-              super.disparaPlayer(this.cindaAtack[1],1,this.getX(),this.getY());
+            if( cont ==10) {
+                
+                
+               if(posicion == 0){
+                   cont =0;
+                   super.disparaPlayer(this.cindaAtack[0],posicion,this.getX(),this.getY());
+                }else{
+                   super.disparaPlayer(this.cindaAtack[1],posicion,this.getX(),this.getY());
+                   cont=0;
+                }
+                
+          }else {
+            cont++;
             }
-            
+          
         }       
     }
     
@@ -87,4 +96,4 @@ public class Cyndaquil extends Player
             ((WorldTreasure)getWorld()).setBackground(cindaquil);
         }
     }
-  }
+  } 

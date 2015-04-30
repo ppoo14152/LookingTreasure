@@ -52,8 +52,8 @@ public class WorldTreasure extends World
         super(TAM_X,TAM_Y, 1,false);
         setActOrder(Floor.class,FloorTwo.class,Key.class,Treasure.class,Cyndaquil.class,Squirtle.class,Arbok.class,Disparo.class);
         
-        cyndaquil = new Cyndaquil();//-----------------
-        squirtle = new Squirtle();//-----------------
+        cyndaquil = new Cyndaquil();
+        squirtle = new Squirtle();
 
         this.listaF=new LinkedList<Floor>();
         this.level=0;
@@ -109,7 +109,6 @@ public class WorldTreasure extends World
         return msjLives;
     }
     
-    //------------------------------------------
     public void setLives()
     {
         this.msjLives.add(-1);
@@ -176,7 +175,7 @@ public class WorldTreasure extends World
             addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
 
             addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
-            //addObject(new Yanmega(cyndaquil,squirtle),getWidth(),90);
+            addObject(new Yanmega(cyndaquil,squirtle),getWidth(),90);
 
             addObject(msjLives,100,30);
             addObject(msjClock,220,30);
