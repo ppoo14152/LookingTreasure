@@ -43,19 +43,9 @@ public class Arbok extends Enemy
 
     public void act()
     {
+        //this.checaJugadores();
+        this.movimiento();
         this.checaMuerte();
-        if(this.detectaJugador() != null ) {
-           if(ataco == true && timer <1) {
-             ataca();
-             timer++;
-             this.checaMuerte();
-           }
-        }else {
-           ataco = false;
-           timer = 0;
-           this.movimiento();
-           this.checaMuerte();
-        }
         
     }
 
@@ -78,7 +68,7 @@ public class Arbok extends Enemy
             posicion = 1;
         }
         
-        }
+    }
        
     public void ataca()
     {
@@ -97,6 +87,22 @@ public class Arbok extends Enemy
       p = (Player)(getOneObjectAtOffset(-100,0,Player.class));
       return p;
     } 
+    
+    public void checaJugadores()
+    {
+      if(this.detectaJugador() != null ) {
+           if(ataco == true && timer <1) {
+             ataca();
+             timer++;
+             this.checaMuerte();
+           }
+        }else {
+           ataco = false;
+           timer = 0;
+           this.movimiento();
+           this.checaMuerte();
+      }   
+    }
     
       public void checaMuerte()
     {

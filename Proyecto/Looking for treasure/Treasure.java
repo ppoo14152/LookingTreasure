@@ -16,7 +16,6 @@ public class Treasure extends Bonus
     
     public Treasure() 
     {
-        // Add your action code here.
         imagen.scale(imagen.getWidth()/4,imagen.getHeight()/4);
         setImage(imagen);
     }    
