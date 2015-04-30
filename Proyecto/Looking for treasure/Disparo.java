@@ -37,11 +37,12 @@ public class Disparo extends Actor
             this.setLocation(getX()+10,getY());
         }
         
-        if(isTouching(Squirtle.class) || isTouching(Cyndaquil.class)) {
-            ((WorldTreasure)getWorld()).setLives();
+         if(direccion == 2) {
+            this.setLocation(getX(),getY()+5);
         }
-        
+       
         if( isTouching(Squirtle.class) || isTouching(Cyndaquil.class) ) {
+           ((WorldTreasure)getWorld()).setLives();
            ((WorldTreasure)getWorld()).removeObject(this);
         }
     }

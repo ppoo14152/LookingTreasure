@@ -43,21 +43,25 @@ public class Arbok extends Enemy
 
     public void act()
     {
-        this.checaMuerte();//super
+        this.checaMuerte();
         if(this.detectaJugador() != null ) {
            if(ataco == true && timer <1) {
              ataca();
              timer++;
+             this.checaMuerte();
            }
         }else {
            ataco = false;
+           timer = 0;
            this.movimiento();
+           this.checaMuerte();
         }
         
     }
 
     public void movimiento()
     {  
+        
         if(((WorldTreasure)getWorld()).getPosXc()  > this.getX() || ((WorldTreasure)getWorld()).getPosXs() > this.getX() && ataco == false)
         {
             super.setIzq(false);

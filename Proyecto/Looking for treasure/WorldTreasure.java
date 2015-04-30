@@ -144,29 +144,14 @@ public class WorldTreasure extends World
         }
 
         this.sonido.playLoop(); 
-        /*Floor inicial=listaF.getFirst();
-        Floor fin=listaF.getLast();
-        Floor piso;
-
-        if(inicial.getX()+(inicial.getImage().getWidth()/2) <= 0) {
-            removeObject(inicial);
-            listaF.removeFirst();
-        }
-
-        if(fin.getX()+(fin.getImage().getWidth()/2) <= this.getWidth()) {
-            piso=new Floor();
-            addObject(piso,this.getWidth()+(piso.getImage().getWidth()/2),508);
-            listaF.add(piso);
-        }*/
-
        if(this.getLevel()== 1 && this.LevelUno == false) {
             addObject(cyndaquil, 25, 200);
             addObject(squirtle, 116, 200);
             addObject(new Arbok(cyndaquil,squirtle),getWidth()/2,getHeight()-50); 
             addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
 
-            addObject(new Yanmega(),getWidth(),200);
-            addObject(new Yanmega(),getWidth(),90);
+            addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
+            //addObject(new Yanmega(cyndaquil,squirtle),getWidth(),90);
 
             addObject(msjLives,100,30);
             addObject(msjClock,220,30);
@@ -322,20 +307,14 @@ public class WorldTreasure extends World
         numActor = Greenfoot.getRandomNumber(200);
         switch(numActor) {
             case 10:
-            //addObject(new Arbok(cyndaquil,squirtle),getWidth(),getHeight()-50);
+            addObject(new Arbok(cyndaquil,squirtle),getWidth(),getHeight()-50);
             break;
             case 20:
-            //addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
+            addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
             break;
             case 30:
-            //addObject(new Yanmega(),getWidth(),200);
+            addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
             break;
-            /*case 40:
-            addObject(new Growlithe(cyndaquil,squirtle),0,getHeight()-50); 
-            break;
-            case 50:
-            addObject(new Arbok(cyndaquil,squirtle),0,getHeight()-50);
-            break;*/
         }  
     }
     

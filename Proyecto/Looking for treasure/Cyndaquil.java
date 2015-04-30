@@ -69,7 +69,7 @@ public class Cyndaquil extends Player
         if(Greenfoot.isKeyDown("m") ){
             
             if(posicion == 0)
-              super.disparaPlayer(this.cindaAtack[0],1,this.getX(),this.getY());
+              super.disparaPlayer(this.cindaAtack[0],0,this.getX(),this.getY());
             
             if(posicion == 1){
               super.disparaPlayer(this.cindaAtack[1],1,this.getX(),this.getY());

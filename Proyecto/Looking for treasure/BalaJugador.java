@@ -32,7 +32,7 @@ public class BalaJugador extends Actor
             this.setLocation(getX()+10,getY());
        }
        
-       if( isTouching(Arbok.class) || isTouching(Growlithe.class)  || isTouching(Arbok.class) ) {
+       if( isTouching(Arbok.class) || isTouching(Growlithe.class)  || isTouching(Yanmega.class) ) {
            ((WorldTreasure)getWorld()).removeObject(this);
         }
     }

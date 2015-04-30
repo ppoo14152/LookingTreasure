@@ -12,12 +12,14 @@ public class Squirtle extends Player
     
     private boolean ataque;
     private int posicion;
+    private int cont;
     private GreenfootImage[] imagenes;
     
     public Squirtle()
     {
         super(4,3);
         ataque = false;
+        cont = 0;
         imagenes = super.getIimagenArr();
         
         for(int i = 0; i < 4; i++)
@@ -70,11 +72,16 @@ public class Squirtle extends Player
         if(Greenfoot.isKeyDown("w")) {
             ataque=true;
             super.animarDisparo();
-            if(posicion == 0){
-              super.disparaPlayer(imagenes[13],posicion,this.getX(),this.getY());
-           }else{
-              super.disparaPlayer(imagenes[10],posicion,this.getX(),this.getY());
+            
+            if(cont == 8) {
+             if(posicion == 0){
+               super.disparaPlayer(imagenes[13],posicion,this.getX(),this.getY());
+            }else{
+               super.disparaPlayer(imagenes[10],posicion,this.getX(),this.getY());
             }
+            cont=0;
+          }
+          cont++;
         }
         
         
