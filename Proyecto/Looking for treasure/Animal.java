@@ -121,10 +121,20 @@ abstract public class Animal extends Actor
         }
     }
     
-    public void dispara(GreenfootImage unaImagen,int unaPosicion,int x,int y)
+    public void disparaEnemy(GreenfootImage unaImagen,int unaPosicion,int x,int y)
     {
-        Disparo disparo = new Disparo(unaImagen,unaPosicion);
-        getWorld().addObject(disparo,x,y);
+        Disparo disparoE = new Disparo(unaImagen,unaPosicion);
+        getWorld().addObject(disparoE,x,y);
     }
-
+    
+    public void disparaPlayer(GreenfootImage unaImagen,int unaPosicion,int x,int y)
+    {
+        BalaJugador disparoJ = new BalaJugador(unaImagen,unaPosicion);
+        getWorld().addObject(disparoJ,x,y);
+    }
+    
+    public GreenfootImage[] getIimagenArr()
+    {
+      return arrIma;
+    }
 }

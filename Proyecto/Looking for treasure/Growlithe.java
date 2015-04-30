@@ -26,22 +26,21 @@ public class Growlithe extends Enemy
     public void act()
     {
         this.movimiento();
+        this.checaMuerte();
     }
     
     public void movimiento()
-    {    
-        if(cindaquil.getPosXc() > this.getX() || squirtle.getPosXs() > this.getX())
-        {
-            super.setIzq(false);
-            this.setLocation(this.getX()+3,this.getY());
-            super.animar();
-        }
-        
-        if(cindaquil.getPosXc() < this.getX() || squirtle.getPosXs() < this.getX())
-        {
-            super.setIzq(true);
-            this.setLocation(this.getX()-3,this.getY());
-            super.animar();
-        }
+    {  
+       super.setIzq(true);
+       this.setLocation(this.getX()-5,this.getY());
+       super.animar();
     } 
+    
+    public void checaMuerte()
+    {
+        if( isTouching(BalaJugador.class) ) {
+            ((WorldTreasure)getWorld()).setPoints();
+            ((WorldTreasure)getWorld()).removeObject(this);
+        }
+    }
 }

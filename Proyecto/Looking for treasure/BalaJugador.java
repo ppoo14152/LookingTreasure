@@ -1,30 +1,25 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Disparo here.
+ * Write a description of class BalaJugador here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Disparo extends Actor
+public class BalaJugador extends Actor
 {
     /**
-     * Act - do whatever the Disparo wants to do. This method is called whenever
+     * Act - do whatever the BalaJugador wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
-    //--------------------------------------------------------------------------------------BalaJugador
-    
     private GreenfootImage imagen;
     private int direccion;
-    private int timer;
-    public Disparo(GreenfootImage unaImagen,int unaPosicion)
+    public BalaJugador(GreenfootImage unaImagen,int unaPosicion)
     {
         this.imagen = new GreenfootImage(unaImagen);
         this.imagen.scale(imagen.getWidth()/3,imagen.getHeight()/3);
         this.direccion = unaPosicion;
         this.setImage(imagen);
-        this.timer = 0;
     }
     
     public void act() 
@@ -35,15 +30,10 @@ public class Disparo extends Actor
         
         if(direccion == 0) {
             this.setLocation(getX()+10,getY());
-        }
-        
-        if(isTouching(Squirtle.class) || isTouching(Cyndaquil.class)) {
-            ((WorldTreasure)getWorld()).setLives();
-        }
-        
-        if( isTouching(Squirtle.class) || isTouching(Cyndaquil.class) ) {
+       }
+       
+       if( isTouching(Arbok.class) || isTouching(Growlithe.class)  || isTouching(Arbok.class) ) {
            ((WorldTreasure)getWorld()).removeObject(this);
         }
     }
-    
 }

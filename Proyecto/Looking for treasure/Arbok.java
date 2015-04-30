@@ -14,9 +14,12 @@ public class Arbok extends Enemy
      */
     private Cyndaquil cindaquil;
     private Squirtle squirtle;
+    private GreenfootImage[] imagenes;
     private int disparo;
     private boolean ataco;
     private int posicion;
+    private int timer;
+    private int cont;
 
     public Arbok(Cyndaquil c, Squirtle s)
     {
@@ -24,7 +27,10 @@ public class Arbok extends Enemy
         this.cindaquil=c;
         this.squirtle=s;
         this.ataco=false;
-        
+        this.disparo=0;
+        imagenes = super.getIimagenArr();
+        timer = 0;
+        cont = 0;
         for(int i = 0; i < 6; i++){
             super.insertaIma(i,"Ad");
         }
@@ -32,20 +38,27 @@ public class Arbok extends Enemy
         for(int i=12; i< 15; i++){
             super.insertaIma(i,"atack");
         }
-
         super.animar();
     }
 
     public void act()
     {
-        this.movimiento();
+        this.checaMuerte();//super
+        if(this.detectaJugador() != null ) {
+           if(ataco == true && timer <1) {
+             ataca();
+             timer++;
+           }
+        }else {
+           ataco = false;
+           this.movimiento();
+        }
+        
     }
 
     public void movimiento()
     {  
-        disparo = Greenfoot.getRandomNumber(50);
-
-        if(cindaquil.getPosXc() > this.getX() || squirtle.getPosXs() > this.getX() && ataco == false)
+        if(((WorldTreasure)getWorld()).getPosXc()  > this.getX() || ((WorldTreasure)getWorld()).getPosXs() > this.getX() && ataco == false)
         {
             super.setIzq(false);
             setLocation(getX()+2,getY());
@@ -53,7 +66,7 @@ public class Arbok extends Enemy
             posicion = 0;
         }
 
-        if(cindaquil.getPosXc() < this.getX() || squirtle.getPosXs() < this.getX() && ataco == false) 
+        if(((WorldTreasure)getWorld()).getPosXc() < this.getX() || ((WorldTreasure)getWorld()).getPosXs() < this.getX() && ataco == false) 
         {
             super.setIzq(true);
             setLocation(getX()-2,getY());
@@ -61,11 +74,32 @@ public class Arbok extends Enemy
             posicion = 1;
         }
         
-        if(disparo == 5) {
-            ataco = true;
-            super.animarDisparo();
-            //super.dispara(imagen,posicion,x,y);
         }
-
+       
+    public void ataca()
+    {
+        super.animarDisparo();
+        if(posicion == 0){
+            super.disparaEnemy(imagenes[17],posicion,this.getX(),this.getY());
+        }else{
+            super.disparaEnemy(imagenes[14],posicion,this.getX(),this.getY());
+        }
     }
-}
+    
+    public Player detectaJugador()
+    {
+      Player p;
+      ataco = true;
+      p = (Player)(getOneObjectAtOffset(-100,0,Player.class));
+      return p;
+    } 
+    
+      public void checaMuerte()
+    {
+        if( isTouching(BalaJugador.class) ) {
+            ((WorldTreasure)getWorld()).setPoints();
+            ((WorldTreasure)getWorld()).removeObject(this);
+        }
+    }
+     
+} 
