@@ -50,7 +50,7 @@ public class WorldTreasure extends World
     public WorldTreasure()
     {    
         super(TAM_X,TAM_Y, 1,false);
-        setActOrder(Floor.class,FloorTwo.class,Cyndaquil.class,Arbok.class,Disparo.class);
+        setActOrder(Floor.class,FloorTwo.class,Key.class,Treasure.class,Cyndaquil.class,Squirtle.class,Arbok.class,Disparo.class);
         
         cyndaquil = new Cyndaquil();//-----------------
         squirtle = new Squirtle();//-----------------
@@ -77,7 +77,14 @@ public class WorldTreasure extends World
         this.perdio=false;
         this.creaMenu();
     }
-
+    
+     public void apareceLlave()
+    {
+        if(this.msjClock.getValue() == 10) {
+            this.addObject(new Key(),200,300);
+        }
+    }
+    
     /**
      * regresa la cantidad de puntos
      * @return numero de puntos
@@ -126,10 +133,13 @@ public class WorldTreasure extends World
                 sonido.stop();
             }
             
-            /*Signboard gano;
-            gano=new Signboard("Ganaste");  
-            this.addObject(gano,350,270);
-            Greenfoot.stop();*/
+            if(this.msjPoints.getValue() == 500)
+            {
+                Signboard gano;
+                gano=new Signboard("Ganaste");  
+                this.addObject(gano,350,270);
+                Greenfoot.stop();
+            }
             
             this.tiempo();
             this.apareceLlave();
@@ -151,7 +161,7 @@ public class WorldTreasure extends World
 
         this.setBackground("1.jpg"); 
         addObject(piso1,getWidth()/2,getHeight()-20);
-        addObject(new Treasure(),100,450);
+        addObject(new Treasure(),200,550);
         for(int i=0,xPos=TAM_XFLOOR-10; i < 3; i++, xPos += TAM_XFLOOR) {
             pisito=new Floor();
             listaF.add(pisito);
@@ -290,13 +300,6 @@ public class WorldTreasure extends World
     public void setLevel(int unLevel)
     {
         this.level = unLevel;
-    }
-
-    public void apareceLlave()
-    {
-        if(this.msjClock.getValue() == 10) {
-            this.addObject(new Key(),200,300);
-        }
     }
 
     public void tiempo()

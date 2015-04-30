@@ -13,6 +13,7 @@ public class Squirtle extends Player
     private boolean ataque;
     private int posicion;
     private int cont;
+    private GreenfootImage squirtle;
     private GreenfootImage[] imagenes;
     
     public Squirtle()
@@ -21,6 +22,7 @@ public class Squirtle extends Player
         ataque = false;
         cont = 0;
         imagenes = super.getIimagenArr();
+        squirtle=new GreenfootImage("St1.png");
         
         for(int i = 0; i < 4; i++)
         {
@@ -84,7 +86,13 @@ public class Squirtle extends Player
           cont++;
         }
         
-        
     }
-
+    
+    public void tocaTesoro()
+    {
+            if(isTouching(Treasure.class)){
+                removeTouching(Treasure.class);
+                 ((WorldTreasure)getWorld()).setBackground(squirtle);
+        }
+    }
 }

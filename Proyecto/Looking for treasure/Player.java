@@ -18,7 +18,6 @@ abstract public class Player extends Animal
     private int tiempo;
     private boolean estaSaltando;
     private int velJugador;
-    private GreenfootImage[] arrTesoro;
 
     public Player(int numImagenes,int numImaAtack)
     {
@@ -100,12 +99,5 @@ abstract public class Player extends Animal
     {
          this.setImage(unaImagen);
          this.setNumImagen(numI);
-    }
-
-    public void act()
-    {
-        if(isTouching(Treasure.class)){
-            removeTouching(Treasure.class);
-        }
-    }    
+    }  
 }
