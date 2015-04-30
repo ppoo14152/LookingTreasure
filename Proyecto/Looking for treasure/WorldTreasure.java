@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.LinkedList;
+import java.awt.Color;
 
 /**
  * Write a description of class WorldTreasure here.
@@ -116,6 +117,20 @@ public class WorldTreasure extends World
             this.checaBotones();
         }  
         else {    
+            if(this.msjLives.getValue() <= 0)
+            {
+                Signboard perdio;
+                perdio=new Signboard("Perdiste");
+                this.addObject(perdio, 350, 280); 
+                Greenfoot.stop();
+                sonido.stop();
+            }
+            
+            /*Signboard gano;
+            gano=new Signboard("Ganaste");  
+            this.addObject(gano,350,270);
+            Greenfoot.stop();*/
+            
             this.tiempo();
             this.apareceLlave();
             this.mueveScroll();
@@ -136,14 +151,14 @@ public class WorldTreasure extends World
 
         this.setBackground("1.jpg"); 
         addObject(piso1,getWidth()/2,getHeight()-20);
-        addObject(new Treasure(),100,300);
+        addObject(new Treasure(),100,450);
         for(int i=0,xPos=TAM_XFLOOR-10; i < 3; i++, xPos += TAM_XFLOOR) {
             pisito=new Floor();
             listaF.add(pisito);
             addObject(pisito, xPos, TAM_YFLOOR);
         }
 
-        this.sonido.playLoop(); 
+       this.sonido.playLoop(); 
        if(this.getLevel()== 1 && this.LevelUno == false) {
             addObject(cyndaquil, 25, 200);
             addObject(squirtle, 116, 200);
