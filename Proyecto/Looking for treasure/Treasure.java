@@ -13,10 +13,15 @@ public class Treasure extends Bonus
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootImage imagen = new GreenfootImage("tesoro.png");
+    private GreenfootImage squirtle;
     
     public Treasure() 
     {
         imagen.scale(imagen.getWidth()/4,imagen.getHeight()/4);
+        squirtle = new GreenfootImage("St1.png");
         setImage(imagen);
-    }    
+    }
+    
+  
+    
 }

@@ -18,6 +18,7 @@ abstract public class Player extends Animal
     private int tiempo;
     private boolean estaSaltando;
     private int velJugador;
+    private int levelAct;
 
     public Player(int numImagenes,int numImaAtack)
     {
@@ -30,6 +31,7 @@ abstract public class Player extends Animal
         this.salto = false;
         this.jump = 10;
         this.tiempo = 0;
+        this.levelAct = 1;//------------------------------------------
         this.estaSaltando=true;
         this.setVelJugador(3);
     }
@@ -80,10 +82,10 @@ abstract public class Player extends Animal
       
     public void caida()
     {
-        if(this.estaEnPiso()){
+        if(this.estaEnPiso()) {
             this.velocidadSalto = 0;
         }
-        else{
+        else {
             this.caer();
         }   
     }
@@ -99,5 +101,14 @@ abstract public class Player extends Animal
     {
          this.setImage(unaImagen);
          this.setNumImagen(numI);
-    }  
+    }
+    
+    public void tocoLLave()
+    {
+        levelAct++;
+        if( isTouching(Key.class) ) {
+            ((WorldTreasure)getWorld()).setLevel(levelAct);
+        }
+    }
+    
 }

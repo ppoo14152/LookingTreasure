@@ -43,10 +43,8 @@ public class Arbok extends Enemy
 
     public void act()
     {
-        //this.checaJugadores();
         this.movimiento();
         this.checaMuerte();
-        
     }
 
     public void movimiento()
@@ -68,11 +66,40 @@ public class Arbok extends Enemy
             posicion = 1;
         }
         
+        if(posicion == 1) {
+         if( this.detectaJugadorI() != null ){
+            ataco = true;
+            super.animarDisparo();
+             if(ataco == true && timer <1) {
+             ataca();
+             timer++;
+           }
+        }else {
+            timer = 0;
+            ataco = false;
+        }
+      }
+      
+        if(posicion == 0) {
+         if( this.detectaJugadorD() != null ){
+            ataco = true;
+            super.animarDisparo();
+             if(ataco == true && timer <1) {
+             ataca();
+             timer++;
+           }
+        }else {
+            timer = 0;
+            ataco = false;
+        }
+      }
+      
+      
     }
        
     public void ataca()
     {
-        super.animarDisparo();
+        //super.animarDisparo();
         if(posicion == 0){
             super.disparaEnemy(imagenes[17],posicion,this.getX(),this.getY());
         }else{
@@ -80,7 +107,7 @@ public class Arbok extends Enemy
         }
     }
     
-    public Player detectaJugador()
+    public Player detectaJugadorI()
     {
       Player p;
       ataco = true;
@@ -88,22 +115,18 @@ public class Arbok extends Enemy
       return p;
     } 
     
-    public void checaJugadores()
+     public Player detectaJugadorD()
     {
-      if(this.detectaJugador() != null ) {
-           if(ataco == true && timer <1) {
-             ataca();
-             timer++;
-             this.checaMuerte();
-           }
-        }else {
-           ataco = false;
-           timer = 0;
-           this.movimiento();
-           this.checaMuerte();
-      }   
-    }
+      Player p;
+      ataco = true;
+      p = (Player)(getOneObjectAtOffset(100,0,Player.class));
+      return p;
+    } 
     
+    /**
+     * Metodo para saber si el enemigo murio
+     * al momento de atacarlo
+     */
       public void checaMuerte()
     {
         if( isTouching(BalaJugador.class) ) {

@@ -19,11 +19,9 @@ public class Yanmega extends Enemy
       cindaquil=c;
       squirtle=s;
       imagen = new GreenfootImage("aguijon.png");
-      for(int i = 0; i < super.getNumIma();i++)
-      {
+      for(int i = 0; i < super.getNumIma();i++) {
           super.insertaIma(i,"Yi");
       }
-      
       super.animar();
    }
    
@@ -43,8 +41,8 @@ public class Yanmega extends Enemy
    
    public void atacaJugador()
    {
-       disparo = Greenfoot.getRandomNumber(100);
-     if( disparo == 50 ){ 
+     disparo = Greenfoot.getRandomNumber(100);
+     if( disparo == 50 ) { 
          super.disparaEnemy(imagen,2,this.getX(),this.getY());
      }
    }

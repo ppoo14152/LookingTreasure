@@ -35,15 +35,18 @@ public class WorldTreasure extends World
     private Button[] arrBotones;
 
     private int level;
-    private boolean LevelCero;
     private boolean LevelUno;
     private boolean LevelDos;
     private boolean LevelTres;
-    //private int numObjeto;
+    
+    private boolean LevelOne;
+    private boolean LevelTwo;
+    private boolean LevelThree;
 
     private boolean estaJuego;
     private boolean perdio;
-    private int numActor;
+    private int numEnemy;
+    
     private GreenfootSound intro;
     private GreenfootSound sonido;
 
@@ -56,9 +59,15 @@ public class WorldTreasure extends World
         squirtle = new Squirtle();
 
         this.listaF=new LinkedList<Floor>();
+        
         this.level=0;
         this.LevelUno=false;
-        this.LevelCero=true;
+        this.LevelDos = false;
+        this.LevelTres = false;
+        
+        this.LevelOne = false;
+        this.LevelTwo = false;
+        this.LevelThree = false;
 
         this.time=new SimpleTimer();
         this.msjClock=new Counter("Tiempo:  ");
@@ -80,9 +89,10 @@ public class WorldTreasure extends World
     
      public void apareceLlave()
     {
-        if(this.msjClock.getValue() == 10) {
+        this.addObject(new Key(),200,300);
+        /*if(this.msjClock.getValue() == 10) {
             this.addObject(new Key(),200,300);
-        }
+        }*/
     }
     
     /**
@@ -119,12 +129,17 @@ public class WorldTreasure extends World
      */
     public void act()
     { 
+        
+        /*Signboard gano;
+                gano=new Signboard("Ganaste");  
+                this.addObject(gano,350,270);
+                Greenfoot.stop();*/
         if(!estaJuego) {  
             this.checaBotones();
         }  
-        else {    
-            if(this.msjLives.getValue() <= 0)
-            {
+        else {
+            
+            if(this.msjLives.getValue() <= 0) {// si pierden las vidas
                 Signboard perdio;
                 perdio=new Signboard("Perdiste");
                 this.addObject(perdio, 350, 280); 
@@ -132,16 +147,31 @@ public class WorldTreasure extends World
                 sonido.stop();
             }
             
-            if(this.msjPoints.getValue() == 500)
-            {
-                Signboard gano;
-                gano=new Signboard("Ganaste");  
-                this.addObject(gano,350,270);
-                Greenfoot.stop();
+            //-------------Aparecer llave----------------------------
+            if(this.msjClock.getValue() == 5 && this.LevelDos == false) {//llave para siguiente nivel
+                this.apareceLlave();
+                this.LevelDos = true;
+            }
+            
+            if(this.msjClock.getValue() == 60 && this.LevelTres == false) {//llave para siguiente nivel
+                this.apareceLlave();
+                this.LevelTres = true;
+            }
+            
+            //--------------------niveles------------------------------
+            
+            if(this.getLevel() == 2 && this.LevelTwo == false) { 
+                this.setBackground("fondo1.jpg");
+                System.out.println("entro");
+                this.LevelTwo = true;
+            }
+            
+            if(this.getLevel() == 3 && this.LevelThree == false) { 
+                this.setBackground("fondo2.jpg");
+                this.LevelThree = true;
             }
             
             this.tiempo();
-            this.apareceLlave();
             this.mueveScroll();
             this.creaEnemigos();
         }
@@ -171,12 +201,10 @@ public class WorldTreasure extends World
        if(this.getLevel()== 1 && this.LevelUno == false) {
             addObject(cyndaquil, 25, 200);
             addObject(squirtle, 116, 200);
-            addObject(new Arbok(cyndaquil,squirtle),getWidth()/2,getHeight()-50); 
+            //addObject(new Arbok(cyndaquil,squirtle),getWidth(),getHeight()-50); 
             addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
-
-            addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
-            addObject(new Yanmega(cyndaquil,squirtle),getWidth(),90);
-
+            //addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
+            //addObject(new Yanmega(cyndaquil,squirtle),getWidth(),90);
             addObject(msjLives,100,30);
             addObject(msjClock,220,30);
             addObject(msjPoints,340,30); 
@@ -321,25 +349,47 @@ public class WorldTreasure extends World
 
     public void creaEnemigos()
     {
-        numActor = Greenfoot.getRandomNumber(200);
-        switch(numActor) {
-            case 10:
-            addObject(new Arbok(cyndaquil,squirtle),getWidth(),getHeight()-50);
-            break;
-            case 20:
-            addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
-            break;
-            case 30:
-            addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
-            break;
-        }  
+        numEnemy = Greenfoot.getRandomNumber(100);
+        
+        if(this.getLevel() == 1) {
+            switch(numEnemy) {
+                case 10:
+                    addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50);
+                break;
+            }
+        }
+        
+         if(this.getLevel() == 2) {
+            switch(numEnemy) {
+                case 10:
+                    addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
+                break;
+                case 20:
+                    addObject(new Arbok(cyndaquil,squirtle),getWidth(),getHeight()-50);
+                break;
+            }
+        }
+        
+         if(this.getLevel() == 3) {
+            switch(numEnemy) {
+                case 10:
+                    addObject(new Arbok(cyndaquil,squirtle),getWidth(),getHeight()-50);
+                break;
+                case 20:
+                    addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
+                break;
+                case 30:
+                    addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
+                break;
+            }
+        }
     }
     
     public void mueveScroll()
     {
        Floor inicial=listaF.getFirst();
-        Floor fin=listaF.getLast();
-        Floor piso;
+       Floor fin=listaF.getLast();
+       Floor piso;
 
         if(inicial.getX()+(inicial.getImage().getWidth()/2) <= 0) {
             removeObject(inicial);

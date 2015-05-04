@@ -37,14 +37,14 @@ public class Cyndaquil extends Player
     public void act()
     {
         this.movimiento();
+        super.tocoLLave();
         super.caida();
     }
     
     public void movimiento()
     {
         
-        if(Greenfoot.isKeyDown("right"))
-        {
+        if(Greenfoot.isKeyDown("right")) {
             super.setIzq(false);
             if(this.getX()+10 < getWorld().getWidth()/2)
             {
@@ -54,8 +54,7 @@ public class Cyndaquil extends Player
             super.animar();
         }
         
-        if(Greenfoot.isKeyDown("left"))
-        {
+        if(Greenfoot.isKeyDown("left")) {
             super.setIzq(true);
             if(this.getX()+10 > 0)
             {
@@ -72,8 +71,6 @@ public class Cyndaquil extends Player
         
         if(Greenfoot.isKeyDown("m") ){
             if( cont ==10) {
-                
-                
                if(posicion == 0){
                    cont =0;
                    super.disparaPlayer(this.cindaAtack[0],posicion,this.getX(),this.getY());
@@ -81,19 +78,9 @@ public class Cyndaquil extends Player
                    super.disparaPlayer(this.cindaAtack[1],posicion,this.getX(),this.getY());
                    cont=0;
                 }
-                
           }else {
             cont++;
             }
-          
         }       
-    }
-    
-    public void tocaTesoro()
-    {
-        if(isTouching(Treasure.class)){
-            removeTouching(Treasure.class);
-            ((WorldTreasure)getWorld()).setBackground(cindaquil);
-        }
     }
   } 
