@@ -23,6 +23,7 @@ public class WorldTreasure extends World
     
     Cyndaquil cyndaquil;
     Squirtle squirtle; 
+    Key llave;
 
     private SimpleTimer time;
     private SimpleTimer livesT;
@@ -35,18 +36,10 @@ public class WorldTreasure extends World
     private Button[] arrBotones;
 
     private int level;
-    private boolean LevelUno;
-    private boolean LevelDos;
-    private boolean LevelTres;
-    
-    private boolean LevelOne;
-    private boolean LevelTwo;
-    private boolean LevelThree;
-
     private boolean estaJuego;
     private boolean perdio;
     private int numEnemy;
-    
+
     private GreenfootSound intro;
     private GreenfootSound sonido;
 
@@ -61,14 +54,6 @@ public class WorldTreasure extends World
         this.listaF=new LinkedList<Floor>();
         
         this.level=0;
-        this.LevelUno=false;
-        this.LevelDos = false;
-        this.LevelTres = false;
-        
-        this.LevelOne = false;
-        this.LevelTwo = false;
-        this.LevelThree = false;
-
         this.time=new SimpleTimer();
         this.msjClock=new Counter("Tiempo:  ");
         this.msjClock.setValue(0);
@@ -87,12 +72,10 @@ public class WorldTreasure extends World
         this.creaMenu();
     }
     
-     public void apareceLlave()
+    public void apareceLlave()
     {
-        this.addObject(new Key(),200,300);
-        /*if(this.msjClock.getValue() == 10) {
-            this.addObject(new Key(),200,300);
-        }*/
+        this.llave=new Key();
+        this.addObject(this.llave,200,300);
     }
     
     /**
@@ -139,7 +122,7 @@ public class WorldTreasure extends World
         }  
         else {
             
-            if(this.msjLives.getValue() <= 0) {// si pierden las vidas
+            if(this.msjLives.getValue() <= 0) {
                 Signboard perdio;
                 perdio=new Signboard("Perdiste");
                 this.addObject(perdio, 350, 280); 
@@ -148,27 +131,23 @@ public class WorldTreasure extends World
             }
             
             //-------------Aparecer llave----------------------------
-            if(this.msjClock.getValue() == 5 && this.LevelDos == false) {//llave para siguiente nivel
+            if(this.msjClock.getValue() == 5 /*&& this.LevelDos == false*/) {
                 this.apareceLlave();
-                this.LevelDos = true;
             }
             
-            if(this.msjClock.getValue() == 60 && this.LevelTres == false) {//llave para siguiente nivel
+            if(this.msjClock.getValue() == 60 /*&& this.LevelTres == false*/) {
                 this.apareceLlave();
-                this.LevelTres = true;
             }
             
             //--------------------niveles------------------------------
             
-            if(this.getLevel() == 2 && this.LevelTwo == false) { 
+            if(this.getLevel() == 2 /*&& this.LevelTwo == false*/) { 
                 this.setBackground("fondo1.jpg");
                 System.out.println("entro");
-                this.LevelTwo = true;
             }
             
-            if(this.getLevel() == 3 && this.LevelThree == false) { 
+            if(this.getLevel() == 3 /*&& this.LevelThree == false*/) { 
                 this.setBackground("fondo2.jpg");
-                this.LevelThree = true;
             }
             
             this.tiempo();
@@ -198,17 +177,16 @@ public class WorldTreasure extends World
         }
 
        this.sonido.playLoop(); 
-       if(this.getLevel()== 1 && this.LevelUno == false) {
+       if(this.getLevel()== 1 /*&& this.LevelUno == false*/) {
             addObject(cyndaquil, 25, 200);
             addObject(squirtle, 116, 200);
             //addObject(new Arbok(cyndaquil,squirtle),getWidth(),getHeight()-50); 
-            addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
+            //addObject(new Growlithe(cyndaquil,squirtle), getWidth(),getHeight()-50); 
             //addObject(new Yanmega(cyndaquil,squirtle),getWidth(),200);
             //addObject(new Yanmega(cyndaquil,squirtle),getWidth(),90);
             addObject(msjLives,100,30);
             addObject(msjClock,220,30);
             addObject(msjPoints,340,30); 
-            this.LevelUno = true;
         }
     }
     
@@ -220,7 +198,6 @@ public class WorldTreasure extends World
         this.setBackground("ayuda.png");
         this.addObject(this.arrBotones[4],60,500);
     }
-    
     
     /**
      * Metodo para desplegar el boton de creditos

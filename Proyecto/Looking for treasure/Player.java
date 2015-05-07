@@ -18,24 +18,28 @@ abstract public class Player extends Animal
     private int tiempo;
     private boolean estaSaltando;
     private int velJugador;
-    private int levelAct;
+    private int numJug;
+    private int numTes;
+    private boolean bandTesoro;
 
-    public Player(int numImagenes,int numImaAtack)
+    public Player(int numJug,int numImaAtack,int numTes)
     {
-        super(numImagenes,numImaAtack);
+        super(numJug+numTes,numImaAtack);
+        this.numJug=numJug;
+        this.numTes=numTes;
+        this.bandTesoro=false;
+        
         this.setNumImagen(0);
-        //Salto---------------------------------
         this.velocidad = 7;
         this.velocidadSalto = 0;
         this.aceleracion = 2;
         this.salto = false;
         this.jump = 10;
         this.tiempo = 0;
-        this.levelAct = 1;//------------------------------------------
         this.estaSaltando=true;
         this.setVelJugador(3);
     }
-    
+
     public int getVelJugador()
     {
         return this.velJugador;
@@ -71,7 +75,6 @@ abstract public class Player extends Animal
     public boolean estaEnPiso()
     {
         boolean avisa;
-        
         if(!isTouching(FloorTwo.class))
             avisa=false;
         else
@@ -92,8 +95,8 @@ abstract public class Player extends Animal
             
     public void caer()
     {
-        setLocation(getX(),getY()+velocidadSalto);
-        velocidadSalto = velocidadSalto + aceleracion;
+        this.setLocation(getX(),getY()+velocidadSalto);
+        this.velocidadSalto = this.velocidadSalto + this.aceleracion;
         this.estaSaltando=false;
     }  
     
@@ -103,12 +106,83 @@ abstract public class Player extends Animal
          this.setNumImagen(numI);
     }
     
-    public void tocoLLave()
+    public void insertaIma(int unaI,String unaCad)
     {
-        levelAct++;
-        if( isTouching(Key.class) ) {
-            ((WorldTreasure)getWorld()).setLevel(levelAct);
+        super.setPos(unaI,new GreenfootImage(unaCad+(unaI+1)+".png"));
+        super.setPos(unaI+this.numJug+this.numTes,new GreenfootImage(this.getPos(unaI)));
+        super.getPos(unaI+this.numJug+this.numTes).mirrorHorizontally();
+    }   
+
+    public void animar()
+    {
+        WorldTreasure mundo;
+        mundo=((WorldTreasure)this.getWorld());
+        
+        if(!super.getIzq())
+        {
+            if(!this.getBanTesoro())
+            {
+                if(super.getActual() >= 0 && getActual() < this.numJug)
+                {
+                    setImage(super.getPos(super.getActual()));
+                    super.setActual(super.getActual()+1);
+                }
+                else
+                    super.setActual(0);
+            }
+            else
+            {
+                if(super.getActual() >= this.numJug && super.getActual() < numJug+numTes)
+                {        
+                    setImage(super.getPos(super.getActual()));
+                    super.setActual(super.getActual()+1);
+                }
+                else
+                    super.setActual(numJug);
+            }
+        }
+        else
+        {
+            if(!this.getBanTesoro())
+            {
+                if(super.getActual() >= numJug+numTes && super.getActual() < 2*this.numJug+numTes)
+                {
+                    setImage(super.getPos(super.getActual()));
+                    super.setActual(super.getActual()+1);
+                }
+                else
+                    super.setActual(numJug+numTes);
+            }
+            else
+            {
+                if(super.getActual() >= 2*this.numJug+numTes && super.getActual() < (2*numJug)+(2*numTes))
+                {
+                    setImage(super.getPos(super.getActual()));
+                    super.setActual(super.getActual()+1);
+                }
+                else
+                    super.setActual(2*numJug+numTes);
+            }
         }
     }
     
+    public void setBanTesoro(boolean unaBan)
+    {
+        this.bandTesoro=unaBan;
+    }
+    
+    public boolean getBanTesoro()
+    {
+        return this.bandTesoro;
+    }
+    
+    public void tocoTesoro()
+    {
+        WorldTreasure mundo=(WorldTreasure)getWorld();
+        if(isTouching(Treasure.class))
+        {
+            mundo.removeObjects(mundo.getObjects(Treasure.class));
+            this.setBanTesoro(true);
+        }
+    }
 }

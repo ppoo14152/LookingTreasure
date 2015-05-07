@@ -5,82 +5,73 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-
-
 public class Squirtle extends Player
 {
-    
     private boolean ataque;
     private int posicion;
     private int cont;
-    private GreenfootImage[] imagenes;
     
     public Squirtle()
     {
-        super(4,3);
-        ataque = false;
-        cont = 0;
-        imagenes = super.getIimagenArr();
-       
-        
-        for(int i = 0; i < 4; i++)
+        super(4,3,4);
+        this.ataque = false;
+        this.cont = 0;
+        for(int i = 0; i < 8; i++)
         {
             super.insertaIma(i,"Sd");
         }
-        
+        /*
         for(int i = 8; i < 11; i++)
         {
             super.insertaIma(i,"atackS");
         }
-        
-        super.animar();
-        
+        */
     }
 
     public void act()
     {
         this.movimiento();
-        super.tocoLLave();
         super.caida();
+        super.tocoTesoro();
     }
     
     public void movimiento()
     {   
-        if(Greenfoot.isKeyDown("X") || Greenfoot.isKeyDown("x") && ataque == false) {
+        if((Greenfoot.isKeyDown("X") || Greenfoot.isKeyDown("x")) && ataque == false) {
             super.setIzq(false);
             if(this.getX() < getWorld().getWidth()/2)
             {           
-                setLocation(getX()+super.getVelJugador(),getY());
+                this.setLocation(getX()+super.getVelJugador(),getY());
             }
             super.animar();
-            posicion = 0;
+            //this.posicion = 0;
         }
 
-        if(Greenfoot.isKeyDown("Z") || Greenfoot.isKeyDown("z") && ataque == false) {
+        if((Greenfoot.isKeyDown("Z") || Greenfoot.isKeyDown("z")) && ataque == false) {
             super.setIzq(true);
             if(this.getX()+10 > 0) {
                 setLocation(getX()-super.getVelJugador(),getY());
             }
             super.animar();
-            posicion = 1;
+            //this.posicion = 1;
         }
 
-        if(Greenfoot.isKeyDown("q") || Greenfoot.isKeyDown("Q") && ataque == false) {
+        if((Greenfoot.isKeyDown("q") || Greenfoot.isKeyDown("Q")) && ataque == false) {
             super.saltar();
         }
         
         if(Greenfoot.isKeyDown("w")) {
-            ataque=true;
+            this.ataque=true;
             super.animarDisparo();
-            if(cont == 8) {
-             if(posicion == 0) {
+            /*if(this.cont == 8) {
+             if(this.posicion == 0) {
                super.disparaPlayer(imagenes[13],posicion,this.getX(),this.getY());
             }else{
                super.disparaPlayer(imagenes[10],posicion,this.getX(),this.getY());
             }
-            cont=0;
-          }
-          cont++;
+            this.cont=0;
+          }*/
+          this.cont++;
         }
     }
 }

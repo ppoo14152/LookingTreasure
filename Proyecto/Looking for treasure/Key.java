@@ -8,37 +8,38 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Key extends Bonus
 {
-    /**
-     * Act - do whatever the Llave wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    GreenfootImage imagen = new GreenfootImage("llave1.png");
     private int velocidad;
     private int lim;
     private int cont;
     
     public Key() 
     {
-        imagen.scale(imagen.getWidth()/4,imagen.getHeight()/4);
-        setImage(imagen);
-        velocidad = 2;
-        lim = 100;
-        cont = 0;
+        this.getImage().scale(this.getImage().getWidth()/4,this.getImage().getHeight()/4);
+        this.velocidad = 2;
+        this.lim = 100;
+        this.cont = 0;
     }  
     
     public void act()
     {
         this.setLocation( this.getX() , this.getY() + velocidad);
         this.mueveLlave();
+        this.tocoLLave();
     }
     
     public void mueveLlave()
     {
-      if(cont == lim) {
-              this.velocidad = velocidad * -1;
-              cont = 0;
+      if(this.cont == this.lim) {
+              this.velocidad = this.velocidad * -1;
+              this.cont = 0;
         }else {
-            cont++;
+            this.cont++;
         }  
+    }
+        
+    public void tocoLLave()
+    {
+        if( isTouching(Cyndaquil.class) || isTouching(Squirtle.class)) 
+            ((WorldTreasure)getWorld()).removeObject(this);
     }
 }

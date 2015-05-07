@@ -8,15 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Star extends Bonus
 {
-    /**
-     * Act - do whatever the Estrella wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    GreenfootImage imagen = new GreenfootImage("star.png");
-    
     public Star() 
     {
-        imagen.scale(imagen.getWidth()/4,imagen.getHeight()/4);
-        setImage(imagen);
+       this.getImage().scale(this.getImage().getWidth()/4,this.getImage().getHeight()/4);
     }    
 }

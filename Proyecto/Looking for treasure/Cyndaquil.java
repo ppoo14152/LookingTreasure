@@ -11,34 +11,31 @@ public class Cyndaquil extends Player
     private GreenfootImage[] cindaAtack;
     private boolean ataque;
     private int posicion ;
-    private GreenfootImage cindaquil; 
     private int cont;
     
     public Cyndaquil()
     {
-        super(6,0);
-        cindaAtack = new GreenfootImage[2];
-        ataque = false;
-        cindaquil=new GreenfootImage("Ct1.png");
-        cont=0;
+        super(6,0,6);
+        this.cindaAtack = new GreenfootImage[2];
+        this.ataque = false;
+        this.cont=0;
         for(int i = 0; i < super.getNumIma();i++)
         {
             super.insertaIma(i,"Cd");
         }
         
         for(int i = 0; i < 1; i++){
-            cindaAtack[i]= new GreenfootImage("atackC1.png");
-            cindaAtack[i+1]= new GreenfootImage("atackC1.png");
-            cindaAtack[i+1].mirrorHorizontally();
-        }
-        super.animar();
+            this.cindaAtack[i]= new GreenfootImage("atackC1.png");
+            this.cindaAtack[i+1]= new GreenfootImage("atackC1.png");
+            this.cindaAtack[i+1].mirrorHorizontally();
+        } 
     }
     
     public void act()
     {
         this.movimiento();
-        super.tocoLLave();
         super.caida();
+        super.tocoTesoro();
     }
     
     public void movimiento()
@@ -48,9 +45,9 @@ public class Cyndaquil extends Player
             super.setIzq(false);
             if(this.getX()+10 < getWorld().getWidth()/2)
             {
-                setLocation(getX()+super.getVelJugador(),getY());
+                this.setLocation(getX()+super.getVelJugador(),this.getY());
             }
-            posicion = 0;
+            this.posicion = 0;
             super.animar();
         }
         
@@ -58,9 +55,9 @@ public class Cyndaquil extends Player
             super.setIzq(true);
             if(this.getX()+10 > 0)
             {
-                setLocation(getX()-super.getVelJugador(),getY());
+                this.setLocation(getX()-super.getVelJugador(),this.getY());
             }
-            posicion = 1;
+            this.posicion = 1;
             super.animar();
         }
         
@@ -70,17 +67,16 @@ public class Cyndaquil extends Player
         }
         
         if(Greenfoot.isKeyDown("m") ){
-            if( cont ==10) {
-               if(posicion == 0){
-                   cont =0;
+            if( this.cont ==10) {
+               if(this.posicion == 0){
+                   this.cont =0;
                    super.disparaPlayer(this.cindaAtack[0],posicion,this.getX(),this.getY());
                 }else{
                    super.disparaPlayer(this.cindaAtack[1],posicion,this.getX(),this.getY());
-                   cont=0;
+                   this.cont=0;
                 }
-          }else {
+          }else 
             cont++;
-            }
         }       
     }
   } 

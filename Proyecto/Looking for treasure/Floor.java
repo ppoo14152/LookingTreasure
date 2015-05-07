@@ -8,20 +8,10 @@ import greenfoot.*;
  */
 public class Floor extends FondoImagenes
 {
-    /**
-     * Act - do whatever the Piso wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-    public Floor() 
-    {
-        
-    } 
-    
     public void act()
     {
         if(Greenfoot.isKeyDown("right")) {
-          setLocation(getX()-2,getY());
+          this.setLocation(getX()-2,getY());
         }
     }
 }

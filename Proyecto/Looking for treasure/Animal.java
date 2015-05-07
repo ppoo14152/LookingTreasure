@@ -57,20 +57,20 @@ abstract public class Animal extends Actor
 
     public void creaArregloIma(int unTam)
     {
-        this.arrIma=new GreenfootImage[(unTam + this.numImagenesAtack) * 2];
+        this.arrIma=new GreenfootImage[(unTam /*+ this.numImagenesAtack*/) * 2];
     }
 
     public void insertaIma(int unaI,String unaCad)
     {
-        if(unaI < 8) {
+        //if(unaI < 8) {
             this.arrIma[unaI]=new GreenfootImage(unaCad+(unaI+1)+".png");
             this.arrIma[unaI+this.numImagenes]=new GreenfootImage(this.arrIma[unaI]);
             this.arrIma[unaI+this.numImagenes].mirrorHorizontally();
-        }else{
+        /*}else{
             this.arrIma[unaI]=new GreenfootImage(unaCad+(unaI+1)+".png");
             this.arrIma[unaI+this.numImagenesAtack]=new GreenfootImage(this.arrIma[unaI]);
             this.arrIma[unaI+this.numImagenesAtack].mirrorHorizontally();
-        }
+        }*/
     }   
 
     abstract public void movimiento();
@@ -93,7 +93,6 @@ abstract public class Animal extends Actor
         int i=0;
         
         if(this.izq) {
-            
          switch(i) {
             case 0:
                 this.setImage(arrIma[this.imaActualDisparo]);
@@ -104,9 +103,8 @@ abstract public class Animal extends Actor
                 i = 0;
             break;
          }
-        this.imaActualDisparo=(this.numImagenes*2);
-      }else{
-          
+         this.imaActualDisparo=(this.numImagenes*2);
+        }else{
           switch(i) {
             case 0:
                 this.setImage(arrIma[this.imaActualDisparo + this.numImagenesAtack]);
@@ -117,7 +115,7 @@ abstract public class Animal extends Actor
                 i = 0;
             break;
          }
-        this.imaActualDisparo=(this.numImagenes*2);
+         this.imaActualDisparo=(this.numImagenes*2);
         }
     }
     
@@ -133,8 +131,14 @@ abstract public class Animal extends Actor
         getWorld().addObject(disparoJ,x,y);
     }
     
-    public GreenfootImage[] getIimagenArr()
+    public GreenfootImage getPos(int unaPos)
     {
-      return arrIma;
+        return this.arrIma[unaPos];
     }
+    
+    public void setPos(int unaPos,GreenfootImage unaImagen)
+    {
+        this.arrIma[unaPos]=unaImagen;
+    }
+
 }

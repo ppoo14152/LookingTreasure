@@ -22,7 +22,6 @@ public class Growlithe extends Enemy
         {
             super.insertaIma(i,"Gd");
         }
-        super.animar();
     }
     
     public void act()

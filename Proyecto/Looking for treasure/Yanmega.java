@@ -22,7 +22,6 @@ public class Yanmega extends Enemy
       for(int i = 0; i < super.getNumIma();i++) {
           super.insertaIma(i,"Yi");
       }
-      super.animar();
    }
    
    public void act()
@@ -35,14 +34,14 @@ public class Yanmega extends Enemy
    public void movimiento()
    {  
        super.setIzq(false);
-       setLocation(getX()-3,getY());
+       this.setLocation(getX()-3,getY());
        super.animar();
    }
    
    public void atacaJugador()
    {
-     disparo = Greenfoot.getRandomNumber(100);
-     if( disparo == 50 ) { 
+     this.disparo = Greenfoot.getRandomNumber(100);
+     if( this.disparo == 50 ) { 
          super.disparaEnemy(imagen,2,this.getX(),this.getY());
      }
    }
