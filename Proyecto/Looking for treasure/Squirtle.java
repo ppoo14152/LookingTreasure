@@ -56,20 +56,18 @@ public class Squirtle extends Player
         
         if(Greenfoot.isKeyDown("w")) 
         {
-            super.setBandAtaca(true);
             if(this.cont == 8) 
             {
+                super.setBandAtaca(true);
+                for(int i=0; i < super.getnumAtaca(); i++)
+                {
+                    super.animar();
+                }
                 super.disparar(1,this.getX(),this.getY());
-                /*if(this.posicion == 0) 
-                {
-                    super.disparaPlayer(imagenes[13],posicion,this.getX(),this.getY());
-                }else
-                {
-                    super.disparaPlayer(imagenes[10],posicion,this.getX(),this.getY());
-                }*/
-            this.cont=0;
+                super.setBandAtaca(false);
+                this.cont=0;
             }
-           this.cont++;
+            this.cont++;
         }
     }
 }

@@ -14,8 +14,8 @@ public class Bala extends Actor
     public Bala(int unTipo,boolean unaDir)
     {
         this.tipo=unTipo;
-        this.quienFue();
         this.setBanDir(unaDir);
+        this.quienFue();
     }
     
     public void setBanDir(boolean unaDir)
@@ -48,6 +48,10 @@ public class Bala extends Actor
                     this.setImage(new GreenfootImage("ataca4.png"));
                     this.getImage().scale(this.getImage().getWidth()/3,this.getImage().getHeight()/3);
             break;
+        }
+        if(this.getBanDir())
+        {
+            this.getImage().mirrorHorizontally();
         }
     }
     

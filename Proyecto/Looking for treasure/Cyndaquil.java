@@ -60,27 +60,14 @@ public class Cyndaquil extends Player
         
         if(Greenfoot.isKeyDown("m") )
         {
-            super.setBandAtaca(true);
             if(this.cont == 8) 
             {
+                super.setBandAtaca(true);
                 super.disparar(2,this.getX(),this.getY());
+                super.setBandAtaca(false);
                 this.cont=0;
             }
             this.cont++;
-            /*if( this.cont ==10) 
-            {
-               if(this.posicion == 0)
-               {
-                   this.cont =0;
-                   
-                  // super.disparaPlayer(this.cindaAtack[0],posicion,this.getX(),this.getY());
-                }else
-                {
-                   //super.disparaPlayer(this.cindaAtack[1],posicion,this.getX(),this.getY());
-                   this.cont=0;
-                }
-          }else 
-            cont++;*/
         }       
     }
   } 

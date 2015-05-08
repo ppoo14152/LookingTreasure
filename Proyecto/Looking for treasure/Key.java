@@ -42,8 +42,9 @@ public class Key extends Bonus
         WorldTreasure mundo=(WorldTreasure)getWorld();
         if( isTouching(Cyndaquil.class) || isTouching(Squirtle.class)) 
         {
+            mundo.setLevel(mundo.getLevel()+1);
             mundo.removeObject(this);
-            mundo.setLevel(2);
+            mundo.setExisteLlave(false);
         }
     }
 }

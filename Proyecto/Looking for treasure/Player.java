@@ -20,6 +20,7 @@ abstract public class Player extends Animal
     private int velJugador;
     private int numJug;
     private int numTes;
+    private int numAtaca;
     private boolean bandTesoro;
 
     public Player(int numJug,int numTes,int numImaAtack)
@@ -27,6 +28,7 @@ abstract public class Player extends Animal
         super(numJug+numTes,numImaAtack);
         this.numJug=numJug;
         this.numTes=numTes;
+        this.setnumAtaca(numImaAtack);
         this.bandTesoro=false;
         
         this.setNumImagen(0);
@@ -109,61 +111,65 @@ abstract public class Player extends Animal
     public void insertaIma(int unaI,String unaCad)
     {
         super.setPos(unaI,new GreenfootImage(unaCad+(unaI+1)+".png"));
-        super.setPos(unaI+this.numJug+this.numTes,new GreenfootImage(this.getPos(unaI)));
-        super.getPos(unaI+this.numJug+this.numTes).mirrorHorizontally();
+        super.setPos(unaI+this.numJug+this.numTes+this.numAtaca,new GreenfootImage(this.getPos(unaI)));
+        super.getPos(unaI+this.numJug+this.numTes+this.numAtaca).mirrorHorizontally();
     }   
 
     public void animar()
     {
         WorldTreasure mundo;
         mundo=((WorldTreasure)this.getWorld());
+        int inicio,fin;
         
         if(!super.getIzq())
         {
             if(!this.getBanTesoro())
             {
-                if(super.getActual() >= 0 && getActual() < this.numJug)
+                if(!super.getBandAtaca())
                 {
-                    setImage(super.getPos(super.getActual()));
-                    super.setActual(super.getActual()+1);
+                    inicio=0;
+                    fin=this.numJug;
                 }
                 else
-                    super.setActual(0);
+                {
+                    inicio=this.numJug+numTes;
+                    fin=this.numJug+numTes+numAtaca;
+                }
             }
             else
             {
-                if(super.getActual() >= this.numJug && super.getActual() < numJug+numTes)
-                {        
-                    setImage(super.getPos(super.getActual()));
-                    super.setActual(super.getActual()+1);
-                }
-                else
-                    super.setActual(numJug);
+                inicio=this.numJug;
+                fin=this.numJug+numTes;
             }
         }
         else
         {
             if(!this.getBanTesoro())
             {
-                if(super.getActual() >= numJug+numTes && super.getActual() < 2*this.numJug+numTes)
+                if(!super.getBandAtaca())
                 {
-                    setImage(super.getPos(super.getActual()));
-                    super.setActual(super.getActual()+1);
+                    inicio=this.numJug+this.numTes+this.numAtaca;
+                    fin=(2*this.numJug)+numTes+numAtaca;
                 }
                 else
-                    super.setActual(numJug+numTes);
+                {
+                    inicio=(2*numJug)+(2*numTes)+numAtaca;
+                    fin=(2*numAtaca)+(2*numJug)+(2*numTes);
+                }
             }
             else
             {
-                if(super.getActual() >= 2*this.numJug+numTes && super.getActual() < (2*numJug)+(2*numTes))
-                {
-                    setImage(super.getPos(super.getActual()));
-                    super.setActual(super.getActual()+1);
-                }
-                else
-                    super.setActual(2*numJug+numTes);
+                inicio=(2*this.numJug)+numTes+numAtaca;
+                fin=(2*numJug)+(2*numTes)+numAtaca;
             }
         }
+        if(super.getActual() >= inicio && super.getActual() < fin)
+        {
+            this.setImage(super.getPos(super.getActual()));
+            super.setActual(super.getActual()+1);
+        }
+        else
+            super.setActual(inicio);
     }
     
     public void setBanTesoro(boolean unaBan)
@@ -174,6 +180,16 @@ abstract public class Player extends Animal
     public boolean getBanTesoro()
     {
         return this.bandTesoro;
+    }
+    
+    public void setnumAtaca(int unNum)
+    {
+        this.numAtaca=unNum;
+    }
+    
+    public int getnumAtaca()
+    {
+        return this.numAtaca;
     }
     
     public void tocoTesoro()

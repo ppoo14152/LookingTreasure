@@ -39,6 +39,7 @@ public class WorldTreasure extends World
     private boolean estaJuego;
     private boolean perdio;
     private int numEnemy;
+    private boolean existeLlave;
 
     private GreenfootSound intro;
     private GreenfootSound sonido;
@@ -52,6 +53,7 @@ public class WorldTreasure extends World
         squirtle = new Squirtle();
 
         this.listaF=new LinkedList<Floor>();
+        this.existeLlave=false;
         
         this.level=0;
         this.time=new SimpleTimer();
@@ -74,8 +76,34 @@ public class WorldTreasure extends World
     
     public void apareceLlave()
     {
-        this.llave=new Key();
-        this.addObject(this.llave,200,300);
+        if(this.msjPoints.getValue() == 3000 && !this.getExisteLlave()) 
+        {
+            this.llave=new Key();
+            this.addObject(this.llave,200,300);
+            this.setExisteLlave(true);
+        }
+        else if(this.msjPoints.getValue() == 7000 && !this.getExisteLlave()) 
+        {
+            this.llave=new Key();
+            this.addObject(this.llave,200,300);
+            this.setExisteLlave(true);
+        }
+        else if(this.msjPoints.getValue() == 15000 && !this.getExisteLlave()) 
+        {
+            this.llave=new Key();
+            this.addObject(this.llave,200,300);
+            this.setExisteLlave(true);
+        }
+    }
+    
+    public void setExisteLlave(boolean unaBan)
+    {
+        this.existeLlave=unaBan;
+    }
+
+    public boolean getExisteLlave()
+    {
+        return this.existeLlave;
     }
     
     /**
@@ -117,13 +145,13 @@ public class WorldTreasure extends World
         }  
         else 
         {
-            if(this.msjPoints.getValue() == 500)
+           /* if(this.msjPoints.getValue() == 500)
             {
                 Signboard gano;
                 gano=new Signboard("Ganaste");  
                 this.addObject(gano,350,270);
                 Greenfoot.stop();
-            }
+            }*/
             
             if(this.msjLives.getValue() <= 0) 
             {
@@ -133,17 +161,7 @@ public class WorldTreasure extends World
                 Greenfoot.stop();
                 sonido.stop();
             }
-            
-            //-------------Aparecer llave----------------------------
-            if(this.msjClock.getValue() == 10) 
-            {
-                this.apareceLlave();
-            }
-            
-            if(this.msjClock.getValue() == 30) {
-                this.apareceLlave();
-            }
-            
+            this.apareceLlave();
             this.tiempo();
             this.mueveScroll();
             this.creaEnemigos();
@@ -305,21 +323,23 @@ public class WorldTreasure extends World
             this.msjClock.add(+1);
         }
     }
-
+    
     public void creaEnemigos()
     {
-        numEnemy = Greenfoot.getRandomNumber(100);
-        
-        if(this.getLevel() == 1) {
-            switch(numEnemy) {
+        numEnemy = Greenfoot.getRandomNumber(50);
+        if(this.getLevel() == 1)
+        {
+            switch(numEnemy) 
+            {
                 case 10:
                     addObject(new Growlithe(), getWidth(),getHeight()-50);
                 break;
             }
         }
-        
-         if(this.getLevel() == 2) {
-            switch(numEnemy) {
+        else if(this.getLevel() == 2)
+        {
+            switch(numEnemy) 
+            {
                 case 10:
                     addObject(new Growlithe(), getWidth(),getHeight()-50); 
                 break;
@@ -327,10 +347,11 @@ public class WorldTreasure extends World
                     addObject(new Arbok(),getWidth(),getHeight()-50);
                 break;
             }
-        }
-        
-         if(this.getLevel() == 3) {
-            switch(numEnemy) {
+        } 
+        else if(this.getLevel() == 3) 
+        {
+            switch(numEnemy) 
+            {
                 case 10:
                     addObject(new Arbok(),getWidth(),getHeight()-50);
                 break;
