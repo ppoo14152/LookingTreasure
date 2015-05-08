@@ -13,19 +13,13 @@ public class Squirtle extends Player
     
     public Squirtle()
     {
-        super(4,3,4);
+        super(4,4,2);
         this.ataque = false;
         this.cont = 0;
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 10; i++)
         {
             super.insertaIma(i,"Sd");
         }
-        /*
-        for(int i = 8; i < 11; i++)
-        {
-            super.insertaIma(i,"atackS");
-        }
-        */
     }
 
     public void act()
@@ -60,18 +54,22 @@ public class Squirtle extends Player
             super.saltar();
         }
         
-        if(Greenfoot.isKeyDown("w")) {
-            this.ataque=true;
-            super.animarDisparo();
-            /*if(this.cont == 8) {
-             if(this.posicion == 0) {
-               super.disparaPlayer(imagenes[13],posicion,this.getX(),this.getY());
-            }else{
-               super.disparaPlayer(imagenes[10],posicion,this.getX(),this.getY());
-            }
+        if(Greenfoot.isKeyDown("w")) 
+        {
+            super.setBandAtaca(true);
+            if(this.cont == 8) 
+            {
+                super.disparar(1,this.getX(),this.getY());
+                /*if(this.posicion == 0) 
+                {
+                    super.disparaPlayer(imagenes[13],posicion,this.getX(),this.getY());
+                }else
+                {
+                    super.disparaPlayer(imagenes[10],posicion,this.getX(),this.getY());
+                }*/
             this.cont=0;
-          }*/
-          this.cont++;
+            }
+           this.cont++;
         }
     }
 }

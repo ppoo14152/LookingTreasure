@@ -22,8 +22,8 @@ public class Key extends Bonus
     
     public void act()
     {
-        this.setLocation( this.getX() , this.getY() + velocidad);
-        this.mueveLlave();
+        //this.setLocation( this.getX() , this.getY() + velocidad);
+        //this.mueveLlave();
         this.tocoLLave();
     }
     
@@ -39,7 +39,11 @@ public class Key extends Bonus
         
     public void tocoLLave()
     {
+        WorldTreasure mundo=(WorldTreasure)getWorld();
         if( isTouching(Cyndaquil.class) || isTouching(Squirtle.class)) 
-            ((WorldTreasure)getWorld()).removeObject(this);
+        {
+            mundo.removeObject(this);
+            mundo.setLevel(2);
+        }
     }
 }

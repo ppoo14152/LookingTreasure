@@ -22,7 +22,7 @@ abstract public class Player extends Animal
     private int numTes;
     private boolean bandTesoro;
 
-    public Player(int numJug,int numImaAtack,int numTes)
+    public Player(int numJug,int numTes,int numImaAtack)
     {
         super(numJug+numTes,numImaAtack);
         this.numJug=numJug;

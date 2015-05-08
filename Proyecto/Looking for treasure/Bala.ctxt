@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=unTipo\ unaDir
+comment0.target=Bala(int,\ boolean)
+comment1.params=unaDir
+comment1.target=void\ setBanDir(boolean)
+comment2.params=
+comment2.target=boolean\ getBanDir()
+comment3.params=
+comment3.target=void\ quienFue()
+comment4.params=
+comment4.target=void\ mueveBala()
+comment5.params=
+comment5.target=void\ aquienToque()
+comment6.params=
+comment6.target=void\ act()
+numComments=7

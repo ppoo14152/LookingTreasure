@@ -12,17 +12,17 @@ abstract public class Animal extends Actor
     private int numImagenes;
     private int numImagenesAtack;
     private int imaActual;
-    private int imaActualDisparo;
-
-    public Animal(int unTam,int numImaAtack)//unTamAtack--parametro cantidad de imagenes de ataque
+    private boolean bandAtaca;
+    
+    public Animal(int numImaJug,int numImaAttack)
     {
         this.arrIma=null;
         this.izq=false;
-        this.numImagenes=unTam;
+        this.numImagenes=numImaJug;
         this.imaActual=0;
-        this.numImagenesAtack=numImaAtack;//
-        this.imaActualDisparo=(unTam*2);//
-        this.creaArregloIma(unTam);
+        this.numImagenesAtack=numImaAttack;
+        this.creaArregloIma(numImaJug);
+        this.setBandAtaca(false);
     }
 
     public void setIzq(boolean unaDir)
@@ -57,78 +57,88 @@ abstract public class Animal extends Actor
 
     public void creaArregloIma(int unTam)
     {
-        this.arrIma=new GreenfootImage[(unTam /*+ this.numImagenesAtack*/) * 2];
+        this.arrIma=new GreenfootImage[(unTam+this.numImagenesAtack) * 2];
     }
-
+    
+    public void insertaAtaque(int unaI,String unaCad)
+    {
+        this.setPos(unaI,new GreenfootImage(unaCad+(unaI+1)+".png"));
+        this.setPos(unaI+(2*numImagenes)+numImagenesAtack,new GreenfootImage(this.getPos(unaI)));
+        this.getPos(unaI+(2*numImagenes)+numImagenesAtack).mirrorHorizontally();
+    }
+    
     public void insertaIma(int unaI,String unaCad)
     {
-        //if(unaI < 8) {
-            this.arrIma[unaI]=new GreenfootImage(unaCad+(unaI+1)+".png");
-            this.arrIma[unaI+this.numImagenes]=new GreenfootImage(this.arrIma[unaI]);
-            this.arrIma[unaI+this.numImagenes].mirrorHorizontally();
-        /*}else{
-            this.arrIma[unaI]=new GreenfootImage(unaCad+(unaI+1)+".png");
-            this.arrIma[unaI+this.numImagenesAtack]=new GreenfootImage(this.arrIma[unaI]);
-            this.arrIma[unaI+this.numImagenesAtack].mirrorHorizontally();
-        }*/
+        this.arrIma[unaI]=new GreenfootImage(unaCad+(unaI+1)+".png");
+        this.arrIma[unaI+this.numImagenes+numImagenesAtack]=new GreenfootImage(this.arrIma[unaI]);
+        this.arrIma[unaI+this.numImagenes+numImagenesAtack].mirrorHorizontally();
     }   
 
     abstract public void movimiento();
 
     public void animar()
-    {
-        if(this.izq)
-            this.setImage(arrIma[this.imaActual+this.numImagenes]);
-        else
-            setImage(arrIma[this.imaActual]);
-
-        if(this.imaActual >= this.numImagenes-1)
-            this.imaActual=0;
-        else
-            this.imaActual++;
-    }
-
-    public void animarDisparo()
-    {
-        int i=0;
-        
-        if(this.izq) {
-         switch(i) {
-            case 0:
-                this.setImage(arrIma[this.imaActualDisparo]);
-                this.imaActualDisparo++;
-                i = 1;
-            break;
-                case 1:this.setImage(arrIma[this.imaActualDisparo]);
-                i = 0;
-            break;
+    {  
+     if(!this.getIzq())
+     {
+         if(!this.getBandAtaca())
+         {
+             if(this.getActual() >= 0 && getActual() < this.numImagenes)
+             {
+                 setImage(this.getPos(this.getActual()));
+                 this.setActual(this.getActual()+1);
+             }
+             else
+                 this.setActual(0);
          }
-         this.imaActualDisparo=(this.numImagenes*2);
-        }else{
-          switch(i) {
-            case 0:
-                this.setImage(arrIma[this.imaActualDisparo + this.numImagenesAtack]);
-                this.imaActualDisparo++;
-                i = 1;
-            break;
-                case 1:this.setImage(arrIma[this.imaActualDisparo + this.numImagenesAtack]);
-                i = 0;
-            break;
+         else
+         {
+             if(this.getActual() >= this.numImagenes && this.getActual() < numImagenes+numImagenesAtack)
+             {        
+                setImage(this.getPos(this.getActual()));
+                this.setActual(this.getActual()+1);
+             }
+             else
+                 this.setActual(numImagenes);
          }
-         this.imaActualDisparo=(this.numImagenes*2);
-        }
+     }
+     else
+     {
+         if(!this.getBandAtaca())
+         {
+             if(this.getActual() >= numImagenes+numImagenesAtack && this.getActual() < 2*this.numImagenes+numImagenesAtack)
+             {
+                setImage(this.getPos(this.getActual()));
+                this.setActual(this.getActual()+1);
+             }
+             else
+                this.setActual(numImagenes+numImagenesAtack);
+         }
+         else
+         {
+             if(this.getActual() >= 2*this.numImagenes+numImagenesAtack && this.getActual() < (2*numImagenes)+(2*numImagenesAtack))
+             {
+                setImage(this.getPos(this.getActual()));
+                this.setActual(this.getActual()+1);
+             }
+             else
+                this.setActual(2*numImagenes+numImagenesAtack);
+         }
+     }  
     }
     
-    public void disparaEnemy(GreenfootImage unaImagen,int unaPosicion,int x,int y)
+    public void setBandAtaca(boolean unaBan)
     {
-        Disparo disparoE = new Disparo(unaImagen,unaPosicion);
-        getWorld().addObject(disparoE,x,y);
+        this.bandAtaca=unaBan;
     }
     
-    public void disparaPlayer(GreenfootImage unaImagen,int unaPosicion,int x,int y)
+    public boolean getBandAtaca()
     {
-        BalaJugador disparoJ = new BalaJugador(unaImagen,unaPosicion);
-        getWorld().addObject(disparoJ,x,y);
+        return this.bandAtaca;
+    }
+    
+    public void disparar(int unTipo,int x,int y)
+    {
+        getWorld().addObject(new Bala(unTipo,this.getIzq()),x,y);
     }
     
     public GreenfootImage getPos(int unaPos)
@@ -140,5 +150,4 @@ abstract public class Animal extends Actor
     {
         this.arrIma[unaPos]=unaImagen;
     }
-
 }

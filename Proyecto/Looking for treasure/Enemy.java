@@ -39,8 +39,3 @@ abstract public class Enemy extends Animal
     
     abstract public void movimiento();
 }    
-
-
-
-
-   

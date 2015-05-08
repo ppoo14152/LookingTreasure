@@ -8,18 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Yanmega extends Enemy
 {  
-    Cyndaquil cindaquil;
-    Squirtle squirtle;
-    GreenfootImage imagen;
     private int disparo;
     
-   public Yanmega(Cyndaquil c,Squirtle s)
+   public Yanmega()
    {
       super(14,0);
-      cindaquil=c;
-      squirtle=s;
-      imagen = new GreenfootImage("aguijon.png");
-      for(int i = 0; i < super.getNumIma();i++) {
+      for(int i = 0; i < 14;i++) {
           super.insertaIma(i,"Yi");
       }
    }
@@ -28,7 +22,6 @@ public class Yanmega extends Enemy
    {
        this.movimiento();
        this.atacaJugador();
-       this.checaMuerte();
    }
     
    public void movimiento()
@@ -41,16 +34,9 @@ public class Yanmega extends Enemy
    public void atacaJugador()
    {
      this.disparo = Greenfoot.getRandomNumber(100);
-     if( this.disparo == 50 ) { 
-         super.disparaEnemy(imagen,2,this.getX(),this.getY());
+     if( this.disparo == 50 ) 
+     { 
+         super.disparar(4,this.getX(),this.getY());
      }
    }
-   
-    public void checaMuerte()
-    {
-        if( isTouching(BalaJugador.class) ) {
-            ((WorldTreasure)getWorld()).setPoints();
-            ((WorldTreasure)getWorld()).removeObject(this);
-        }
-    }
 }

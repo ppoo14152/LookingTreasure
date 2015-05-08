@@ -8,17 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Growlithe extends Enemy
 {
-    private Cyndaquil cindaquil;
-    private Squirtle squirtle;
     private int vida;
     
-    public Growlithe(Cyndaquil c, Squirtle s)
+    public Growlithe()
     {
         super(4,0);
-        cindaquil=c;
-        squirtle=s;
         vida=0;
-        for(int i = 0; i < super.getNumIma();i++)
+        for(int i = 0; i < 4;i++)
         {
             super.insertaIma(i,"Gd");
         }
@@ -28,7 +24,6 @@ public class Growlithe extends Enemy
     {
         this.quitaVida();
         this.movimiento();
-        this.checaMuerte();
     }
     
     public void movimiento()
@@ -37,14 +32,6 @@ public class Growlithe extends Enemy
        this.setLocation(this.getX()-5,this.getY());
        super.animar();
     } 
-    
-    public void checaMuerte()
-    {
-        if( isTouching(BalaJugador.class) ) {
-            ((WorldTreasure)getWorld()).setPoints();
-            ((WorldTreasure)getWorld()).removeObject(this);
-        }
-    }
     
     public void quitaVida()
     {

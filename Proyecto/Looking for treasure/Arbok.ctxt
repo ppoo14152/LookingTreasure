@@ -1,17 +1,10 @@
 #BlueJ class context
-comment0.params=c\ s
-comment0.target=Arbok(Cyndaquil,\ Squirtle)
+comment0.params=
+comment0.target=Arbok()
 comment1.params=
 comment1.target=void\ act()
 comment2.params=
 comment2.target=void\ movimiento()
 comment3.params=
 comment3.target=void\ ataca()
-comment4.params=
-comment4.target=Player\ detectaJugadorI()
-comment5.params=
-comment5.target=Player\ detectaJugadorD()
-comment6.params=
-comment6.target=void\ checaMuerte()
-comment6.text=\r\n\ Metodo\ para\ saber\ si\ el\ enemigo\ murio\r\n\ al\ momento\ de\ atacarlo\r\n
-numComments=7
+numComments=4

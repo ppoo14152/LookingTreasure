@@ -1,12 +1,10 @@
 #BlueJ class context
-comment0.params=c\ s
-comment0.target=Yanmega(Cyndaquil,\ Squirtle)
+comment0.params=
+comment0.target=Yanmega()
 comment1.params=
 comment1.target=void\ act()
 comment2.params=
 comment2.target=void\ movimiento()
 comment3.params=
 comment3.target=void\ atacaJugador()
-comment4.params=
-comment4.target=void\ checaMuerte()
-numComments=5
+numComments=4
