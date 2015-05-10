@@ -13,9 +13,11 @@ abstract public class Animal extends Actor
     private int numImagenesAtack;
     private int imaActual;
     private boolean bandAtaca;
+    private SimpleTimer time;
     
     public Animal(int numImaJug,int numImaAttack)
     {
+        this.time=new SimpleTimer();
         this.arrIma=null;
         this.izq=false;
         this.numImagenes=numImaJug;
@@ -138,7 +140,11 @@ abstract public class Animal extends Actor
     
     public void disparar(int unTipo,int x,int y)
     {
-        getWorld().addObject(new Bala(unTipo,this.getIzq()),x,y);
+        if(time.millisElapsed()>=1000) 
+        {
+            this.time.mark();
+            getWorld().addObject(new Bala(unTipo,this.getIzq()),x,y);
+        }
     }
     
     public GreenfootImage getPos(int unaPos)

@@ -35,10 +35,13 @@ public class Growlithe extends Enemy
     
     public void quitaVida()
     {
-        if(isTouching(Cyndaquil.class) || isTouching(Squirtle.class)) {
-            if(vida == 0){
-            ((WorldTreasure)getWorld()).setLives();
-            vida++;
+        if(isTouching(Cyndaquil.class) || isTouching(Squirtle.class)) 
+        {
+            if(vida == 0)
+            {
+                if(((WorldTreasure)getWorld()).getLives().getValue() >= 0)
+                      ((WorldTreasure)getWorld()).setLives();
+                 vida++;
            }
         }
     }

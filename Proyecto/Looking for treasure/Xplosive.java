@@ -13,6 +13,7 @@ public class Xplosive extends Actor
     public Xplosive(String unNombre)
     {
         this.imagen=new GreenfootImage(unNombre);
+        this.imagen.scale(this.imagen.getWidth()/4,this.imagen.getHeight()/4);
         this.setImage(imagen);
     }    
 }

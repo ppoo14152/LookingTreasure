@@ -10,12 +10,14 @@ public class Bala extends Actor
 {
     private int tipo;
     private boolean banDir;
+    private int cont;
     
     public Bala(int unTipo,boolean unaDir)
     {
         this.tipo=unTipo;
         this.setBanDir(unaDir);
         this.quienFue();
+        this.cont=0;
     }
     
     public void setBanDir(boolean unaDir)
@@ -73,37 +75,68 @@ public class Bala extends Actor
     public void aquienToque()
     {
         Actor aux;
-        Xplosive mancha;
         WorldTreasure mundo=(WorldTreasure)getWorld();
         
         switch(this.tipo)
         {
             case 1:
-            case 2:
-                    aux=this.getOneObjectAtOffset(!this.getBanDir() ? 100 : -100,0,Enemy.class);
-                    if(aux != null)
-                    {
-                        ((WorldTreasure)getWorld()).removeObject(aux);
-                    }
-                    mundo.setPoints();
-                    mancha=new Xplosive("ManchaVerde.png");
-                    mundo.addObject(mancha,this.getX(),this.getY());
-                    mundo.removeObject(mancha);
+            case 2: this.aquienElimino();
+                    mundo.setPoints();                    
             break;
             case 3:
                     aux=this.getOneObjectAtOffset(!this.getBanDir() ? 100 : -100,0,Player.class);
                     if(aux != null)
                     {
-                        ((WorldTreasure)getWorld()).removeObject(aux);
+                           if(((WorldTreasure)getWorld()).getLives().getValue() > 0)
+                           {
+                               ((WorldTreasure)getWorld()).setLives();
+                           }
                     }
             break;    
             case 4:
                    aux=this.getOneObjectAtOffset(0,100,Player.class);
                    if(aux != null)
                    {
-                        ((WorldTreasure)getWorld()).removeObject(aux);
+                       if(((WorldTreasure)getWorld()).getLives().getValue() > 0)
+                       {
+                           ((WorldTreasure)getWorld()).setLives();
+                       }
                    } 
             break;
+        }
+    }
+    
+    public void aquienElimino()
+    {
+        Actor aux;
+        Xplosive mancha;
+        WorldTreasure mundo=(WorldTreasure)getWorld();
+        
+        aux=this.getOneObjectAtOffset(!this.getBanDir() ? 100 : -100,0,Enemy.class);
+        if(aux != null)
+        {
+            mundo.removeObject(aux);
+            if(aux instanceof Growlithe)
+            {
+                mancha=new Xplosive("ManchaNaranja.png");
+                mundo.addObject(mancha,this.getX(),this.getY());
+                //if(cont==2)
+                //{
+                  //  mundo.removeObject(mancha);        
+                    //cont=0;
+                //}
+                //cont++;
+            }        
+            else if(aux instanceof Arbok)
+            {
+                mancha=new Xplosive("ManchaPurpura.png");
+                mundo.addObject(mancha,this.getX(),this.getY());
+            }        
+            else if(aux instanceof Yanmega)
+            {
+                mancha=new Xplosive("ManchaVerde.png");
+                mundo.addObject(mancha,this.getX(),this.getY());
+            }        
         }
     }
     
