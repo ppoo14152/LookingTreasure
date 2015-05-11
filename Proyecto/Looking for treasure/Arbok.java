@@ -20,11 +20,17 @@ public class Arbok extends Enemy
         }
     }
 
+    /**
+     * actua del enemigo arbok
+     */
     public void act()
     {
         this.movimiento();
     }
 
+    /**
+     * metodo para animar el movimiento de arbok
+     */
     public void movimiento()
     {  
         super.setIzq(true);

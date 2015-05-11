@@ -26,6 +26,9 @@ public class Growlithe extends Enemy
         this.movimiento();
     }
     
+    /**
+     * metodo para animar al enemigo
+     */
     public void movimiento()
     {  
        super.setIzq(true);
@@ -33,6 +36,9 @@ public class Growlithe extends Enemy
        super.animar();
     } 
     
+    /**
+     * metodo para restar vidas al jugador
+     */
     public void quitaVida()
     {
         if(isTouching(Cyndaquil.class) || isTouching(Squirtle.class)) 

@@ -20,21 +20,37 @@ abstract public class Enemy extends Animal
         this.setNum(0);
     }
     
+    /**
+     * actua del juagdor
+     */
     public void act() 
     {
         this.setLocation(this.getX()-2,this.getY());
     }
     
+    /**
+     * establecer numero de imagen
+     * @param un numero de imagen
+     */
     public void setNum(int unNum)
     {
         this.numeroImagen=unNum;
     }
-    
+   
+    /**
+     * obtener numero de iamgen
+     * @return un numero de imagen
+     */
     public int getNum()
     {
         return this.numeroImagen;
     }
     
+    /**
+     * cambia la imagen actual por otra 
+     * @param recibe la siguiente imagen a establecer
+     * @param un numero de imagen a establecer
+     */
     public void cambiaImagen(GreenfootImage unaImagen,int num)
     {
         this.setImage(unaImagen);
@@ -43,6 +59,10 @@ abstract public class Enemy extends Animal
     
     abstract public void movimiento();
     
+    /**
+     * Movimiento para animar al enemigo cambiando la badera de su posicion ya sa izquierda o derecha
+     * asi como cambiando las imagenes y estableciendo siguientes imagenes
+     */
     public void animar()
     {
         WorldTreasure mundo;
@@ -84,11 +104,19 @@ abstract public class Enemy extends Animal
             super.setActual(inicio);
     } 
     
+    /**
+     * establece un numero de iamgen
+     *@param un numero entero para establecer 
+     */
      public void setnumAtaca(int unNum)
     {
         this.numAtaca=unNum;
     }
     
+    /**
+     * devuelve el numero de imagen atacando
+     * @param el valor entero de ataque
+     */
     public int getnumAtaca()
     {
         return this.numAtaca;

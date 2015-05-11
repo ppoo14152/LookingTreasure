@@ -29,6 +29,9 @@ public class Squirtle extends Player
         super.tocoTesoro();
     }
     
+    /**
+     * metodo para animar el movimiento del jugador
+     */
     public void movimiento()
     {   
         if((Greenfoot.isKeyDown("X") || Greenfoot.isKeyDown("x")) && ataque == false) {

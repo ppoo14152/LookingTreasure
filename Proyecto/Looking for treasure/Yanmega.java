@@ -23,7 +23,10 @@ public class Yanmega extends Enemy
        this.movimiento();
        this.atacaJugador();
    }
-    
+   
+   /**
+    * metodod para animar al enemigo
+    */
    public void movimiento()
    {  
        super.setIzq(false);
@@ -31,6 +34,9 @@ public class Yanmega extends Enemy
        super.animar();
    }
    
+   /**
+    * metodo para atacar del enemigo 
+    */
    public void atacaJugador()
    {
      this.disparo = Greenfoot.getRandomNumber(100);

@@ -27,6 +27,11 @@ public class Disparo extends Actor
         this.timer = 0;
     }
     
+    /**
+     * Metodo para el movimiento del disparo
+     * del enemigo
+     */
+    
     public void act() 
     {
         if(direccion == 1) {

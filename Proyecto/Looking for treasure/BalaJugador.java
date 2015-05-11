@@ -22,6 +22,10 @@ public class BalaJugador extends Actor
         this.setImage(imagen);
     }
     
+    /**
+     * Metodo para el movimiento del diparo del jugador
+     */
+    
     public void act() 
     {
         if(direccion == 1) {

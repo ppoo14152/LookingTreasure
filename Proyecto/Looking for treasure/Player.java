@@ -42,21 +42,37 @@ abstract public class Player extends Animal
         this.setVelJugador(3);
     }
 
+    /**
+     * regresa el valor dela velocidad del jugador
+     * @return un numero entero con el valor de la velocidad del jugador
+     */
     public int getVelJugador()
     {
         return this.velJugador;
     }
     
+    /**
+     * establecer el valor de la velocidad del jugador
+     * @param un numeor entero con el valor a establecer de la velocidad
+     */
     public void setVelJugador(int unNum)
     {
         this.velJugador=unNum;
     }
     
+    /**
+     * establecer un numero de imagen
+     * @param un numero entero para el numero de imagen
+     */
     public void setNumImagen(int unNum)
     {
         this.numImagen=unNum;
     }
     
+    /**
+     * regresa el valor del numero de imagen
+     * @return un numero entero ocn el valor del numero de imagen
+     */
     public int getNumImagen()
     {
         return this.numImagen;
@@ -64,6 +80,9 @@ abstract public class Player extends Animal
     
     abstract public void movimiento();
     
+    /**
+     * metodo para checar si esta saltando
+     */
     public void saltar()
     {
         if(!this.estaSaltando)
@@ -73,7 +92,11 @@ abstract public class Player extends Animal
             this.caer();
         }
     }
-      
+     
+    /**
+     * metodo para checar si esta tocando el suelo
+     * @return true o false dependiendo de si lo esta o no tocando
+     */
     public boolean estaEnPiso()
     {
         boolean avisa;
@@ -84,7 +107,10 @@ abstract public class Player extends Animal
             
         return avisa;
     }
-      
+    
+    /**
+     * metodo para establecer y modificar sus coordenadas al momento de caer
+     */
     public void caida()
     {
         if(this.estaEnPiso()) {
@@ -94,7 +120,10 @@ abstract public class Player extends Animal
             this.caer();
         }   
     }
-            
+     
+    /**
+     * metodo para hacer que el jugador valla hacia abajo
+     */
     public void caer()
     {
         this.setLocation(getX(),getY()+velocidadSalto);
@@ -102,12 +131,23 @@ abstract public class Player extends Animal
         this.estaSaltando=false;
     }  
     
+    /**
+     * metodo para cambiar de imagen
+     * @param una imagen a establecer
+     * @param un numero de imagen
+     * 
+     */
     public void cambiaImagen(GreenfootImage unaImagen,int numI)
     {
          this.setImage(unaImagen);
          this.setNumImagen(numI);
     }
     
+    /**
+     * metodo para insertar la imagen 
+     * @param una posicion en el arreglo
+     * @param un nombre de la imagen
+     */
     public void insertaIma(int unaI,String unaCad)
     {
         super.setPos(unaI,new GreenfootImage(unaCad+(unaI+1)+".png"));
@@ -115,6 +155,9 @@ abstract public class Player extends Animal
         super.getPos(unaI+this.numJug+this.numTes+this.numAtaca).mirrorHorizontally();
     }   
 
+    /**
+     * metodo para animar al jugador checando desde si toca el tesoro hasta cambiar el numero de imagen a usar 
+     */
     public void animar()
     {
         WorldTreasure mundo;
@@ -171,27 +214,46 @@ abstract public class Player extends Animal
         else
             super.setActual(inicio);
     }
-    
+   
+    /**
+     * cambiar la bandera del estado del tesoro si lo toco o no
+     * @param true o false dependiendo
+     */
     public void setBanTesoro(boolean unaBan)
     {
         this.bandTesoro=unaBan;
     }
     
+    /**
+     * obtener el estado de la bandera del tesoro
+     * @return true o false
+     */
     public boolean getBanTesoro()
     {
         return this.bandTesoro;
     }
     
+    /**
+     * establece el numero de imagen a atacar
+     * @param un numero entero
+     */
     public void setnumAtaca(int unNum)
     {
         this.numAtaca=unNum;
     }
     
+    /**
+     * obtener el numero de imagen atacando
+     * @return un numeor entero
+     */
     public int getnumAtaca()
     {
         return this.numAtaca;
     }
     
+    /**
+     * metodo para checar si toco el tesoro
+     */
     public void tocoTesoro()
     {
         WorldTreasure mundo=(WorldTreasure)getWorld();

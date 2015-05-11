@@ -27,6 +27,9 @@ public class Key extends Bonus
         this.tocoLLave();
     }
     
+    /**
+     * Metodo para mover en diversas posisciones la llave
+     */
     public void mueveLlave()
     {
       if(this.cont == this.lim) {
@@ -36,7 +39,10 @@ public class Key extends Bonus
             this.cont++;
         }  
     }
-        
+   
+    /**
+     * metodo para checar si alguno de los jugadores toco la llave
+     */
     public void tocoLLave()
     {
         WorldTreasure mundo=(WorldTreasure)getWorld();

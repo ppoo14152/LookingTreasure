@@ -30,6 +30,9 @@ public class Cyndaquil extends Player
         super.tocoTesoro();
     }
     
+    /**
+     * metodo para animar el movimiento del juagdor
+     */
     public void movimiento()
     {
         

@@ -23,6 +23,10 @@ public class Button extends Actor
         }
     }
     
+    /**
+     * Metodo para saber si se dio click 
+     * 
+     */
     public void act()
     {
        if(Greenfoot.mouseClicked(this))
@@ -31,11 +35,19 @@ public class Button extends Actor
        }
     }
     
+    /**
+     * Metodo para regresar el valor si se a dado un click en algun boton
+     * @return sedioClick;
+     */
     public boolean getSedioclick()
     {
         return this.sedioClick;
     }
     
+    /**
+     * Metodo para cambiar el valor del click en los botones
+     * @param boolean unClick
+     */
     public void setSedioclick(boolean unClick)
     {
         this.sedioClick=unClick;

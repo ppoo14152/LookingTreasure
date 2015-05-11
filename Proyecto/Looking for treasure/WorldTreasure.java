@@ -75,6 +75,9 @@ public class WorldTreasure extends World
         this.creaMenu();
     }
     
+    /**
+     * metodo para actualizar los records de los jugadores
+     */
     public void actualizaRecord()
     {
         if (UserInfo.isStorageAvailable()) 
@@ -88,12 +91,18 @@ public class WorldTreasure extends World
         }
     }
     
+    /**
+     * metodo para deter el sonido
+     */
     public void stopped()
     {
         super.stopped();
         sonido.pause();
     }
     
+    /**
+     * metodo para crear una llave dependiendo el numero de puntos
+     */
     public void apareceLlave()
     {
         if(this.msjPoints.getValue() == 1000 && !this.getExisteLlave()) 
@@ -116,11 +125,19 @@ public class WorldTreasure extends World
         }
     }
     
+    /**
+     * metodo para cambiar el estado de la llave si esciste o no
+     * @param true o false 
+     */
     public void setExisteLlave(boolean unaBan)
     {
         this.existeLlave=unaBan;
     }
 
+    /**
+     * metodo para saber si existe o no la llave
+     * @return true o false respectivamente
+     */
     public boolean getExisteLlave()
     {
         return this.existeLlave;
@@ -136,6 +153,9 @@ public class WorldTreasure extends World
         return msjPoints;
     }
     
+    /**
+     * metodo para modificar los puntos
+     */
     public void setPoints()
     {
         msjPoints.add(100);
@@ -150,6 +170,9 @@ public class WorldTreasure extends World
         return msjLives;
     }
     
+    /**
+     * metodo para modificar los valores de las vidas
+     */
     public void setLives()
     {
         this.msjLives.add(-1);
@@ -345,11 +368,18 @@ public class WorldTreasure extends World
         return this.level;
     }
     
+    /**
+     * metodo para cambiar de nivel
+     * @param el numero del nivel
+     */
     public void setLevel(int unLevel)
     {
         this.level = unLevel;
     }
 
+    /**
+     * metodo para mostrar el tiempo
+     */
     public void tiempo()
     {
         if(time.millisElapsed()>=1000) 
@@ -359,6 +389,9 @@ public class WorldTreasure extends World
         }
     }
     
+    /**
+     * metodo para crear enemigos aleatoriamente dependiendo del nivel
+     */
     public void creaEnemigos()
     {
         numEnemy = Greenfoot.getRandomNumber(80);
@@ -402,6 +435,9 @@ public class WorldTreasure extends World
         }
     }
     
+    /**
+     * metodo para mover la parte del scrool
+     */
     public void mueveScroll()
     {
        Floor inicial=listaF.getFirst();
