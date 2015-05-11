@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.params=unaImagen\ unaPosicion
-comment0.target=BalaJugador(greenfoot.GreenfootImage,\ int)
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Metodo\ para\ el\ movimiento\ del\ diparo\ del\ jugador\r\n
-numComments=2
