@@ -120,12 +120,6 @@ public class Bala extends Actor
             {
                 mancha=new Xplosive("ManchaNaranja.png");
                 mundo.addObject(mancha,this.getX(),this.getY());
-                //if(cont==2)
-                //{
-                  //  mundo.removeObject(mancha);        
-                    //cont=0;
-                //}
-                //cont++;
             }        
             else if(aux instanceof Arbok)
             {

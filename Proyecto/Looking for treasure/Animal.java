@@ -189,7 +189,7 @@ abstract public class Animal extends Actor
         return this.bandAtaca;
     }
     
-    /*
+    /**
      * Metodo para crear un objeto bala en el mundo simulando un diparo
      * @param un tipo de imagen a disparar
      * @param una posicion en x 

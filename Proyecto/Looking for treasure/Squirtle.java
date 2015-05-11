@@ -41,7 +41,6 @@ public class Squirtle extends Player
                 this.setLocation(getX()+super.getVelJugador(),getY());
             }
             super.animar();
-            //this.posicion = 0;
         }
 
         if((Greenfoot.isKeyDown("Z") || Greenfoot.isKeyDown("z")) && ataque == false) {
@@ -50,7 +49,6 @@ public class Squirtle extends Player
                 setLocation(getX()-super.getVelJugador(),getY());
             }
             super.animar();
-            //this.posicion = 1;
         }
 
         if((Greenfoot.isKeyDown("q") || Greenfoot.isKeyDown("Q")) && ataque == false) {
