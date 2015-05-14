@@ -36,7 +36,7 @@ public class Arbok extends Enemy
         super.setIzq(true);
         this.setLocation(getX()-2,getY());
         this.animar();
-        if(this.cont == 8) 
+        if(this.cont == 80) 
         {
             super.setBandAtaca(true);
             for(int i=0; i < super.getnumAtaca(); i++)

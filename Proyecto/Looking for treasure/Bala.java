@@ -11,9 +11,11 @@ public class Bala extends Actor
     private int tipo;
     private boolean banDir;
     private int cont;
+    private int pause;
     
     public Bala(int unTipo,boolean unaDir)
     {
+        this.pause = 10;
         this.tipo=unTipo;
         this.setBanDir(unaDir);
         this.quienFue();
@@ -90,6 +92,7 @@ public class Bala extends Actor
                            if(((WorldTreasure)getWorld()).getLives().getValue() > 0)
                            {
                                ((WorldTreasure)getWorld()).setLives();
+                               ((WorldTreasure)getWorld()).removeObject(this);
                            }
                     }
             break;    
@@ -100,6 +103,7 @@ public class Bala extends Actor
                        if(((WorldTreasure)getWorld()).getLives().getValue() > 0)
                        {
                            ((WorldTreasure)getWorld()).setLives();
+                           ((WorldTreasure)getWorld()).removeObject(this);
                        }
                    } 
             break;
@@ -130,7 +134,9 @@ public class Bala extends Actor
             {
                 mancha=new Xplosive("ManchaVerde.png");
                 mundo.addObject(mancha,this.getX(),this.getY());
-            }        
+            }
+            
+            
         }
     }
     
@@ -138,5 +144,6 @@ public class Bala extends Actor
     {
         this.mueveBala();
         this.aquienToque();
+        
     }
 }

@@ -43,7 +43,12 @@ public class WorldTreasure extends World
     private ScoreBoard record;
     private GreenfootSound intro;
     private GreenfootSound sonido;
-
+    
+    private boolean levelUno;
+    private boolean levelDos;
+    private boolean levelTres;
+    
+    
     public WorldTreasure()
     {    
         super(TAM_X,TAM_Y, 1,false);
@@ -68,11 +73,22 @@ public class WorldTreasure extends World
         this.pointsT=new SimpleTimer();
         this.msjPoints=new Counter("Puntos:  ");
         this.msjPoints.setValue(0);
+        
+        boolean levelUno = false;
+        boolean levelDos = false;
+        boolean levelTres = false;
+    
+    
         this.sonido = new GreenfootSound("The Rival.mp3");
         this.intro=new GreenfootSound("intro.mp3");
         this.estaJuego=false;
         this.perdio=false;
         this.creaMenu();
+    }
+    
+    public Counter getTime()
+    {
+        return msjClock;
     }
     
     /**
@@ -111,7 +127,7 @@ public class WorldTreasure extends World
             this.addObject(this.llave,200,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 7000 && !this.getExisteLlave()) 
+        else if(this.msjPoints.getValue() == 2000 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
             this.addObject(this.llave,200,300);
@@ -196,7 +212,6 @@ public class WorldTreasure extends World
                 this.addObject(gano,350,270);
                 Greenfoot.stop();
             }*/
-            
             if(this.msjLives.getValue() <= 0) 
             {
                 this.setBackground("gameover.png");
@@ -205,6 +220,10 @@ public class WorldTreasure extends World
                 //this.addObject(perdio, 350, 280); 
                 Greenfoot.stop();
                 sonido.stop();
+                this.removeObjects(this.getObjects(Animal.class));
+                this.removeObjects(this.getObjects(Counter.class));
+                this.removeObjects(this.getObjects(Signboard.class));
+                this.removeObjects(this.getObjects(FondoImagenes.class));
             }
             this.apareceLlave();
             this.tiempo();
@@ -397,6 +416,12 @@ public class WorldTreasure extends World
         numEnemy = Greenfoot.getRandomNumber(80);
         if(this.getLevel() == 1)
         {
+            
+            if(this.levelUno == false) {
+                this.addObject(new Signboard("Level: 1"),650,30);
+                this.levelUno = true;
+            }
+            
             switch(numEnemy) 
             {
                 case 10:
@@ -407,6 +432,12 @@ public class WorldTreasure extends World
         else if(this.getLevel() == 2)
         {
             this.setBackground("fondo2.jpg");
+            
+             if(this.levelDos == false) {
+                this.addObject(new Signboard("Level: 2"),650,30);
+                this.levelDos = true;
+            }
+            
             switch(numEnemy) 
             {
                 case 10:
@@ -420,6 +451,11 @@ public class WorldTreasure extends World
         else if(this.getLevel() == 3) 
         {
             this.setBackground("fondo1.jpg");
+            
+             if(this.levelTres == false) {
+                this.addObject(new Signboard("Level: 3"),650,30);
+                this.levelTres = true;
+            }
             switch(numEnemy) 
             {
                 case 10:
