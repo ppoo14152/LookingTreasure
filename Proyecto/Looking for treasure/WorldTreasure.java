@@ -121,19 +121,19 @@ public class WorldTreasure extends World
      */
     public void apareceLlave()
     {
-        if(this.msjPoints.getValue() == 1000 && !this.getExisteLlave()) 
+        if(this.msjPoints.getValue() == 100 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
             this.addObject(this.llave,200,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 2000 && !this.getExisteLlave()) 
+        else if(this.msjPoints.getValue() == 800 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
             this.addObject(this.llave,200,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 15000 && !this.getExisteLlave()) 
+        else if(this.msjPoints.getValue() == 1500 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
             this.addObject(this.llave,200,300);
@@ -232,8 +232,7 @@ public class WorldTreasure extends World
             
             if(this.getLives().getValue()==0 || this.getLevel()==3)
             {
-                this.actualizaRecord();   
-                Greenfoot.stop();
+                this.actualizaRecord();  
             }
         }
     }
