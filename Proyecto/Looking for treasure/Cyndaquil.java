@@ -61,14 +61,17 @@ public class Cyndaquil extends Player
             super.saltar();
         }
         
-        if(Greenfoot.isKeyDown("m") )
+        if(Greenfoot.isKeyDown("p") )
         {
             if(this.cont == 8) 
             {
                 super.setBandAtaca(true);
-                super.disparar(2,this.getX(),this.getY());
-                super.setBandAtaca(false);
-                this.cont=0;
+                if(!super.getBanTesoro())
+                {
+                    super.disparar(2,this.getX(),this.getY());
+                    super.setBandAtaca(false);
+                    this.cont=0;
+                }
             }
             this.cont++;
         }       

@@ -60,6 +60,8 @@ public class Squirtle extends Player
             if(this.cont == 8) 
             {
                 super.setBandAtaca(true);
+                if(!super.getBanTesoro())
+                {
                 for(int i=0; i < super.getnumAtaca(); i++)
                 {
                     super.animar();
@@ -67,6 +69,7 @@ public class Squirtle extends Player
                 super.disparar(1,this.getX(),this.getY());
                 super.setBandAtaca(false);
                 this.cont=0;
+                }
             }
             this.cont++;
         }

@@ -68,7 +68,7 @@ public class WorldTreasure extends World
 
         this.livesT=new SimpleTimer();
         this.msjLives=new Counter("Vidas:  ");
-        this.msjLives.setValue(1);
+        this.msjLives.setValue(10);
 
         this.pointsT=new SimpleTimer();
         this.msjPoints=new Counter("Puntos:  ");
@@ -133,11 +133,12 @@ public class WorldTreasure extends World
             this.addObject(this.llave,200,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 1500 && !this.getExisteLlave()) 
+        else if(this.msjPoints.getValue() == 1000 )//&& !this.getExisteLlave()) 
         {
-            this.llave=new Key();
-            this.addObject(this.llave,200,300);
-            this.setExisteLlave(true);
+            
+            //this.llave=new Key();
+            //this.addObject(this.llave,200,300);
+            //this.setExisteLlave(true);
         }
     }
     
@@ -204,30 +205,25 @@ public class WorldTreasure extends World
         }  
         else 
         {
-           /* if(this.msjPoints.getValue() == 500)
+            if(this.msjPoints.getValue() == 1000)
             {
-                Signboard gano;
-                gano=new Signboard("Ganaste");  
-                this.addObject(gano,350,270);
-                Greenfoot.stop();
-            }*/
+                this.setBackground("winner.png");
+            }
+              
             if(this.msjLives.getValue() <= 0) 
             {
                 this.setBackground("gameover.png");
-                //Signboard perdio;
-                //perdio=new Signboard("Perdiste");
-                //this.addObject(perdio, 350, 280); 
-                //Greenfoot.stop();//----------------------------
-                sonido.stop();//-------------------------------the rival
+                sonido.stop();//the rival
                 
                 this.removeObjects(this.getObjects(Animal.class));
                 this.removeObjects(this.getObjects(Counter.class));
                 this.removeObjects(this.getObjects(Signboard.class));
-                this.removeObjects(this.getObjects(FondoImagenes.class));//------------------------
+                this.removeObjects(this.getObjects(FondoImagenes.class));
                 this.addObject(this.arrBotones[4],730,530);
                 this.setLevel(0);
                 
-                if(this.arrBotones[4].getSedioclick()) {
+                if(this.arrBotones[4].getSedioclick()) 
+                {
                     this.arrBotones[4].setSedioclick(false);
                     this.getCyndaquil().setBanTesoro(false);//resetear baderas del tesoro
                     this.getSquirtle().setBanTesoro(false);//resetear banderas el tesoro
@@ -236,16 +232,15 @@ public class WorldTreasure extends World
                     this.pintaMenu();
                     this.estaJuego=false;
                 }
-                
             }
             this.apareceLlave();
             this.tiempo();
+            this.creaEnemigos();
             
-            if(this.msjLives.getValue() > 0 && this.getLevel() >= 1 ) {
+            if(this.getLives().getValue() > 0 && this.getLevel() >= 1 ) 
+            {
                 this.mueveScroll();
             }
-            
-            this.creaEnemigos();
             
             if(this.getLives().getValue()==0 || this.getLevel()==3)
             {
@@ -312,6 +307,10 @@ public class WorldTreasure extends World
         super.setBackground("records.png");
         this.addObject(this.record,400,200);
         this.addObject(this.arrBotones[4],700,500);
+        if(this.arrBotones[4].getSedioclick())
+        {
+            this.removeObject(this.record);
+        }
     }
 
     /**
@@ -448,7 +447,7 @@ public class WorldTreasure extends World
         }
         else if(this.getLevel() == 2)
         {
-            this.setBackground("fondo2.jpg");
+            this.setBackground("2.jpg");
             
              if(this.levelDos == false) {
                 this.addObject(new Signboard("Level: 2"),650,30);
@@ -467,7 +466,7 @@ public class WorldTreasure extends World
         } 
         else if(this.getLevel() == 3) 
         {
-            this.setBackground("fondo1.jpg");
+            this.setBackground("3.jpg");
             
              if(this.levelTres == false) {
                 this.addObject(new Signboard("Level: 3"),650,30);

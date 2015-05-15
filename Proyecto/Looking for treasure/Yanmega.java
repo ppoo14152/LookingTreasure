@@ -13,7 +13,8 @@ public class Yanmega extends Enemy
    public Yanmega()
    {
       super(14,0);
-      for(int i = 0; i < 14;i++) {
+      for(int i = 0; i < 14;i++) 
+      {
           super.insertaIma(i,"Yi");
       }
    }
