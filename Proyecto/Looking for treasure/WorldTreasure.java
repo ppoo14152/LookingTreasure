@@ -68,7 +68,7 @@ public class WorldTreasure extends World
 
         this.livesT=new SimpleTimer();
         this.msjLives=new Counter("Vidas:  ");
-        this.msjLives.setValue(10);
+        this.msjLives.setValue(1);
 
         this.pointsT=new SimpleTimer();
         this.msjPoints=new Counter("Puntos:  ");
@@ -163,7 +163,6 @@ public class WorldTreasure extends World
      * regresa la cantidad de puntos
      * @return numero de puntos
      */
-
     public Counter getPoints()
     {
         return msjPoints;
@@ -218,22 +217,41 @@ public class WorldTreasure extends World
                 //Signboard perdio;
                 //perdio=new Signboard("Perdiste");
                 //this.addObject(perdio, 350, 280); 
-                Greenfoot.stop();
-                sonido.stop();
+                //Greenfoot.stop();//----------------------------
+                sonido.stop();//-------------------------------the rival
+                
                 this.removeObjects(this.getObjects(Animal.class));
                 this.removeObjects(this.getObjects(Counter.class));
                 this.removeObjects(this.getObjects(Signboard.class));
-                this.removeObjects(this.getObjects(FondoImagenes.class));
+                this.removeObjects(this.getObjects(FondoImagenes.class));//------------------------
+                this.addObject(this.arrBotones[4],730,530);
+                this.setLevel(0);
+                
+                if(this.arrBotones[4].getSedioclick()) {
+                    this.arrBotones[4].setSedioclick(false);
+                    this.getCyndaquil().setBanTesoro(false);//resetear baderas del tesoro
+                    this.getSquirtle().setBanTesoro(false);//resetear banderas el tesoro
+                    this.msjLives.setValue(10);
+                    this.msjPoints.setValue(0);
+                    this.pintaMenu();
+                    this.estaJuego=false;
+                }
+                
             }
             this.apareceLlave();
             this.tiempo();
-            this.mueveScroll();
+            
+            if(this.msjLives.getValue() > 0 && this.getLevel() >= 1 ) {
+                this.mueveScroll();
+            }
+            
             this.creaEnemigos();
             
             if(this.getLives().getValue()==0 || this.getLevel()==3)
             {
                 this.actualizaRecord();  
             }
+            
         }
     }
 
@@ -489,5 +507,23 @@ public class WorldTreasure extends World
             addObject(piso,this.getWidth()+(piso.getImage().getWidth()/2),508);
             listaF.add(piso);
         } 
+    }
+    
+    /**
+     * Regresa el personaje para poder ingresar a sus variables
+     * @return personaje usado
+     */
+    public Cyndaquil getCyndaquil()
+    {
+       return cyndaquil;
+    }
+    
+     /**
+     * Regresa el personaje para poder ingresar a sus variables
+     * @return el personaje usado
+     */
+    public Squirtle getSquirtle()
+    {
+        return squirtle;
     }
 }
