@@ -57,7 +57,7 @@ public class WorldTreasure extends World
         cyndaquil = new Cyndaquil();
         squirtle = new Squirtle();
         
-        record= new ScoreBoard(400,200);
+        record = new ScoreBoard(400,200);
         this.listaF=new LinkedList<Floor>();
         this.existeLlave=false;
         
@@ -219,6 +219,8 @@ public class WorldTreasure extends World
                 this.removeObjects(this.getObjects(Counter.class));
                 this.removeObjects(this.getObjects(Signboard.class));
                 this.removeObjects(this.getObjects(FondoImagenes.class));
+                this.remueveObjetos();
+                this.listaF.clear();
                 this.addObject(this.arrBotones[4],730,530);
                 this.setLevel(0);
                 
@@ -248,6 +250,19 @@ public class WorldTreasure extends World
             }
             
         }
+    }
+    
+    /**
+     * remueve todos los personajes asi como los letreros 
+     * e imagenes correspondientes del nivel actual al nivel
+     * inicial
+     */
+    public void remueveObjetos()
+    {
+        this.removeObjects(this.getObjects(Animal.class));
+        this.removeObjects(this.getObjects(Counter.class));
+        this.removeObjects(this.getObjects(Signboard.class));
+        this.removeObjects(this.getObjects(FondoImagenes.class));   
     }
 
     /**
@@ -374,6 +389,7 @@ public class WorldTreasure extends World
                             this.creditosP();
                     break;
                     case 4: 
+                            this.removeObjects(this.getObjects(ScoreBoard.class));
                             this.pintaMenu();
                     break;        
                 }
