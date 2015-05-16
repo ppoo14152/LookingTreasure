@@ -28,10 +28,12 @@ public class WorldTreasure extends World
     private SimpleTimer time;
     private SimpleTimer livesT;
     private SimpleTimer pointsT;
+    private SimpleTimer starsT;
     private Counter msjClock;
     private Counter msjLives;
     private Counter msjPoints;
-
+    private Counter msjStars;
+    
     private LinkedList<Floor> listaF;
     private Button[] arrBotones;
 
@@ -52,7 +54,7 @@ public class WorldTreasure extends World
     public WorldTreasure()
     {    
         super(TAM_X,TAM_Y, 1,false);
-        setActOrder(Floor.class,FloorTwo.class,Key.class,Treasure.class,Cyndaquil.class,Squirtle.class,Arbok.class,Bala.class);
+        setActOrder(Floor.class,FloorTwo.class,Key.class,Treasure.class,Star.class,Cyndaquil.class,Squirtle.class,Arbok.class,Bala.class);
         
         cyndaquil = new Cyndaquil();
         squirtle = new Squirtle();
@@ -68,16 +70,19 @@ public class WorldTreasure extends World
 
         this.livesT=new SimpleTimer();
         this.msjLives=new Counter("Vidas:  ");
-        this.msjLives.setValue(10);
+        this.msjLives.setValue(30);
 
         this.pointsT=new SimpleTimer();
         this.msjPoints=new Counter("Puntos:  ");
         this.msjPoints.setValue(0);
         
+        this.starsT=new SimpleTimer();
+        this.msjStars=new Counter("Stars:  ");
+        this.msjStars.setValue(0);
+        
         boolean levelUno = false;
         boolean levelDos = false;
         boolean levelTres = false;
-    
     
         this.sonido = new GreenfootSound("The Rival.mp3");
         this.intro=new GreenfootSound("intro.mp3");
@@ -125,13 +130,13 @@ public class WorldTreasure extends World
         if(this.msjPoints.getValue() == 1000 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
-            this.addObject(this.llave,200,300);
+            this.addObject(this.llave,420,300);
             this.setExisteLlave(true);
         }
         else if(this.msjPoints.getValue() == 3000 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
-            this.addObject(this.llave,200,300);
+            this.addObject(this.llave,420,300);
             this.setExisteLlave(true);
         }
         else if(this.msjPoints.getValue() == 10000 )//&& !this.getExisteLlave()) 
@@ -175,6 +180,19 @@ public class WorldTreasure extends World
     {
         msjPoints.add(100);
     }
+    
+    public Counter getStars()
+    {
+        return msjStars;
+    }
+    
+    /**
+     * metodo para modificar los puntos
+     */
+    public void setStars()
+    {
+        msjStars.add(+1);
+    }
 
     /**
      * metodo para regresar las vidas restantes
@@ -208,6 +226,7 @@ public class WorldTreasure extends World
             this.apareceLlave();
             this.tiempo();
             this.creaEnemigos();
+            this.creaEstrellas();
             
             if(this.getLives().getValue() > 0 && this.getLevel() >= 1 ) 
             {
@@ -237,6 +256,7 @@ public class WorldTreasure extends World
         this.removeObjects(this.getObjects(Signboard.class));
         this.removeObjects(this.getObjects(FondoImagenes.class));
         this.removeObjects(this.getObjects(Key.class));
+        this.removeObjects(this.getObjects(Star.class));
         this.remueveObjetos();
         this.listaF.clear();
         this.addObject(this.arrBotones[4],730,530);
@@ -295,6 +315,7 @@ public class WorldTreasure extends World
             addObject(msjLives,100,30);
             addObject(msjClock,220,30);
             addObject(msjPoints,340,30); 
+            addObject(msjStars,460,30);
         }
     }
     
@@ -442,6 +463,17 @@ public class WorldTreasure extends World
         }
     }
     
+    public void creaEstrellas()
+    {
+        int num = Greenfoot.getRandomNumber(80);
+        switch(num) 
+        {
+            case 10:
+                    addObject(new Star(), getWidth(),getHeight()-250);
+            break;
+        }
+    }
+    
     /**
      * metodo para crear enemigos aleatoriamente dependiendo del nivel
      */
@@ -451,7 +483,8 @@ public class WorldTreasure extends World
         if(this.getLevel() == 1)
         {
             
-            if(this.levelUno == false) {
+            if(this.levelUno == false)
+            {
                 this.addObject(new Signboard("Level: 1"),650,30);
                 this.levelUno = true;
             }
@@ -466,8 +499,8 @@ public class WorldTreasure extends World
         else if(this.getLevel() == 2)
         {
             this.setBackground("2.jpg");
-            
-             if(this.levelDos == false) {
+             if(this.levelDos == false)
+             {
                 this.addObject(new Signboard("Level: 2"),650,30);
                 this.levelDos = true;
             }
@@ -485,8 +518,8 @@ public class WorldTreasure extends World
         else if(this.getLevel() == 3) 
         {
             this.setBackground("3.jpg");
-            
-             if(this.levelTres == false) {
+             if(this.levelTres == false)
+             {
                 this.addObject(new Signboard("Level: 3"),650,30);
                 this.levelTres = true;
             }
