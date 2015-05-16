@@ -114,6 +114,7 @@ public class WorldTreasure extends World
     {
         super.stopped();
         sonido.pause();
+        intro.pause();    
     }
     
     /**
@@ -121,24 +122,22 @@ public class WorldTreasure extends World
      */
     public void apareceLlave()
     {
-        if(this.msjPoints.getValue() == 100 && !this.getExisteLlave()) 
+        if(this.msjPoints.getValue() == 1000 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
             this.addObject(this.llave,200,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 800 && !this.getExisteLlave()) 
+        else if(this.msjPoints.getValue() == 3000 && !this.getExisteLlave()) 
         {
             this.llave=new Key();
             this.addObject(this.llave,200,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 1000 )//&& !this.getExisteLlave()) 
+        else if(this.msjPoints.getValue() == 10000 )//&& !this.getExisteLlave()) 
         {
-            
-            //this.llave=new Key();
-            //this.addObject(this.llave,200,300);
-            //this.setExisteLlave(true);
+             this.setBackground("winner.png");
+             this.borrar();
         }
     }
     
@@ -200,41 +199,12 @@ public class WorldTreasure extends World
     public void act()
     { 
       
-        if(!estaJuego) {  
+        if(!estaJuego) 
+        {  
             this.checaBotones();
         }  
         else 
         {
-            if(this.msjPoints.getValue() == 1000)
-            {
-                this.setBackground("winner.png");
-            }
-              
-            if(this.msjLives.getValue() <= 0) 
-            {
-                this.setBackground("gameover.png");
-                sonido.stop();//the rival
-                
-                this.removeObjects(this.getObjects(Animal.class));
-                this.removeObjects(this.getObjects(Counter.class));
-                this.removeObjects(this.getObjects(Signboard.class));
-                this.removeObjects(this.getObjects(FondoImagenes.class));
-                this.remueveObjetos();
-                this.listaF.clear();
-                this.addObject(this.arrBotones[4],730,530);
-                this.setLevel(0);
-                
-                if(this.arrBotones[4].getSedioclick()) 
-                {
-                    this.arrBotones[4].setSedioclick(false);
-                    this.getCyndaquil().setBanTesoro(false);//resetear baderas del tesoro
-                    this.getSquirtle().setBanTesoro(false);//resetear banderas el tesoro
-                    this.msjLives.setValue(10);
-                    this.msjPoints.setValue(0);
-                    this.pintaMenu();
-                    this.estaJuego=false;
-                }
-            }
             this.apareceLlave();
             this.tiempo();
             this.creaEnemigos();
@@ -243,12 +213,42 @@ public class WorldTreasure extends World
             {
                 this.mueveScroll();
             }
+              
+            else if(this.getLives().getValue() <= 0) 
+            {
+                this.setBackground("gameover.png");
+                this.borrar();
+            }
             
-            if(this.getLives().getValue()==0 || this.getLevel()==3)
+            else if(this.getLives().getValue()==0 || this.getLevel()==3)
             {
                 this.actualizaRecord();  
             }
-            
+        }
+    }
+   
+    public void borrar()
+    {
+        sonido.stop();//the rival
+        this.removeObjects(this.getObjects(Animal.class));
+        this.removeObjects(this.getObjects(Counter.class));
+        this.removeObjects(this.getObjects(Signboard.class));
+        this.removeObjects(this.getObjects(FondoImagenes.class));
+        this.removeObjects(this.getObjects(Key.class));
+        this.remueveObjetos();
+        this.listaF.clear();
+        this.addObject(this.arrBotones[4],730,530);
+        this.setLevel(0);
+                
+        if(this.arrBotones[4].getSedioclick()) 
+        {
+            this.arrBotones[4].setSedioclick(false);
+            this.getCyndaquil().setBanTesoro(false);//resetear baderas del tesoro
+            this.getSquirtle().setBanTesoro(false);//resetear banderas el tesoro
+            this.msjLives.setValue(10);
+            this.msjPoints.setValue(0);
+            this.pintaMenu();
+            this.estaJuego=false;
         }
     }
     

@@ -41,7 +41,7 @@ abstract public class Player extends Animal
         this.estaSaltando=true;
         this.setVelJugador(3);
     }
-
+    
     /**
      * regresa el valor dela velocidad del jugador
      * @return un numero entero con el valor de la velocidad del jugador
