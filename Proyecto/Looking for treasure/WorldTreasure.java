@@ -230,6 +230,8 @@ public class WorldTreasure extends World
     public void borrar()
     {
         sonido.stop();//the rival
+        this.getCyndaquil().setBanTesoro(false);
+        this.getSquirtle().setBanTesoro(false);
         this.removeObjects(this.getObjects(Animal.class));
         this.removeObjects(this.getObjects(Counter.class));
         this.removeObjects(this.getObjects(Signboard.class));
