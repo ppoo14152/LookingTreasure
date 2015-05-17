@@ -15,8 +15,8 @@ public class Star extends Bonus
     
     public void act()
     {
-        this.tocoEstrella();
         this.movimiento();
+        this.tocoEstrella();
     }
     
     public void tocoEstrella()
@@ -25,7 +25,8 @@ public class Star extends Bonus
         if( isTouching(Cyndaquil.class) || isTouching(Squirtle.class)) 
         {
             mundo.setStars();
-            this.removeTouching(Star.class);
+            //this.removeTouching(Star.class);
+            this.getWorld().removeObject(this);
         }
     }
     

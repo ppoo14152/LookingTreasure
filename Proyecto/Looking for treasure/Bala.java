@@ -135,8 +135,6 @@ public class Bala extends Actor
                 mancha=new Xplosive("ManchaVerde.png");
                 mundo.addObject(mancha,this.getX(),this.getY());
             }
-            
-            
         }
     }
     
@@ -144,6 +142,5 @@ public class Bala extends Actor
     {
         this.mueveBala();
         this.aquienToque();
-        
     }
 }

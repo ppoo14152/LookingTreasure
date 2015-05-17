@@ -50,6 +50,8 @@ public class WorldTreasure extends World
     private boolean levelDos;
     private boolean levelTres;
     
+    private int acumuladorPuntos;
+    
     
     public WorldTreasure()
     {    
@@ -70,11 +72,12 @@ public class WorldTreasure extends World
 
         this.livesT=new SimpleTimer();
         this.msjLives=new Counter("Vidas:  ");
-        this.msjLives.setValue(30);
+        this.msjLives.setValue(10);
 
         this.pointsT=new SimpleTimer();
         this.msjPoints=new Counter("Puntos:  ");
         this.msjPoints.setValue(0);
+        acumuladorPuntos = 0;
         
         this.starsT=new SimpleTimer();
         this.msjStars=new Counter("Stars:  ");
@@ -179,6 +182,7 @@ public class WorldTreasure extends World
     public void setPoints()
     {
         msjPoints.add(100);
+        //msjPoints.setValue(100);
     }
     
     public Counter getStars()
@@ -465,10 +469,10 @@ public class WorldTreasure extends World
     
     public void creaEstrellas()
     {
-        int num = Greenfoot.getRandomNumber(80);
+        int num = Greenfoot.getRandomNumber(1000);
         switch(num) 
         {
-            case 10:
+            case 100:
                     addObject(new Star(), getWidth(),getHeight()-250);
             break;
         }
