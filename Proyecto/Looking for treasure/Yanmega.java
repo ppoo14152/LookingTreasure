@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Yanmega here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Yanmega uno de los enemigos del bosque su poder es disparar aguijón.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Yanmega extends Enemy
 {  
@@ -26,7 +26,7 @@ public class Yanmega extends Enemy
    }
    
    /**
-    * metodod para animar al enemigo
+    * Método para animar al enemigo
     */
    public void movimiento()
    {  
@@ -36,7 +36,7 @@ public class Yanmega extends Enemy
    }
    
    /**
-    * metodo para atacar del enemigo 
+    * Método para atacar del enemigo 
     */
    public void atacaJugador()
    {

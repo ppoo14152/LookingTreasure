@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Arbok here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Arbok uno de los enemigos del bosque tiene el poder de disparar veneno.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Arbok extends Enemy
 {
@@ -21,7 +21,7 @@ public class Arbok extends Enemy
     }
 
     /**
-     * actua del enemigo arbok
+     * Actua del enemigo arbok
      */
     public void act()
     {
@@ -29,7 +29,7 @@ public class Arbok extends Enemy
     }
 
     /**
-     * metodo para animar el movimiento de arbok
+     * Método para animar el movimiento de arbok
      */
     public void movimiento()
     {  

@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Disparo here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Bala es la que realiza el disparo de cada jugador.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Bala extends Actor
 {
@@ -13,6 +13,10 @@ public class Bala extends Actor
     private int cont;
     private int pause;
     
+    /**
+     * Constructor de Bala.
+     * 
+     */
     public Bala(int unTipo,boolean unaDir)
     {
         this.pause = 10;
@@ -22,16 +26,27 @@ public class Bala extends Actor
         this.cont=0;
     }
     
+    /**
+     * Método donde pone la bandera de direccion en true o false
+     * @param true o false
+     */
     public void setBanDir(boolean unaDir)
     {
         this.banDir=unaDir;
     }
     
+    /**
+     * Método donde donde regresa la bandera de dirección
+     * @return true o false
+     */
     public boolean getBanDir()
     {
         return this.banDir;
     }
     
+    /**
+     * Metodo donde se switchea quien de todos disparo
+     */
     public void quienFue()
     {
         switch(this.tipo)
@@ -59,6 +74,9 @@ public class Bala extends Actor
         }
     }
     
+    /**
+     * Método donde se mueve la bala de cada animal del bosque
+     */
     public void mueveBala()
     {
         switch(this.tipo)
@@ -74,6 +92,9 @@ public class Bala extends Actor
         }
     }
     
+    /**
+     * Método donde interactua la bala con cada animal del bosque
+     */
     public void aquienToque()
     {
         Actor aux;
@@ -110,6 +131,9 @@ public class Bala extends Actor
         }
     }
     
+    /**
+     * Método donde se verifica a quien toco la bala
+     */
     public void aquienElimino()
     {
         Actor aux;

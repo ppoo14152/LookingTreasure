@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Xplosive here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Xplosive realiza las manchas de acuerdo cuando se eliminan a los enemigos.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Xplosive extends Actor
 {   
@@ -19,6 +19,9 @@ public class Xplosive extends Actor
         tiempo = 30;
     }
     
+    /**
+     * Método donde se elimina la bala
+     */
     public void quitoBala()
     {
       if(tiempo != 0) {

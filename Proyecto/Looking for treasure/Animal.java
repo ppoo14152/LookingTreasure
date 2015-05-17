@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Write a description of class Pokemon here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Animal aqui se encuentran todos los jugadores y enemigos.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 abstract public class Animal extends Actor
 {
@@ -15,6 +15,10 @@ abstract public class Animal extends Actor
     private boolean bandAtaca;
     private SimpleTimer time;
     
+    /**
+     * Constructor de Animal.
+     * 
+     */
     public Animal(int numImaJug,int numImaAttack)
     {
         this.time=new SimpleTimer();
@@ -28,7 +32,7 @@ abstract public class Animal extends Actor
     }
 
     /**
-     * Establece una direccion para la posicion del jugador
+     * Establece una dirección para la posicion del jugador
      * @param un boolean ya sea true o false para izquierda o derecha
      */
     public void setIzq(boolean unaDir)
@@ -37,8 +41,8 @@ abstract public class Animal extends Actor
     }
     
     /**
-     * metodo para obtener la posicion actual de la imagen 
-     * @return una experesion boolean true o false
+     * Método para obtener la posicion actual de la imagen 
+     * @return una expresión boolean true o false
      */
     public boolean getIzq()
     {
@@ -46,7 +50,7 @@ abstract public class Animal extends Actor
     }
     
     /**
-     * metodo para establecer una imagen
+     * Método para establecer una imagen
      * @param el numero de imagen a establecer
      */
     public void setActual(int unaActual)
@@ -55,7 +59,7 @@ abstract public class Animal extends Actor
     }
 
     /**
-     * regresar el numero de imagen actual
+     * Regresar el numero de imagen actual
      * @return un entero con el numero de la imagen actual
      */
     public int getActual()
@@ -64,7 +68,7 @@ abstract public class Animal extends Actor
     }
 
     /**
-     * numero de imagenes que tiene el animal ya sea jugador o enemigo
+     * Número de imagenes que tiene el animal ya sea jugador o enemigo
      * @param una entero con el numero total de imagenes a usar
      */
     public void setNumIma(int unNum)
@@ -73,7 +77,7 @@ abstract public class Animal extends Actor
     }
     
     /**
-     * regresar el numero total de imagenes que tiene un animal ya sea jugador o enemigo
+     * Regresar el numero total de imagenes que tiene un animal ya sea jugador o enemigo
      * @return un entero con el total de imagenes que usa
      */
     public int getNumIma()
@@ -101,8 +105,7 @@ abstract public class Animal extends Actor
         this.setPos(unaI+(2*numImagenes)+numImagenesAtack,new GreenfootImage(this.getPos(unaI)));
         this.getPos(unaI+(2*numImagenes)+numImagenesAtack).mirrorHorizontally();
     }
-    
-    
+        
     /**
      * Inserta la imagen del jugador o enemigo en el arreglo 
      * @param unaI, la posicion en donde se insertara la imagen
@@ -115,11 +118,10 @@ abstract public class Animal extends Actor
         this.arrIma[unaI+this.numImagenes+numImagenesAtack].mirrorHorizontally();
     }   
 
-    
     abstract public void movimiento();
 
-    /*
-     * metodo para animar al personaje ya sea jugador o enemigo
+    /**
+     * Método para animar a los animales del bosque con sus imagenes
      */
     public void animar()
     {  
@@ -172,7 +174,7 @@ abstract public class Animal extends Actor
     }
     
     /**
-     * metodo para cambiar la bandera de atacar ya sea true o false
+     * Método para cambiar la bandera de atacar ya sea true o false
      * @param un boolean yasea true o false
      */
     public void setBandAtaca(boolean unaBan)
@@ -180,8 +182,8 @@ abstract public class Animal extends Actor
         this.bandAtaca=unaBan;
     }
     
-    /*
-     * metodo para conocer la bandera de ataque
+    /**
+     * Método para conocer la bandera de ataque
      * @return true o false
      */
     public boolean getBandAtaca()
@@ -190,7 +192,7 @@ abstract public class Animal extends Actor
     }
     
     /**
-     * Metodo para crear un objeto bala en el mundo simulando un diparo
+     * Método para crear un objeto bala en el mundo simulando un diparo
      * @param un tipo de imagen a disparar
      * @param una posicion en x 
      * @param una posicion en y
@@ -205,7 +207,7 @@ abstract public class Animal extends Actor
     }
     
     /**
-     * regresa la posicion actual del personaje
+     * Regresa la posicion actual del personaje
      * @param una posicion
      * @return la imagen en la posicion recibida como parametro
      */

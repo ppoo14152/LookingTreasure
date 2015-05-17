@@ -1,16 +1,17 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Piso here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Piso.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Floor extends FondoImagenes
 {
     public void act()
     {
-        if(Greenfoot.isKeyDown("right")) {
+        if(Greenfoot.isKeyDown("right"))
+        {
           this.setLocation(getX()-2,getY());
         }
     }

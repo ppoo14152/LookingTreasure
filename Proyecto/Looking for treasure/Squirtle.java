@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Write a description of class Squirtle here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Squirtle este es un jugador que tiene el poder de disparar un chorro de agua.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Squirtle extends Player
 {
@@ -30,7 +30,7 @@ public class Squirtle extends Player
     }
     
     /**
-     * metodo para animar el movimiento del jugador
+     * Método para animar el movimiento del jugador
      */
     public void movimiento()
     {   

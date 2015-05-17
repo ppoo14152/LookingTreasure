@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Enemigo here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Enemigo que tiene a los enemigos del bosque.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 abstract public class Enemy extends Animal
 {
@@ -21,7 +21,7 @@ abstract public class Enemy extends Animal
     }
     
     /**
-     * actua del juagdor
+     * actua del jugador
      */
     public void act() 
     {
@@ -29,7 +29,7 @@ abstract public class Enemy extends Animal
     }
     
     /**
-     * establecer numero de imagen
+     * Establecer numero de imagen
      * @param un numero de imagen
      */
     public void setNum(int unNum)
@@ -38,7 +38,7 @@ abstract public class Enemy extends Animal
     }
    
     /**
-     * obtener numero de iamgen
+     * Obtener numero de imagen
      * @return un numero de imagen
      */
     public int getNum()
@@ -47,7 +47,7 @@ abstract public class Enemy extends Animal
     }
     
     /**
-     * cambia la imagen actual por otra 
+     * Cambia la imagen actual por otra 
      * @param recibe la siguiente imagen a establecer
      * @param un numero de imagen a establecer
      */
@@ -105,7 +105,7 @@ abstract public class Enemy extends Animal
     } 
     
     /**
-     * establece un numero de iamgen
+     * Establece un numero de iamgen
      *@param un numero entero para establecer 
      */
      public void setnumAtaca(int unNum)
@@ -114,7 +114,7 @@ abstract public class Enemy extends Animal
     }
     
     /**
-     * devuelve el numero de imagen atacando
+     * Devuelve el numero de imagen atacando
      * @param el valor entero de ataque
      */
     public int getnumAtaca()

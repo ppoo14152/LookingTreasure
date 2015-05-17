@@ -1,16 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Signboard here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Signboard realiza los letreros en el juego.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
-   
    
 public class Signboard extends Actor
 {
     private int tiempo;
+    
+    /**
+     * Constructor de Signboard.
+     * 
+     */
     public Signboard(String mensaje)
     {
         GreenfootImage letrero;
@@ -18,18 +22,4 @@ public class Signboard extends Actor
         setImage(letrero);
         tiempo=10;
     } 
-    
-     public void quitoLetrero()
-    {
-      if(tiempo != 0) {
-          tiempo = tiempo-1;
-      }else {
-          ((WorldTreasure)getWorld()).removeObject(this);
-      }
-    }
-    
-    public void act()
-    {
-        //this.quitoLetrero();   
-    }
 }

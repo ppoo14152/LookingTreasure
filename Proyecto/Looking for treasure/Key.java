@@ -1,13 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Llave here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la class Llave que es la que se hace que pase al siguente nivel.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Key extends Bonus
 {
+    /**
+     * Constructor de Key.
+     * 
+     */
     public Key() 
     {
         this.getImage().scale(this.getImage().getWidth()/4,this.getImage().getHeight()/4);
@@ -19,7 +23,7 @@ public class Key extends Bonus
     }
     
     /**
-     * metodo para checar si alguno de los jugadores toco la llave
+     * Método para checar si alguno de los jugadores toco la llave
      */
     public void tocoLLave()
     {

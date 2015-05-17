@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Jugador here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Jugador contiene a todos los jugadores.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 abstract public class Player extends Animal
 {
@@ -43,7 +43,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * regresa el valor dela velocidad del jugador
+     * Regresa el valor dela velocidad del jugador
      * @return un numero entero con el valor de la velocidad del jugador
      */
     public int getVelJugador()
@@ -52,7 +52,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * establecer el valor de la velocidad del jugador
+     * Establecer el valor de la velocidad del jugador
      * @param un numeor entero con el valor a establecer de la velocidad
      */
     public void setVelJugador(int unNum)
@@ -61,7 +61,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * establecer un numero de imagen
+     * Establecer un numero de imagen
      * @param un numero entero para el numero de imagen
      */
     public void setNumImagen(int unNum)
@@ -70,7 +70,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * regresa el valor del numero de imagen
+     * Regresa el valor del numero de imagen
      * @return un numero entero ocn el valor del numero de imagen
      */
     public int getNumImagen()
@@ -81,7 +81,7 @@ abstract public class Player extends Animal
     abstract public void movimiento();
     
     /**
-     * metodo para checar si esta saltando
+     * Método para checar si esta saltando
      */
     public void saltar()
     {
@@ -94,7 +94,7 @@ abstract public class Player extends Animal
     }
      
     /**
-     * metodo para checar si esta tocando el suelo
+     * Método para checar si esta tocando el suelo
      * @return true o false dependiendo de si lo esta o no tocando
      */
     public boolean estaEnPiso()
@@ -109,7 +109,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * metodo para establecer y modificar sus coordenadas al momento de caer
+     * Método para establecer y modificar sus coordenadas al momento de caer
      */
     public void caida()
     {
@@ -122,7 +122,7 @@ abstract public class Player extends Animal
     }
      
     /**
-     * metodo para hacer que el jugador valla hacia abajo
+     * Método para hacer que el jugador valla hacia abajo
      */
     public void caer()
     {
@@ -132,7 +132,7 @@ abstract public class Player extends Animal
     }  
     
     /**
-     * metodo para cambiar de imagen
+     * Método para cambiar de imagen
      * @param una imagen a establecer
      * @param un numero de imagen
      * 
@@ -144,7 +144,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * metodo para insertar la imagen 
+     * Método para insertar la imagen 
      * @param una posicion en el arreglo
      * @param un nombre de la imagen
      */
@@ -156,7 +156,7 @@ abstract public class Player extends Animal
     }   
 
     /**
-     * metodo para animar al jugador checando desde si toca el tesoro hasta cambiar el numero de imagen a usar 
+     * Método para animar al jugador checando desde si toca el tesoro hasta cambiar el numero de imagen a usar 
      */
     public void animar()
     {
@@ -216,7 +216,7 @@ abstract public class Player extends Animal
     }
    
     /**
-     * cambiar la bandera del estado del tesoro si lo toco o no
+     * Cambiar la bandera del estado del tesoro si lo toco o no
      * @param true o false dependiendo
      */
     public void setBanTesoro(boolean unaBan)
@@ -225,7 +225,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * obtener el estado de la bandera del tesoro
+     * Obtener el estado de la bandera del tesoro
      * @return true o false
      */
     public boolean getBanTesoro()
@@ -234,7 +234,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * establece el numero de imagen a atacar
+     * Establece el numero de imagen a atacar
      * @param un numero entero
      */
     public void setnumAtaca(int unNum)
@@ -243,7 +243,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * obtener el numero de imagen atacando
+     * Obtener el numero de imagen atacando
      * @return un numeor entero
      */
     public int getnumAtaca()
@@ -252,7 +252,7 @@ abstract public class Player extends Animal
     }
     
     /**
-     * metodo para checar si toco el tesoro
+     * Método para checar si toco el tesoro
      */
     public void tocoTesoro()
     {

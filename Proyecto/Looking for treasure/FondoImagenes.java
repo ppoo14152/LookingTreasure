@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class FondoImagenes here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la class FondoImagenes.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class FondoImagenes extends Actor
 {

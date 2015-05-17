@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Cyndaquil here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Cyndaquil uno de los jugadores tiene el poder de disparar fuego.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Cyndaquil extends Player
 {
@@ -31,7 +31,7 @@ public class Cyndaquil extends Player
     }
     
     /**
-     * metodo para animar el movimiento del juagdor
+     * Método para animar el movimiento del jugador
      */
     public void movimiento()
     {

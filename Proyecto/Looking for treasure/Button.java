@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Write a description of class Button here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Button realiza los botones del menú.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 
 public class Button extends Actor
@@ -11,6 +11,10 @@ public class Button extends Actor
     private int numBoton;
     private boolean sedioClick;
     
+    /**
+     * Constructor de Button.
+     * 
+     */
     public Button(int unNum)
     {
         this.numBoton=unNum;
@@ -22,11 +26,7 @@ public class Button extends Actor
             this.getImage().scale(this.getImage().getWidth()/2,this.getImage().getHeight()/2);
         }
     }
-    
-    /**
-     * Metodo para saber si se dio click 
-     * 
-     */
+   
     public void act()
     {
        if(Greenfoot.mouseClicked(this))
@@ -36,7 +36,7 @@ public class Button extends Actor
     }
     
     /**
-     * Metodo para regresar el valor si se a dado un click en algun boton
+     * Método para regresar el valor si se a dado un click en algun boton
      * @return sedioClick;
      */
     public boolean getSedioclick()
@@ -45,7 +45,7 @@ public class Button extends Actor
     }
     
     /**
-     * Metodo para cambiar el valor del click en los botones
+     * Método para cambiar el valor del click en los botones
      * @param boolean unClick
      */
     public void setSedioclick(boolean unClick)

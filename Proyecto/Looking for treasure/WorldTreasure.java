@@ -3,18 +3,13 @@ import java.util.LinkedList;
 import java.awt.Color;
 
 /**
- * Write a description of class WorldTreasure here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase WorldTreasure aqui estan los métodos de algunos objetos que aparecen en el mundo.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class WorldTreasure extends World
 {
-
-    /**
-     * Constructor for objects of class WorldTreasure.
-     * 
-     */
     //medidas del mundo---------------
     public static final int TAM_X=800;
     public static final int TAM_Y=600;
@@ -52,7 +47,10 @@ public class WorldTreasure extends World
     
     private int acumuladorPuntos;
     
-    
+    /**
+     * Constructor for objects of class WorldTreasure.
+     * 
+     */
     public WorldTreasure()
     {    
         super(TAM_X,TAM_Y, 1,false);
@@ -100,7 +98,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para actualizar los records de los jugadores
+     * Método para actualizar los records de los jugadores
      */
     public void actualizaRecord()
     {
@@ -116,7 +114,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para deter el sonido
+     * Método para deter el sonido
      */
     public void stopped()
     {
@@ -126,7 +124,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para crear una llave dependiendo el numero de puntos
+     * Método para crear una llave dependiendo el numero de puntos
      */
     public void apareceLlave()
     {
@@ -142,7 +140,7 @@ public class WorldTreasure extends World
             this.addObject(this.llave,420,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 10000 )//&& !this.getExisteLlave()) 
+        else if(this.msjPoints.getValue() == 8000) 
         {
              this.setBackground("winner.png");
              this.borrar();
@@ -150,7 +148,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para cambiar el estado de la llave si esciste o no
+     * Método para cambiar el estado de la llave si esciste o no
      * @param true o false 
      */
     public void setExisteLlave(boolean unaBan)
@@ -159,7 +157,7 @@ public class WorldTreasure extends World
     }
 
     /**
-     * metodo para saber si existe o no la llave
+     * Método para saber si existe o no la llave
      * @return true o false respectivamente
      */
     public boolean getExisteLlave()
@@ -177,7 +175,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para modificar los puntos
+     * Método para modificar los puntos
      */
     public void setPoints()
     {
@@ -191,7 +189,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para modificar los puntos
+     * Método para modificar los puntos
      */
     public void setStars()
     {
@@ -199,7 +197,7 @@ public class WorldTreasure extends World
     }
 
     /**
-     * metodo para regresar las vidas restantes
+     * Método para regresar las vidas restantes
      * @return numero de vidas
      */
     public Counter getLives()
@@ -208,7 +206,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para modificar los valores de las vidas
+     * Método para modificar los valores de las vidas
      */
     public void setLives()
     {
@@ -216,7 +214,7 @@ public class WorldTreasure extends World
     }
 
     /**
-     * Metodo donde interactua el mundo con todos los personajes
+     * Método donde interactua el mundo con todos los personajes
      */
     public void act()
     { 
@@ -250,6 +248,9 @@ public class WorldTreasure extends World
         }
     }
    
+    /**
+     * Método para borrar los objetos del escenario
+     */
     public void borrar()
     {
         sonido.stop();//the rival
@@ -279,7 +280,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * remueve todos los personajes asi como los letreros 
+     * Remueve todos los personajes asi como los letreros 
      * e imagenes correspondientes del nivel actual al nivel
      * inicial
      */
@@ -292,7 +293,7 @@ public class WorldTreasure extends World
     }
 
     /**
-     * Metodo donde se inicializan los objetos principales
+     * Método donde se inicializan los objetos principales
      */
     public void prepararMundo()
     {
@@ -324,7 +325,7 @@ public class WorldTreasure extends World
     }
     
     /**
-    * Metodo para desplegar el boton de ayuda
+    * Método para desplegar el boton de ayuda
     */
     public void ayudaP()
     {
@@ -333,7 +334,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * Metodo para desplegar el boton de creditos
+     * Método para desplegar el boton de creditos
      */
     public void creditosP()
     {
@@ -342,7 +343,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * Metodo para desplegar el boton de records
+     * Método para desplegar el boton de records
      */
     public void recordsP()
     {
@@ -356,7 +357,7 @@ public class WorldTreasure extends World
     }
 
     /**
-     * Metodo para desplegar eliminar el menu 
+     * Método para desplegar eliminar el menu 
      */
     public void eliminaMenu()
     {
@@ -367,7 +368,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * Metodo para desplegar todos los botones
+     * Método para desplegar todos los botones
      */
     public void creaMenu()
     {
@@ -375,7 +376,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * Metodo para crear los botones
+     * Método para crear los botones
      */
     public void creaBotones()
     {
@@ -388,7 +389,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para checar que botones se seleccionan
+     * Método para checar que botones se seleccionan
      */
     public void checaBotones()
     {
@@ -425,7 +426,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * Metodo para pintar el menu con fondo y los botones
+     * Método para pintar el menu con fondo y los botones
      */
     public void pintaMenu()
     {
@@ -438,7 +439,7 @@ public class WorldTreasure extends World
     }
 
     /**
-     * Metodo que devuelve el numero actual de nivel
+     * Método que devuelve el numero actual de nivel
      * @return numero de nivel en que se encuentra
      */
     public int getLevel()
@@ -447,7 +448,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para cambiar de nivel
+     * Método para cambiar de nivel
      * @param el numero del nivel
      */
     public void setLevel(int unLevel)
@@ -456,7 +457,7 @@ public class WorldTreasure extends World
     }
 
     /**
-     * metodo para mostrar el tiempo
+     * Método para mostrar el tiempo
      */
     public void tiempo()
     {
@@ -467,6 +468,9 @@ public class WorldTreasure extends World
         }
     }
     
+    /**
+     * Método donde crea estrellas en el escenario
+     */
     public void creaEstrellas()
     {
         int num = Greenfoot.getRandomNumber(1000);
@@ -479,7 +483,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para crear enemigos aleatoriamente dependiendo del nivel
+     * Método para crear enemigos aleatoriamente dependiendo del nivel
      */
     public void creaEnemigos()
     {
@@ -543,7 +547,7 @@ public class WorldTreasure extends World
     }
     
     /**
-     * metodo para mover la parte del scrool
+     * Método para mover la parte del scrool
      */
     public void mueveScroll()
     {

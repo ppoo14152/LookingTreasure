@@ -3,6 +3,7 @@ comment0.params=unNombre
 comment0.target=Xplosive(java.lang.String)
 comment1.params=
 comment1.target=void\ quitoBala()
+comment1.text=\r\n\ M\u00E9todo\ donde\ se\ elimina\ la\ bala\r\n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

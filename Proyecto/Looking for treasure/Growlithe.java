@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Growlithe here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta es la clase Growlithe uno de los enemigos del bosque que quita vida cada que se acerca a atacar.
+ * @author DYaraH
+ * @author YairTerronezQ
+ * @version 18-05-2015
  */
 public class Growlithe extends Enemy
 {
@@ -27,7 +27,7 @@ public class Growlithe extends Enemy
     }
     
     /**
-     * metodo para animar al enemigo
+     * Método para animar al enemigo
      */
     public void movimiento()
     {  
@@ -37,7 +37,7 @@ public class Growlithe extends Enemy
     } 
     
     /**
-     * metodo para restar vidas al jugador
+     * Método para restar vidas al jugador
      */
     public void quitaVida()
     {
