@@ -15,7 +15,6 @@ public class Bala extends Actor
     
     /**
      * Constructor de Bala.
-     * 
      */
     public Bala(int unTipo,boolean unaDir)
     {
@@ -162,6 +161,10 @@ public class Bala extends Actor
         }
     }
     
+    /**
+     * Actua de Bala
+     * 
+     */
     public void act() 
     {
         this.mueveBala();

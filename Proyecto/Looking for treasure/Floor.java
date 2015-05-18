@@ -8,6 +8,10 @@ import greenfoot.*;
  */
 public class Floor extends FondoImagenes
 {
+    
+    /**
+     * Actua de Floor
+     */
     public void act()
     {
         if(Greenfoot.isKeyDown("right"))

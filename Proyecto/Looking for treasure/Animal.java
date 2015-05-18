@@ -17,7 +17,6 @@ abstract public class Animal extends Actor
     
     /**
      * Constructor de Animal.
-     * 
      */
     public Animal(int numImaJug,int numImaAttack)
     {

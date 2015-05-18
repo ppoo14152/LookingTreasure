@@ -12,6 +12,9 @@ public class Cyndaquil extends Player
     private int posicion ;
     private int cont;
     
+    /**
+     * Constructor de Cyndaquil.
+     */
     public Cyndaquil()
     {
         super(6,6,0);
@@ -23,6 +26,9 @@ public class Cyndaquil extends Player
         }
     }
     
+    /**
+     * Actua de Cyndaquil
+     */
     public void act()
     {
         this.movimiento();

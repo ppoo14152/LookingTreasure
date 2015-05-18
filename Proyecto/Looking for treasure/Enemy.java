@@ -12,6 +12,9 @@ abstract public class Enemy extends Animal
     private int numEne;
     private int numAtaca;
     
+    /**
+     * Constructor de Enemy.
+     */
     public Enemy(int numImagenes,int numImaAtack)
     {
         super(numImagenes,numImaAtack);

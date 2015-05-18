@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=numImaJug\ numImaAttack
 comment0.target=Animal(int,\ int)
-comment0.text=\r\n\ Constructor\ de\ Animal.\r\n\ \r\n
+comment0.text=\r\n\ Constructor\ de\ Animal.\r\n
 comment1.params=unaDir
 comment1.target=void\ setIzq(boolean)
 comment1.text=\r\n\ Establece\ una\ direcci\u00F3n\ para\ la\ posicion\ del\ jugador\r\n\ @param\ un\ boolean\ ya\ sea\ true\ o\ false\ para\ izquierda\ o\ derecha\r\n

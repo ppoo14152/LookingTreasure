@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Arbok()
+comment0.text=\r\n\ Constructor\ de\ Arbok.\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Actua\ del\ enemigo\ arbok\r\n

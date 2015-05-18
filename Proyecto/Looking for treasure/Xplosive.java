@@ -11,6 +11,9 @@ public class Xplosive extends Actor
     private GreenfootImage imagen;
     private int tiempo;
     
+    /**
+     * Constructor de Xplosive. 
+     */
     public Xplosive(String unNombre)
     {
         this.imagen=new GreenfootImage(unNombre);
@@ -31,6 +34,10 @@ public class Xplosive extends Actor
       }
     }
     
+    /**
+     * Actua de Xplosive
+     * 
+     */
     public void act()
     {
         this.quitoBala();   

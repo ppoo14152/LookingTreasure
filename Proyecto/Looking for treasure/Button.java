@@ -13,7 +13,6 @@ public class Button extends Actor
     
     /**
      * Constructor de Button.
-     * 
      */
     public Button(int unNum)
     {
@@ -27,6 +26,9 @@ public class Button extends Actor
         }
     }
    
+    /**
+     * Actua de Button
+     */
     public void act()
     {
        if(Greenfoot.mouseClicked(this))

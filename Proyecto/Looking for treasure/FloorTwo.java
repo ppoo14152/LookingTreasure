@@ -10,7 +10,6 @@ public class FloorTwo extends FondoImagenes
 {
     /**
      * Constructor de FloorTwo.
-     * 
      */
     public FloorTwo() 
     {

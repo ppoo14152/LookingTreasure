@@ -23,6 +23,9 @@ abstract public class Player extends Animal
     private int numAtaca;
     private boolean bandTesoro;
 
+    /**
+     * Constructor de Player.
+     */
     public Player(int numJug,int numTes,int numImaAtack)
     {
         super(numJug+numTes,numImaAtack);

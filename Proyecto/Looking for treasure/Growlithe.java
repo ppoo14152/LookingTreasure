@@ -10,6 +10,9 @@ public class Growlithe extends Enemy
 {
     private int vida;
     
+    /**
+     * Constructor de Growlithe.
+     */
     public Growlithe()
     {
         super(4,0);
@@ -20,6 +23,9 @@ public class Growlithe extends Enemy
         }
     }
     
+    /**
+     * Actua de Growlithe
+     */
     public void act()
     {
         this.quitaVida();

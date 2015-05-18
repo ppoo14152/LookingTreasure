@@ -10,13 +10,15 @@ public class Key extends Bonus
 {
     /**
      * Constructor de Key.
-     * 
      */
     public Key() 
     {
         this.getImage().scale(this.getImage().getWidth()/4,this.getImage().getHeight()/4);
     }  
     
+    /**
+     * Actua de Key
+     */
     public void act()
     {
         this.tocoLLave();

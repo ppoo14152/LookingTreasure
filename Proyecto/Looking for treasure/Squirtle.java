@@ -11,6 +11,9 @@ public class Squirtle extends Player
     private int posicion;
     private int cont;
     
+    /**
+     * Constructor de Squirtle.
+     */
     public Squirtle()
     {
         super(4,4,2);
@@ -21,7 +24,10 @@ public class Squirtle extends Player
             super.insertaIma(i,"Sd");
         }
     }
-
+    
+    /**
+     * Actua de Squirtle
+     */
     public void act()
     {
         this.movimiento();

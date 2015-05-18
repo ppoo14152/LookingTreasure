@@ -10,13 +10,15 @@ public class Star extends Bonus
 {
     /**
      * Constructor de Star.
-     * 
      */
     public Star() 
     {
        this.getImage().scale(this.getImage().getWidth()/4,this.getImage().getHeight()/4);
     }    
     
+    /**
+     * Actua de Star
+     */
     public void act()
     {
         this.movimiento();

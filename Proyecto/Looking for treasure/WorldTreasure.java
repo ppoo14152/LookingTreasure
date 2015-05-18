@@ -140,7 +140,7 @@ public class WorldTreasure extends World
             this.addObject(this.llave,420,300);
             this.setExisteLlave(true);
         }
-        else if(this.msjPoints.getValue() == 8000) 
+        else if(this.msjPoints.getValue() == 5000) 
         {
              this.setBackground("winner.png");
              this.borrar();
@@ -180,7 +180,6 @@ public class WorldTreasure extends World
     public void setPoints()
     {
         msjPoints.add(100);
-        //msjPoints.setValue(100);
     }
     
     public Counter getStars()
@@ -473,10 +472,10 @@ public class WorldTreasure extends World
      */
     public void creaEstrellas()
     {
-        int num = Greenfoot.getRandomNumber(1000);
+        int num = Greenfoot.getRandomNumber(100);
         switch(num) 
         {
-            case 100:
+            case 10:
                     addObject(new Star(), getWidth(),getHeight()-250);
             break;
         }

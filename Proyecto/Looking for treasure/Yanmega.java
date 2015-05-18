@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Yanmega extends Enemy
 {  
-    private int disparo;
+   private int disparo;
     
+    /**
+     * Constructor de Yanmega.
+     */
    public Yanmega()
    {
       super(14,0);
@@ -19,6 +22,9 @@ public class Yanmega extends Enemy
       }
    }
    
+    /**
+     * Actua de Yanmega
+     */
    public void act()
    {
        this.movimiento();

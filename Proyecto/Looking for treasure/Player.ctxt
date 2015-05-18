@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.params=numJug\ numTes\ numImaAtack
 comment0.target=Player(int,\ int,\ int)
+comment0.text=\r\n\ Constructor\ de\ Player.\r\n
 comment1.params=
 comment1.target=int\ getVelJugador()
 comment1.text=\r\n\ Regresa\ el\ valor\ dela\ velocidad\ del\ jugador\r\n\ @return\ un\ numero\ entero\ con\ el\ valor\ de\ la\ velocidad\ del\ jugador\r\n

@@ -13,7 +13,6 @@ public class Signboard extends Actor
     
     /**
      * Constructor de Signboard.
-     * 
      */
     public Signboard(String mensaje)
     {

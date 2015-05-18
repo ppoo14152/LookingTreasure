@@ -10,7 +10,6 @@ public class Treasure extends Bonus
 {
     /**
      * Constructor de Treasure.
-     * 
      */
     public Treasure() 
     {

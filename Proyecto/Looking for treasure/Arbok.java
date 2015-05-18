@@ -10,6 +10,9 @@ public class Arbok extends Enemy
 {
     private int cont;
 
+    /**
+     * Constructor de Arbok.
+     */
     public Arbok()
     {
         super(6,2);
