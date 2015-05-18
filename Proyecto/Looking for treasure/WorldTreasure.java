@@ -38,13 +38,14 @@ public class WorldTreasure extends World
     private int numEnemy;
     private boolean existeLlave;
     private ScoreBoard record;
+    private Record recordAlmacena;
     private GreenfootSound intro;
     private GreenfootSound sonido;
     
     private boolean levelUno;
     private boolean levelDos;
     private boolean levelTres;
-    
+    private int puntos;
     private int acumuladorPuntos;
     
     /**
@@ -58,7 +59,8 @@ public class WorldTreasure extends World
         
         cyndaquil = new Cyndaquil();
         squirtle = new Squirtle();
-        
+        puntos=0;
+        recordAlmacena=new Record();
         record = new ScoreBoard(400,200);
         this.listaF=new LinkedList<Floor>();
         this.existeLlave=false;
@@ -142,8 +144,11 @@ public class WorldTreasure extends World
         }
         else if(this.msjPoints.getValue() == 5000) 
         {
-             this.setBackground("winner.png");
-             this.borrar();
+            puntos=this.msjPoints.getValue();
+            this.setBackground("winner.png");
+            recordAlmacena.saveRecords(puntos);
+            this.borrar();
+             
         }
     }
     
@@ -237,13 +242,16 @@ public class WorldTreasure extends World
             else if(this.getLives().getValue() <= 0) 
             {
                 this.setBackground("gameover.png");
+                puntos=this.msjPoints.getValue();
+                recordAlmacena.saveRecords(puntos);
                 this.borrar();
+                
             }
             
-            else if(this.getLives().getValue()==0 || this.getLevel()==3)
-            {
-                this.actualizaRecord();  
-            }
+            //else if(this.getLives().getValue()==0 || this.getLevel()==3)
+            //{
+              //  this.actualizaRecord();  
+            //}
         }
     }
    
