@@ -57,8 +57,6 @@ public class WorldTreasure extends World
         super(TAM_X,TAM_Y, 1,false);
         setActOrder(Floor.class,FloorTwo.class,Key.class,Treasure.class,Star.class,Cyndaquil.class,Squirtle.class,Arbok.class,Bala.class);
         
-        cyndaquil = new Cyndaquil();
-        squirtle = new Squirtle();
         puntos=0;
         recordAlmacena=new Record();
         record = new ScoreBoard(400,200);
@@ -244,14 +242,8 @@ public class WorldTreasure extends World
                 this.setBackground("gameover.png");
                 puntos=this.msjPoints.getValue();
                 recordAlmacena.saveRecords(puntos);
-                this.borrar();
-                
+                this.borrar();   
             }
-            
-            //else if(this.getLives().getValue()==0 || this.getLevel()==3)
-            //{
-              //  this.actualizaRecord();  
-            //}
         }
     }
    
@@ -308,7 +300,9 @@ public class WorldTreasure extends World
         Floor pisito;
         FloorTwo piso1=new FloorTwo();
         this.estaJuego=true;
-
+        cyndaquil = new Cyndaquil();
+        squirtle = new Squirtle();
+       
         this.setBackground("1.jpg"); 
         addObject(piso1,getWidth()/2,getHeight()-20);
         addObject(new Treasure(),200,550);
